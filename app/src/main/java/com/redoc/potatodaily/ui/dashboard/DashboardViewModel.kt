@@ -1,30 +1,33 @@
 package com.redoc.potatodaily.ui.dashboard
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.redoc.potatodaily.db.BoardEntity
 import com.redoc.potatodaily.db.RoomAppDB
 
+// 뷰모델은 데이터의 변경사항을 알려주는 라이브 데이터를 가지고 있고
 class DashboardViewModel(app:Application) : AndroidViewModel(app) {
 
-//    private val _text = MutableLiveData<String>().apply {
-//        value = "This is dashboard Fragment"
-//    }
-//    val text: LiveData<String> = _text
+    // 뮤터블 라이브 데이터(수정 가능)
+    // 라이브 데이터 (수정 불가능, 읽기 전용)
 
     lateinit var allBoards : MutableLiveData<List<BoardEntity>>
 
+    companion object{const val TAG : String = "로그"}
+
     init {
         allBoards = MutableLiveData()
+        Log.d(TAG, "DashboardViewModel - 생성자 호출")
     }
 
     fun getAllBoardObservers(): MutableLiveData<List<BoardEntity>> {
         return allBoards
     }
 
-    fun getAllBoard() {
+    private fun getAllBoard() {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         val list = boardDao?.getAllBoard()
 

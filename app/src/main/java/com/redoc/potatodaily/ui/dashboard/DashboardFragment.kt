@@ -1,5 +1,6 @@
 package com.redoc.potatodaily.ui.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,39 +14,27 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager.VERTICAL
 import com.redoc.potatodaily.R
-import com.redoc.potatodaily.RecyclerViewAdapter
+import com.redoc.potatodaily.ui.dashboard.RecyclerViewAdapter
 import com.redoc.potatodaily.databinding.FragmentDashboardBinding
 import com.redoc.potatodaily.db.BoardEntity
 
 class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
 
-    //private lateinit var dashboardViewModel: DashboardViewModel
     private var _binding: FragmentDashboardBinding? = null
-
-    lateinit var recyclerViewAdapter: RecyclerViewAdapter
-    lateinit var viewModel: DashboardViewModel
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+
+    // 나중에 값이 설정될거라고 lateinit
+    lateinit var viewModel: DashboardViewModel
+    lateinit var recyclerViewAdapter: RecyclerViewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-//        dashboardViewModel =
-//            ViewModelProvider(this).get(DashboardViewModel::class.java)
-
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val textView: TextView = binding.textDashboard
-//        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
 
         binding.recycler.apply {
             layoutManager = LinearLayoutManager(context)
@@ -56,8 +45,13 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
             addItemDecoration(divider)
         }
 
+        // 뷰 모델 프로바이더를 통해 뷰모델 가져오기
+        // 라이프사이클을 가지고 있는 녀석을 넣어줌(자기 자신)
+        // 가져올 뷰모델 클래스를 넣어서 뷰모델 가져오기
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
-        viewModel.getAllBoardObservers().observe(this, Observer {
+
+        // 뷰 모델이 가지고있는 값의 변경사항을 관찰할 수 있는 라이브 데이터를 옵저빙한다
+       viewModel.getAllBoardObservers().observe(this, Observer {
             recyclerViewAdapter.setListData(ArrayList(it))
             recyclerViewAdapter.notifyDataSetChanged()
         })
@@ -78,8 +72,14 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
             binding.email.setText("")
         }
 
+        binding.btnAdd.setOnClickListener{
+            val intent = Intent(context, DashAddActivity::class.java)
+            startActivity(intent)
+        }
+
         return root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -1,4 +1,4 @@
-package com.redoc.potatodaily
+package com.redoc.potatodaily.ui.dashboard
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,6 @@ import com.redoc.potatodaily.databinding.BoardItemBinding
 import com.redoc.potatodaily.db.BoardEntity
 
 class RecyclerViewAdapter(val listener : RowClickListener) : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
-
 
     var items = ArrayList<BoardEntity>()
 
@@ -28,7 +27,7 @@ class RecyclerViewAdapter(val listener : RowClickListener) : RecyclerView.Adapte
         return items.size
     }
 
-    override fun onBindViewHolder(holder: RecyclerViewAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         holder.itemView.setOnClickListener {
             listener.onItemClickListener(items[position])
