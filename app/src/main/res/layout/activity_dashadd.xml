@@ -1,36 +1,467 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<ScrollView
+    android:scrollbars="none"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/name"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/md_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter board title"
+        android:layout_height="100dp"
+        android:layout_margin="5dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter board content"
-        app:layout_constraintEnd_toEndOf="@+id/name"
-        app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        <TextView
+            android:id="@+id/md_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_save"
+        <RadioGroup
+            android:id="@+id/md_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <RadioButton
+                android:id="@+id/md_veryGood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/md_good"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/md_soso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/md_bad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/md_veryBad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RadioGroup>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/weather_card"
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save"
+        android:layout_height="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/md_card">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <CheckBox
+                android:id="@+id/sunny"
+                android:text="sunny"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/weather_chkbox"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <CheckBox
+                android:id="@+id/cloudy"
+                android:text="cloudy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/weather_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/sunny"
+                app:layout_constraintTop_toTopOf="@+id/sunny" />
+
+            <CheckBox
+                android:id="@+id/rainy"
+                android:text="rainy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/weather_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/cloudy"
+                app:layout_constraintTop_toTopOf="@+id/cloudy" />
+
+            <CheckBox
+                android:id="@+id/snowy"
+                android:text="snowy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/weather_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/rainy"
+                app:layout_constraintTop_toTopOf="@+id/rainy" />
+
+            <CheckBox
+                android:id="@+id/windy"
+                android:text="windy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/weather_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/snowy"
+                app:layout_constraintTop_toTopOf="@+id/snowy" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/people_card"
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weather_card">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <CheckBox
+                android:id="@+id/friend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/people_chkbox"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <CheckBox
+                android:id="@+id/family"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/people_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/friend"
+                app:layout_constraintTop_toTopOf="@+id/friend" />
+
+            <CheckBox
+                android:id="@+id/coupleFriend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/people_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/family"
+                app:layout_constraintTop_toTopOf="@+id/family" />
+
+            <CheckBox
+                android:id="@+id/businessFriend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/people_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/coupleFriend"
+                app:layout_constraintTop_toTopOf="@+id/coupleFriend" />
+
+            <CheckBox
+                android:id="@+id/not"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/people_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/businessFriend"
+                app:layout_constraintTop_toTopOf="@+id/businessFriend" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/school_card"
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/people_card">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <CheckBox
+                android:id="@+id/classtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/school_chkbox"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <CheckBox
+                android:id="@+id/study"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/school_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/classtime"
+                app:layout_constraintTop_toTopOf="@+id/classtime" />
+
+            <CheckBox
+                android:id="@+id/assignment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/school_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/study"
+                app:layout_constraintTop_toTopOf="@+id/study" />
+
+            <CheckBox
+                android:id="@+id/test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/school_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/assignment"
+                app:layout_constraintTop_toTopOf="@+id/assignment" />
+
+            <CheckBox
+                android:id="@+id/team"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/school_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/test"
+                app:layout_constraintTop_toTopOf="@+id/test" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/couple_card"
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/school_card">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <CheckBox
+                android:id="@+id/dateCouple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/couple_chkbox"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <CheckBox
+                android:id="@+id/anniversary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/couple_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/dateCouple"
+                app:layout_constraintTop_toTopOf="@+id/dateCouple" />
+
+            <CheckBox
+                android:id="@+id/gift"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/couple_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/anniversary"
+                app:layout_constraintTop_toTopOf="@+id/anniversary" />
+
+            <CheckBox
+                android:id="@+id/conflict"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/couple_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/gift"
+                app:layout_constraintTop_toTopOf="@+id/gift" />
+
+            <CheckBox
+                android:id="@+id/love"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/couple_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/conflict"
+                app:layout_constraintTop_toTopOf="@+id/conflict" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/eat_card"
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/couple_card">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <CheckBox
+                android:id="@+id/breakfast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/eat_chkbox"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <CheckBox
+                android:id="@+id/lunch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/eat_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/breakfast"
+                app:layout_constraintTop_toTopOf="@+id/breakfast" />
+
+            <CheckBox
+                android:id="@+id/dinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/eat_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/lunch"
+                app:layout_constraintTop_toTopOf="@+id/lunch" />
+
+            <CheckBox
+                android:id="@+id/midnightSnack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/eat_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/dinner"
+                app:layout_constraintTop_toTopOf="@+id/dinner" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/goods_card"
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eat_card">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <CheckBox
+                android:id="@+id/alcohol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/goods_chkbox"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <CheckBox
+                android:id="@+id/smoking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/goods_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/alcohol"
+                app:layout_constraintTop_toTopOf="@+id/alcohol" />
+
+            <CheckBox
+                android:id="@+id/coffee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/goods_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/smoking"
+                app:layout_constraintTop_toTopOf="@+id/smoking" />
+
+            <CheckBox
+                android:id="@+id/snack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/goods_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/coffee"
+                app:layout_constraintTop_toTopOf="@+id/coffee" />
+
+            <CheckBox
+                android:id="@+id/drink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/goods_chkbox"
+                app:layout_constraintStart_toEndOf="@+id/snack"
+                app:layout_constraintTop_toTopOf="@+id/snack" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/content_card"
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goods_card">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter board title"/>
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter board content"/>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"/>
+    </LinearLayout>
+</LinearLayout>

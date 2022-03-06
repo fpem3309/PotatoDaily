@@ -59,12 +59,13 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         binding.btnSave.setOnClickListener {
             var title = binding.name.text.toString()
             var content = binding.email.text.toString()
+            var mood = binding.mdResult.text.toString()
 
             if(binding.btnSave.text.equals("Save")) {
-                val board = BoardEntity(0, title, content)
+                val board = BoardEntity(0, title, content, mood)
                 viewModel.insertBoard(board)
             } else{
-                val board = BoardEntity(binding.name.getTag(binding.name.id).toString().toInt(), title, content)
+                val board = BoardEntity(binding.name.getTag(binding.name.id).toString().toInt(), title, content, mood)
                 viewModel.updateBoard(board)
                 binding.btnSave.setText("Save")
             }
