@@ -5,16 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager.VERTICAL
-import com.redoc.potatodaily.R
-import com.redoc.potatodaily.ui.dashboard.RecyclerViewAdapter
 import com.redoc.potatodaily.databinding.FragmentDashboardBinding
 import com.redoc.potatodaily.db.BoardEntity
 
@@ -60,12 +56,12 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
             var title = binding.name.text.toString()
             var content = binding.email.text.toString()
             var mood = binding.mdResult.text.toString()
-
+            var weather = "[test]"
             if(binding.btnSave.text.equals("Save")) {
-                val board = BoardEntity(0, title, content, mood)
+                val board = BoardEntity(0, title, content, mood, weather)
                 viewModel.insertBoard(board)
             } else{
-                val board = BoardEntity(binding.name.getTag(binding.name.id).toString().toInt(), title, content, mood)
+                val board = BoardEntity(binding.name.getTag(binding.name.id).toString().toInt(), title, content, mood, weather)
                 viewModel.updateBoard(board)
                 binding.btnSave.setText("Save")
             }
@@ -81,12 +77,6 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         return root
     }
 
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     override fun onDeleteBoardClickListener(board: BoardEntity) {
         viewModel.deleteBoard(board)
     }
@@ -98,5 +88,10 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         binding.name.setTag(binding.name.id, board.id)
 
         binding.btnSave.setText("Update")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -1,11 +1,15 @@
 package com.redoc.potatodaily.db
 
 import android.content.Context
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [BoardEntity::class], version = 1)
+@Database(
+    entities = [BoardEntity::class],
+    version = 3,
+)
 abstract class RoomAppDB : RoomDatabase() {
 
     abstract fun BoardDao(): BoardDao?
@@ -19,7 +23,7 @@ abstract class RoomAppDB : RoomDatabase() {
                     context.applicationContext,
                     RoomAppDB::class.java,
                     "AppDB"
-                ).allowMainThreadQueries().build()
+                ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
             }
             return INSTANCE
         }

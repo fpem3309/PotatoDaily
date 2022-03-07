@@ -3,8 +3,8 @@ package com.redoc.potatodaily.ui.dashboard
 import android.os.Bundle
 import android.util.Log
 import android.widget.CompoundButton
-import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.ActivityDashaddBinding
@@ -14,6 +14,7 @@ class DashAddActivity: AppCompatActivity() {
 
     private lateinit var addBinding: ActivityDashaddBinding
     lateinit var viewModel: DashboardViewModel
+    var result = arrayListOf<String>()
 
     companion object{const val TAG : String = "로그"}
 
@@ -25,6 +26,7 @@ class DashAddActivity: AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
+
         radioClick()
         checkboxClick()
 
@@ -33,9 +35,10 @@ class DashAddActivity: AppCompatActivity() {
             var title = addBinding.name.text.toString()
             var content = addBinding.email.text.toString()
             var mood = addBinding.mdResult.text.toString()
-
+            var weather = result.toString()
+            Log.d(TAG, result.toString())
             if(addBinding.btnSave.text.equals("Save")){
-                val board = BoardEntity(0,title,content, mood)
+                val board = BoardEntity(0,title,content,mood,weather)
                 viewModel.insertBoard(board)
                 Log.d(TAG,"DashAddActivity - board = $board")
             }
@@ -61,16 +64,16 @@ class DashAddActivity: AppCompatActivity() {
 
     private fun checkboxClick(){
 
-        var result : String? = ""
+        result = arrayListOf()
 
         var listener = CompoundButton.OnCheckedChangeListener{ bottonView, isChecked ->
             if(isChecked){
                 when(bottonView.id){
-                    R.id.sunny -> result += addBinding.sunny.text
-                    R.id.cloudy -> result += addBinding.cloudy.text
-                    R.id.rainy -> result += addBinding.rainy.text
-                    R.id.snowy -> result += addBinding.snowy.text
-                    R.id.windy -> result += addBinding.windy.text
+                    R.id.sunny -> result.add(addBinding.sunny.text as String)
+                    R.id.cloudy -> result.add(addBinding.cloudy.text  as String)
+                    R.id.rainy -> result.add(addBinding.rainy.text  as String)
+                    R.id.snowy -> result.add(addBinding.snowy.text  as String)
+                    R.id.windy -> result.add(addBinding.windy.text  as String)
 
                     R.id.friend -> Log.d(TAG, "friend")
                     R.id.family -> Log.d(TAG, "family")
@@ -101,10 +104,18 @@ class DashAddActivity: AppCompatActivity() {
                     R.id.snack -> Log.d(TAG, "snack")
                     R.id.drink -> Log.d(TAG, "drink")
                 }
-                if (result != null) {
-                    Log.d(TAG, result!!)
+            }
+            else{
+                when(bottonView.id){
+                    R.id.sunny -> result.remove(addBinding.sunny.text as String)
+                    R.id.cloudy -> result.remove(addBinding.cloudy.text  as String)
+                    R.id.rainy -> result.remove(addBinding.rainy.text  as String)
+                    R.id.snowy -> result.remove(addBinding.snowy.text  as String)
+                    R.id.windy -> result.remove(addBinding.windy.text  as String)
                 }
             }
+//            Log.d(TAG, result.distinct().toString())
+            Log.d(TAG, result.toString())
         }
         addBinding.sunny.setOnCheckedChangeListener(listener)
         addBinding.cloudy.setOnCheckedChangeListener(listener)
