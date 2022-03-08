@@ -221,41 +221,46 @@
 
             <CheckBox
                 android:id="@+id/friend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/people_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/friend_chkbox"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <CheckBox
                 android:id="@+id/family"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/people_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/family_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/friend"
                 app:layout_constraintTop_toTopOf="@+id/friend" />
 
             <CheckBox
                 android:id="@+id/coupleFriend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/people_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/couplefriend_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/family"
                 app:layout_constraintTop_toTopOf="@+id/family" />
 
             <CheckBox
                 android:id="@+id/businessFriend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/people_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/businessfriend_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/coupleFriend"
                 app:layout_constraintTop_toTopOf="@+id/coupleFriend" />
 
             <CheckBox
                 android:id="@+id/not"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/people_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/not_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/businessFriend"
                 app:layout_constraintTop_toTopOf="@+id/businessFriend" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -279,41 +284,46 @@
 
             <CheckBox
                 android:id="@+id/classtime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/school_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/classtime_chkbox"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent" />
 
             <CheckBox
                 android:id="@+id/study"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/school_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/study_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/classtime"
                 app:layout_constraintTop_toTopOf="@+id/classtime" />
 
             <CheckBox
                 android:id="@+id/assignment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/school_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/assignment_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/study"
                 app:layout_constraintTop_toTopOf="@+id/study" />
 
             <CheckBox
                 android:id="@+id/test"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/school_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/test_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/assignment"
                 app:layout_constraintTop_toTopOf="@+id/assignment" />
 
             <CheckBox
                 android:id="@+id/team"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/school_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/team_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/test"
                 app:layout_constraintTop_toTopOf="@+id/test" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -337,41 +347,46 @@
 
             <CheckBox
                 android:id="@+id/dateCouple"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/couple_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/datecouple_chkbox"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <CheckBox
                 android:id="@+id/anniversary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/couple_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/anniversary_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/dateCouple"
                 app:layout_constraintTop_toTopOf="@+id/dateCouple" />
 
             <CheckBox
                 android:id="@+id/gift"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/couple_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/gift_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/anniversary"
                 app:layout_constraintTop_toTopOf="@+id/anniversary" />
 
             <CheckBox
                 android:id="@+id/conflict"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/couple_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/conflict_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/gift"
                 app:layout_constraintTop_toTopOf="@+id/gift" />
 
             <CheckBox
                 android:id="@+id/love"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/couple_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/love_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/conflict"
                 app:layout_constraintTop_toTopOf="@+id/conflict" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -397,41 +412,46 @@
 
             <CheckBox
                 android:id="@+id/alcohol"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/goods_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/alcohol_chkbox"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <CheckBox
                 android:id="@+id/smoking"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/goods_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/smoking_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/alcohol"
                 app:layout_constraintTop_toTopOf="@+id/alcohol" />
 
             <CheckBox
                 android:id="@+id/coffee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/goods_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/coffee_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/smoking"
                 app:layout_constraintTop_toTopOf="@+id/smoking" />
 
             <CheckBox
                 android:id="@+id/snack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/goods_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/snack_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/coffee"
                 app:layout_constraintTop_toTopOf="@+id/coffee" />
 
             <CheckBox
                 android:id="@+id/drink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/goods_chkbox"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/drink_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/snack"
                 app:layout_constraintTop_toTopOf="@+id/snack" />
         </androidx.constraintlayout.widget.ConstraintLayout>

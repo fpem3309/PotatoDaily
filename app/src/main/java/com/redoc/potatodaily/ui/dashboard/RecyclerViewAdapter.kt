@@ -121,51 +121,51 @@ class RecyclerViewAdapter(val listener : RowClickListener) : RecyclerView.Adapte
 
             //people
             if(data.people.contains("friend")){
-                imgFriend.setImageResource(R.drawable.a1)
+                imgFriend.setImageResource(R.drawable.friend)
             }
             if(data.people.contains("family")){
-                imgFamily.setImageResource(R.drawable.a1)
+                imgFamily.setImageResource(R.drawable.family)
             }
             if(data.people.contains("coupleFriend")){
-                imgCoupleFriend.setImageResource(R.drawable.a1)
+                imgCoupleFriend.setImageResource(R.drawable.couplefriend)
             }
             if(data.people.contains("businessFriend")){
-                imgBuisnessFriend.setImageResource(R.drawable.a1)
+                imgBuisnessFriend.setImageResource(R.drawable.businessfriend)
             }
             if(data.people.contains("not")){
-                imgNot.setImageResource(R.drawable.a1)
+                imgNot.setImageResource(R.drawable.not)
             }
             //school
             if(data.school.contains("classtime")){
-                imgClasstime.setImageResource(R.drawable.a1)
+                imgClasstime.setImageResource(R.drawable.classtime)
             }
             if(data.school.contains("study")){
-                imgStudy.setImageResource(R.drawable.a1)
+                imgStudy.setImageResource(R.drawable.study)
             }
             if(data.school.contains("assignment")){
-                imgAssignment.setImageResource(R.drawable.a1)
+                imgAssignment.setImageResource(R.drawable.assignment)
             }
             if(data.school.contains("test")){
-                imgTest.setImageResource(R.drawable.a1)
+                imgTest.setImageResource(R.drawable.test)
             }
             if(data.school.contains("team")){
-                imgTeam.setImageResource(R.drawable.a1)
+                imgTeam.setImageResource(R.drawable.team)
             }
             //couple
             if(data.couple.contains("dateCouple")){
-                imgDateCouple.setImageResource(R.drawable.a1)
+                imgDateCouple.setImageResource(R.drawable.datecouple)
             }
             if(data.couple.contains("anniversary")){
-                imgAnniversary.setImageResource(R.drawable.a1)
+                imgAnniversary.setImageResource(R.drawable.anniversary)
             }
             if(data.couple.contains("gift")){
-                imgGift.setImageResource(R.drawable.a1)
+                imgGift.setImageResource(R.drawable.gift)
             }
             if(data.couple.contains("conflict")){
-                imgConflict.setImageResource(R.drawable.a1)
+                imgConflict.setImageResource(R.drawable.conflict)
             }
             if(data.couple.contains("love")){
-                imgLove.setImageResource(R.drawable.a1)
+                imgLove.setImageResource(R.drawable.love)
             }
             //eat
             if(data.eat.contains("breakfast")){
@@ -182,19 +182,19 @@ class RecyclerViewAdapter(val listener : RowClickListener) : RecyclerView.Adapte
             }
             //goods
             if(data.goods.contains("alcohol")){
-                imgAlcohol.setImageResource(R.drawable.a1)
+                imgAlcohol.setImageResource(R.drawable.alcohol)
             }
             if(data.goods.contains("smoking")){
-                imgSmoking.setImageResource(R.drawable.a1)
+                imgSmoking.setImageResource(R.drawable.smoking)
             }
             if(data.goods.contains("coffee")){
-                imgCoffee.setImageResource(R.drawable.a1)
+                imgCoffee.setImageResource(R.drawable.coffee)
             }
             if(data.goods.contains("snack")){
-                imgSnack.setImageResource(R.drawable.a1)
+                imgSnack.setImageResource(R.drawable.snack)
             }
             if(data.goods.contains("drink")){
-                imgDrink.setImageResource(R.drawable.a1)
+                imgDrink.setImageResource(R.drawable.drink)
             }
 
 
