@@ -14,7 +14,13 @@ class DashAddActivity: AppCompatActivity() {
 
     private lateinit var addBinding: ActivityDashaddBinding
     lateinit var viewModel: DashboardViewModel
-    var result = arrayListOf<String>()
+
+    var weather = arrayListOf<String>()
+    var people = arrayListOf<String>()
+    var school = arrayListOf<String>()
+    var couple = arrayListOf<String>()
+    var eat = arrayListOf<String>()
+    var goods = arrayListOf<String>()
 
     companion object{const val TAG : String = "로그"}
 
@@ -35,10 +41,17 @@ class DashAddActivity: AppCompatActivity() {
             var title = addBinding.name.text.toString()
             var content = addBinding.email.text.toString()
             var mood = addBinding.mdResult.text.toString()
-            var weather = result.toString()
-            Log.d(TAG, result.toString())
+
+            var weather = weather.toString()
+            var people = people.toString()
+            var school = school.toString()
+            var couple = couple.toString()
+            var eat = eat.toString()
+            var goods = goods.toString()
+
+            Log.d(TAG, weather.toString())
             if(addBinding.btnSave.text.equals("Save")){
-                val board = BoardEntity(0,title,content,mood,weather)
+                val board = BoardEntity(0,title,content,mood,weather,people,school,couple,eat,goods)
                 viewModel.insertBoard(board)
                 Log.d(TAG,"DashAddActivity - board = $board")
             }
@@ -52,11 +65,11 @@ class DashAddActivity: AppCompatActivity() {
 
         addBinding.mdGroup.setOnCheckedChangeListener { group, i ->
             when (i) {
-                R.id.md_veryGood -> addBinding.mdResult.text = "very good"
+                R.id.md_veryGood -> addBinding.mdResult.text = "very_good"
                 R.id.md_good -> addBinding.mdResult.text = "good"
                 R.id.md_soso -> addBinding.mdResult.text = "soso"
                 R.id.md_bad -> addBinding.mdResult.text = "bad"
-                R.id.md_veryBad -> addBinding.mdResult.text = "very bad"
+                R.id.md_veryBad -> addBinding.mdResult.text = "very_bad"
             }
             Log.d(TAG,""+addBinding.mdResult.text)
         }
@@ -64,58 +77,97 @@ class DashAddActivity: AppCompatActivity() {
 
     private fun checkboxClick(){
 
-        result = arrayListOf()
+        weather = arrayListOf()
+        people = arrayListOf()
+        school = arrayListOf()
+        couple = arrayListOf()
+        eat = arrayListOf()
+        goods = arrayListOf()
 
         var listener = CompoundButton.OnCheckedChangeListener{ bottonView, isChecked ->
             if(isChecked){
                 when(bottonView.id){
-                    R.id.sunny -> result.add(addBinding.sunny.text as String)
-                    R.id.cloudy -> result.add(addBinding.cloudy.text  as String)
-                    R.id.rainy -> result.add(addBinding.rainy.text  as String)
-                    R.id.snowy -> result.add(addBinding.snowy.text  as String)
-                    R.id.windy -> result.add(addBinding.windy.text  as String)
+                    R.id.sunny -> weather.add("sunny")
+                    R.id.cloudy -> weather.add("cloudy")
+                    R.id.rainy -> weather.add("rainy")
+                    R.id.snowy -> weather.add("snowy")
+                    R.id.windy -> weather.add("windy")
 
-                    R.id.friend -> Log.d(TAG, "friend")
-                    R.id.family -> Log.d(TAG, "family")
-                    R.id.coupleFriend -> Log.d(TAG, "coupleFriend")
-                    R.id.businessFriend -> Log.d(TAG, "businessFriend")
-                    R.id.not -> Log.d(TAG, "not")
+                    R.id.friend -> people.add("friend")
+                    R.id.family -> people.add("family")
+                    R.id.coupleFriend -> people.add("coupleFriend")
+                    R.id.businessFriend -> people.add("businessFriend")
+                    R.id.not -> people.add("not")
 
-                    R.id.classtime -> Log.d(TAG, "classtime")
-                    R.id.study -> Log.d(TAG, "study")
-                    R.id.assignment -> Log.d(TAG, "assignment")
-                    R.id.test -> Log.d(TAG, "test")
-                    R.id.team -> Log.d(TAG, "team")
+                    R.id.classtime -> school.add("classtime")
+                    R.id.study -> school.add("study")
+                    R.id.assignment -> school.add("assignment")
+                    R.id.test -> school.add("test")
+                    R.id.team -> school.add("team")
 
-                    R.id.dateCouple -> Log.d(TAG, "dateCouple")
-                    R.id.anniversary -> Log.d(TAG, "anniversary")
-                    R.id.gift -> Log.d(TAG, "gift")
-                    R.id.conflict -> Log.d(TAG, "conflict")
-                    R.id.love -> Log.d(TAG, "love")
+                    R.id.dateCouple -> couple.add("dateCouple")
+                    R.id.anniversary -> couple.add("anniversary")
+                    R.id.gift -> couple.add("gift")
+                    R.id.conflict -> couple.add("conflict")
+                    R.id.love -> couple.add("love")
 
-                    R.id.breakfast -> Log.d(TAG, "breakfast")
-                    R.id.lunch -> Log.d(TAG, "lunch")
-                    R.id.dinner -> Log.d(TAG, "dinner")
-                    R.id.midnightSnack -> Log.d(TAG, "midnightSnack")
+                    R.id.breakfast -> eat.add("breakfast")
+                    R.id.lunch -> eat.add("lunch")
+                    R.id.dinner -> eat.add("dinner")
+                    R.id.midnightSnack -> eat.add("midnightSnack")
 
-                    R.id.alcohol -> Log.d(TAG, "alcohol")
-                    R.id.smoking -> Log.d(TAG, "smoking")
-                    R.id.coffee -> Log.d(TAG, "coffee")
-                    R.id.snack -> Log.d(TAG, "snack")
-                    R.id.drink -> Log.d(TAG, "drink")
+                    R.id.alcohol -> goods.add("alcohol")
+                    R.id.smoking -> goods.add("smoking")
+                    R.id.coffee -> goods.add("coffee")
+                    R.id.snack -> goods.add("snack")
+                    R.id.drink -> goods.add("drink")
                 }
             }
             else{
                 when(bottonView.id){
-                    R.id.sunny -> result.remove(addBinding.sunny.text as String)
-                    R.id.cloudy -> result.remove(addBinding.cloudy.text  as String)
-                    R.id.rainy -> result.remove(addBinding.rainy.text  as String)
-                    R.id.snowy -> result.remove(addBinding.snowy.text  as String)
-                    R.id.windy -> result.remove(addBinding.windy.text  as String)
+                    R.id.sunny -> weather.remove("sunny")
+                    R.id.cloudy -> weather.remove("cloudy")
+                    R.id.rainy -> weather.remove("rainy")
+                    R.id.snowy -> weather.remove("snowy")
+                    R.id.windy -> weather.remove("windy")
+
+                    R.id.friend -> people.remove("friend")
+                    R.id.family -> people.remove("family")
+                    R.id.coupleFriend -> people.remove("coupleFriend")
+                    R.id.businessFriend -> people.remove("businessFriend")
+                    R.id.not -> people.remove("not")
+
+                    R.id.classtime -> school.remove("classtime")
+                    R.id.study -> school.remove("study")
+                    R.id.assignment -> school.remove("assignment")
+                    R.id.test -> school.remove("test")
+                    R.id.team -> school.remove("team")
+
+                    R.id.dateCouple -> couple.remove("dateCouple")
+                    R.id.anniversary -> couple.remove("anniversary")
+                    R.id.gift -> couple.remove("gift")
+                    R.id.conflict -> couple.remove("conflict")
+                    R.id.love -> couple.remove("love")
+
+                    R.id.breakfast -> eat.remove("breakfast")
+                    R.id.lunch -> eat.remove("lunch")
+                    R.id.dinner -> eat.remove("dinner")
+                    R.id.midnightSnack -> eat.remove("midnightSnack")
+
+                    R.id.alcohol -> goods.remove("alcohol")
+                    R.id.smoking -> goods.remove("smoking")
+                    R.id.coffee -> goods.remove("coffee")
+                    R.id.snack -> goods.remove("snack")
+                    R.id.drink -> goods.remove("drink")
                 }
             }
 //            Log.d(TAG, result.distinct().toString())
-            Log.d(TAG, result.toString())
+            Log.d(TAG+"weather", weather.toString())
+            Log.d(TAG+"people", people.toString())
+            Log.d(TAG+"school", school.toString())
+            Log.d(TAG+"couple", couple.toString())
+            Log.d(TAG+"eat", eat.toString())
+            Log.d(TAG+"goods", goods.toString())
         }
         addBinding.sunny.setOnCheckedChangeListener(listener)
         addBinding.cloudy.setOnCheckedChangeListener(listener)

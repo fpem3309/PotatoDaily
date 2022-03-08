@@ -2,6 +2,7 @@ package com.redoc.potatodaily.ui.dashboard
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,11 +58,18 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
             var content = binding.email.text.toString()
             var mood = binding.mdResult.text.toString()
             var weather = "[test]"
+            var people = "[test]"
+            var school = "[test]"
+            var couple = "[test]"
+            var eat = "[test]"
+            var goods = "[test]"
+
             if(binding.btnSave.text.equals("Save")) {
-                val board = BoardEntity(0, title, content, mood, weather)
+                val board = BoardEntity(0, title, content, mood, weather,people,school,couple,eat,goods)
+                Log.d(">>",""+board)
                 viewModel.insertBoard(board)
             } else{
-                val board = BoardEntity(binding.name.getTag(binding.name.id).toString().toInt(), title, content, mood, weather)
+                val board = BoardEntity(binding.name.getTag(binding.name.id).toString().toInt(), title, content, mood, weather,people,school,couple,eat,goods)
                 viewModel.updateBoard(board)
                 binding.btnSave.setText("Save")
             }

@@ -10,5 +10,11 @@ data class BoardEntity(
     @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "content") val content: String,
     @ColumnInfo(name = "mood") val mood: String,
-    @ColumnInfo(name = "weather") val weather: String
+    @ColumnInfo(name = "weather") val weather: String,
+    @ColumnInfo(name = "people") val people: String,
+    @ColumnInfo(name = "school") val school: String,
+    @ColumnInfo(name = "couple") val couple: String,
+    @ColumnInfo(name = "eat") val eat: String,
+    @ColumnInfo(name = "goods") val goods: String
+
 )

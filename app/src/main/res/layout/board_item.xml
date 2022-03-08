@@ -27,18 +27,17 @@
         android:id="@+id/img_mood"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_margin="5dp"
         app:layout_constraintStart_toStartOf="@+id/tv_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_content"
-        android:layout_margin="5dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_content" />
 
     <ImageView
         android:id="@+id/img_sunny"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/img_mood"
-        app:layout_constraintStart_toEndOf="@+id/img_mood"
-        app:layout_constraintTop_toTopOf="@+id/img_mood" />
+        app:layout_constraintStart_toStartOf="@+id/tv_content"
+        app:layout_constraintTop_toBottomOf="@+id/img_mood" />
 
     <ImageView
         android:id="@+id/img_cloudy"
@@ -84,4 +83,220 @@
         app:layout_constraintBottom_toBottomOf="@+id/tv_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_title" />
+
+
+    <ImageView
+        android:id="@+id/img_friend"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_content"
+        app:layout_constraintTop_toBottomOf="@+id/img_sunny" />
+
+    <ImageView
+        android:id="@+id/img_family"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_friend"
+        app:layout_constraintStart_toEndOf="@+id/img_friend"
+        app:layout_constraintTop_toTopOf="@+id/img_friend" />
+
+    <ImageView
+        android:id="@+id/img_coupleFriend"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_family"
+        app:layout_constraintStart_toEndOf="@+id/img_family"
+        app:layout_constraintTop_toTopOf="@+id/img_family" />
+
+    <ImageView
+        android:id="@+id/img_buisnessFriend"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_coupleFriend"
+        app:layout_constraintStart_toEndOf="@+id/img_coupleFriend"
+        app:layout_constraintTop_toTopOf="@+id/img_coupleFriend" />
+
+    <ImageView
+        android:id="@+id/img_not"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_buisnessFriend"
+        app:layout_constraintStart_toEndOf="@+id/img_buisnessFriend"
+        app:layout_constraintTop_toTopOf="@+id/img_buisnessFriend" />
+
+    <ImageView
+        android:id="@+id/img_classtime"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_content"
+        app:layout_constraintTop_toBottomOf="@+id/img_family" />
+
+    <ImageView
+        android:id="@+id/img_study"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_classtime"
+        app:layout_constraintStart_toEndOf="@+id/img_classtime"
+        app:layout_constraintTop_toTopOf="@+id/img_classtime" />
+
+    <ImageView
+        android:id="@+id/img_assignment"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_study"
+        app:layout_constraintStart_toEndOf="@+id/img_study"
+        app:layout_constraintTop_toTopOf="@+id/img_study" />
+
+    <ImageView
+        android:id="@+id/img_test"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_assignment"
+        app:layout_constraintStart_toEndOf="@+id/img_assignment"
+        app:layout_constraintTop_toTopOf="@+id/img_assignment" />
+
+    <ImageView
+        android:id="@+id/img_team"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_test"
+        app:layout_constraintStart_toEndOf="@+id/img_test"
+        app:layout_constraintTop_toTopOf="@+id/img_test" />
+
+    <ImageView
+        android:id="@+id/img_dateCouple"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_content"
+        app:layout_constraintTop_toBottomOf="@+id/img_classtime" />
+
+    <ImageView
+        android:id="@+id/img_anniversary"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_dateCouple"
+        app:layout_constraintStart_toEndOf="@+id/img_dateCouple"
+        app:layout_constraintTop_toTopOf="@+id/img_dateCouple" />
+
+    <ImageView
+        android:id="@+id/img_gift"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_anniversary"
+        app:layout_constraintStart_toEndOf="@+id/img_anniversary"
+        app:layout_constraintTop_toTopOf="@+id/img_anniversary" />
+
+    <ImageView
+        android:id="@+id/img_conflict"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_gift"
+        app:layout_constraintStart_toEndOf="@+id/img_gift"
+        app:layout_constraintTop_toTopOf="@+id/img_gift" />
+
+    <ImageView
+        android:id="@+id/img_love"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_conflict"
+        app:layout_constraintStart_toEndOf="@+id/img_conflict"
+        app:layout_constraintTop_toTopOf="@+id/img_conflict" />
+
+    <ImageView
+        android:id="@+id/img_breakfast"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_mood"
+        app:layout_constraintStart_toEndOf="@+id/img_mood"
+        app:layout_constraintTop_toTopOf="@+id/img_mood" />
+
+    <ImageView
+        android:id="@+id/img_lunch"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_breakfast"
+        app:layout_constraintStart_toEndOf="@+id/img_breakfast"
+        app:layout_constraintTop_toTopOf="@+id/img_breakfast" />
+
+    <ImageView
+        android:id="@+id/img_dinner"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_lunch"
+        app:layout_constraintStart_toEndOf="@+id/img_lunch"
+        app:layout_constraintTop_toTopOf="@+id/img_lunch" />
+
+    <ImageView
+        android:id="@+id/img_midnightSnack"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_dinner"
+        app:layout_constraintStart_toEndOf="@+id/img_dinner"
+        app:layout_constraintTop_toTopOf="@+id/img_dinner" />
+
+    <ImageView
+        android:id="@+id/img_alcohol"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_content"
+        app:layout_constraintTop_toBottomOf="@+id/img_dateCouple" />
+
+    <ImageView
+        android:id="@+id/img_smoking"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_alcohol"
+        app:layout_constraintStart_toEndOf="@+id/img_alcohol"
+        app:layout_constraintTop_toTopOf="@+id/img_alcohol" />
+
+    <ImageView
+        android:id="@+id/img_coffee"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_smoking"
+        app:layout_constraintStart_toEndOf="@+id/img_smoking"
+        app:layout_constraintTop_toTopOf="@+id/img_smoking" />
+
+    <ImageView
+        android:id="@+id/img_snack"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_coffee"
+        app:layout_constraintStart_toEndOf="@+id/img_coffee"
+        app:layout_constraintTop_toTopOf="@+id/img_coffee" />
+
+    <ImageView
+        android:id="@+id/img_drink"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_snack"
+        app:layout_constraintStart_toEndOf="@+id/img_snack"
+        app:layout_constraintTop_toTopOf="@+id/img_snack" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
