@@ -1,6 +1,8 @@
 package com.redoc.potatodaily.ui.dashboard
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +42,7 @@ class DashAddActivity: AppCompatActivity() {
 
         radioClick()
         checkboxClick()
+        imgClick()
 
 
         addBinding.btnSave.setOnClickListener{
@@ -75,6 +78,14 @@ class DashAddActivity: AppCompatActivity() {
                 R.id.md_veryBad -> addBinding.mdResult.text = "very_bad"
             }
             Log.d(TAG,""+addBinding.mdResult.text)
+        }
+    }
+
+    private fun imgClick(){
+        addBinding.imgDailyBtn.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = MediaStore.Images.Media.CONTENT_TYPE
+            startActivityForResult(intent, 10)
         }
     }
 
