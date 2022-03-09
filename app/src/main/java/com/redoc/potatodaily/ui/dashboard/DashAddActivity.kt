@@ -6,6 +6,9 @@ import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.ActivityDashaddBinding
 import com.redoc.potatodaily.db.BoardEntity
@@ -30,8 +33,10 @@ class DashAddActivity: AppCompatActivity() {
         addBinding = ActivityDashaddBinding.inflate(layoutInflater)
         setContentView(addBinding.root)
 
-        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
+
+        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+        viewModel.getAllBoardObservers()
 
         radioClick()
         checkboxClick()
@@ -55,8 +60,6 @@ class DashAddActivity: AppCompatActivity() {
                 viewModel.insertBoard(board)
                 Log.d(TAG,"DashAddActivity - board = $board")
             }
-            addBinding.name.setText("")
-            addBinding.email.setText("")
             finish()
         }
     }
@@ -205,4 +208,5 @@ class DashAddActivity: AppCompatActivity() {
         addBinding.drink.setOnCheckedChangeListener(listener)
 
     }
+
 }

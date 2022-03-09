@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager.VERTICAL
 import com.redoc.potatodaily.databinding.FragmentDashboardBinding
 import com.redoc.potatodaily.db.BoardEntity
+import com.redoc.potatodaily.ui.dashboard.DashAddActivity.Companion.TAG
 
 class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
 
@@ -32,6 +33,12 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        return root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG,"resume")
 
         binding.recycler.apply {
             layoutManager = LinearLayoutManager(context)
@@ -48,7 +55,7 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
         // 뷰 모델이 가지고있는 값의 변경사항을 관찰할 수 있는 라이브 데이터를 옵저빙한다
-       viewModel.getAllBoardObservers().observe(this, Observer {
+        viewModel.getAllBoardObservers().observe(this, Observer {
             recyclerViewAdapter.setListData(ArrayList(it))
             recyclerViewAdapter.notifyDataSetChanged()
         })
@@ -66,7 +73,7 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
 
             if(binding.btnSave.text.equals("Save")) {
                 val board = BoardEntity(0, title, content, mood, weather,people,school,couple,eat,goods)
-                Log.d(">>",""+board)
+                Log.d(TAG+">>",""+board)
                 viewModel.insertBoard(board)
             } else{
                 val board = BoardEntity(binding.name.getTag(binding.name.id).toString().toInt(), title, content, mood, weather,people,school,couple,eat,goods)
@@ -82,7 +89,6 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
             startActivity(intent)
         }
 
-        return root
     }
 
     override fun onDeleteBoardClickListener(board: BoardEntity) {

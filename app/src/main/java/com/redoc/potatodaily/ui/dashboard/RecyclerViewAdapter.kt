@@ -44,7 +44,6 @@ class RecyclerViewAdapter(val listener : RowClickListener) : RecyclerView.Adapte
         private val tvTitle = binding.tvTitle
         private val tvContent = binding.tvContent
 
-
         private val imgMood = binding.imgMood
         private val imgSunny = binding.imgSunny
         private val imgCloudy = binding.imgCloudy
@@ -103,99 +102,41 @@ class RecyclerViewAdapter(val listener : RowClickListener) : RecyclerView.Adapte
             }
 
             //weather
-            if(data.weather.contains("sunny")){
-                imgSunny.setImageResource(R.drawable.sunny)
-            }
-            if(data.weather.contains("cloudy")){
-                imgCloudy.setImageResource(R.drawable.cloudy)
-            }
-            if(data.weather.contains("rainy")){
-                imgRainy.setImageResource(R.drawable.rainy)
-            }
-            if(data.weather.contains("snowy")){
-                imgSnowy.setImageResource(R.drawable.snowy)
-            }
-            if(data.weather.contains("windy")){
-                imgWindy.setImageResource(R.drawable.windy)
-            }
+            if(data.weather.contains("sunny")) imgSunny.setImageResource(R.drawable.sunny) else imgSunny.setImageResource(R.drawable.sunny_g)
+            if(data.weather.contains("cloudy")) imgCloudy.setImageResource(R.drawable.cloudy) else imgCloudy.setImageResource(R.drawable.cloudy_g)
+            if(data.weather.contains("rainy")) imgRainy.setImageResource(R.drawable.rainy) else imgRainy.setImageResource(R.drawable.rainy_g)
+            if(data.weather.contains("snowy")) imgSnowy.setImageResource(R.drawable.snowy) else imgSnowy.setImageResource(R.drawable.snowy_g)
+            if(data.weather.contains("windy")) imgWindy.setImageResource(R.drawable.windy) else imgWindy.setImageResource(R.drawable.windy_g)
 
             //people
-            if(data.people.contains("friend")){
-                imgFriend.setImageResource(R.drawable.friend)
-            }
-            if(data.people.contains("family")){
-                imgFamily.setImageResource(R.drawable.family)
-            }
-            if(data.people.contains("coupleFriend")){
-                imgCoupleFriend.setImageResource(R.drawable.couplefriend)
-            }
-            if(data.people.contains("businessFriend")){
-                imgBuisnessFriend.setImageResource(R.drawable.businessfriend)
-            }
-            if(data.people.contains("not")){
-                imgNot.setImageResource(R.drawable.not)
-            }
+            if(data.people.contains("friend")) imgFriend.setImageResource(R.drawable.friend) else imgFriend.setImageResource(R.drawable.friend_g)
+            if(data.people.contains("family")) imgFamily.setImageResource(R.drawable.family) else imgFamily.setImageResource(R.drawable.family_g)
+            if(data.people.contains("coupleFriend")) imgCoupleFriend.setImageResource(R.drawable.couplefriend) else imgCoupleFriend.setImageResource(R.drawable.couplefriend_g)
+            if(data.people.contains("businessFriend")) imgBuisnessFriend.setImageResource(R.drawable.businessfriend) else imgBuisnessFriend.setImageResource(R.drawable.businessfriend_g)
+            if(data.people.contains("not")) imgNot.setImageResource(R.drawable.not) else imgNot.setImageResource(R.drawable.not_g)
             //school
-            if(data.school.contains("classtime")){
-                imgClasstime.setImageResource(R.drawable.classtime)
-            }
-            if(data.school.contains("study")){
-                imgStudy.setImageResource(R.drawable.study)
-            }
-            if(data.school.contains("assignment")){
-                imgAssignment.setImageResource(R.drawable.assignment)
-            }
-            if(data.school.contains("test")){
-                imgTest.setImageResource(R.drawable.test)
-            }
-            if(data.school.contains("team")){
-                imgTeam.setImageResource(R.drawable.team)
-            }
+            if(data.school.contains("classtime")) imgClasstime.setImageResource(R.drawable.classtime) else imgClasstime.setImageResource(R.drawable.classtime_g)
+            if(data.school.contains("study")) imgStudy.setImageResource(R.drawable.study) else imgStudy.setImageResource(R.drawable.study_g)
+            if(data.school.contains("assignment")) imgAssignment.setImageResource(R.drawable.assignment) else imgAssignment.setImageResource(R.drawable.assignment_g)
+            if(data.school.contains("test")) imgTest.setImageResource(R.drawable.test) else imgTest.setImageResource(R.drawable.test_g)
+            if(data.school.contains("team")) imgTeam.setImageResource(R.drawable.team) else imgTeam.setImageResource(R.drawable.team_g)
             //couple
-            if(data.couple.contains("dateCouple")){
-                imgDateCouple.setImageResource(R.drawable.datecouple)
-            }
-            if(data.couple.contains("anniversary")){
-                imgAnniversary.setImageResource(R.drawable.anniversary)
-            }
-            if(data.couple.contains("gift")){
-                imgGift.setImageResource(R.drawable.gift)
-            }
-            if(data.couple.contains("conflict")){
-                imgConflict.setImageResource(R.drawable.conflict)
-            }
-            if(data.couple.contains("love")){
-                imgLove.setImageResource(R.drawable.love)
-            }
+            if(data.couple.contains("dateCouple")) imgDateCouple.setImageResource(R.drawable.datecouple) else imgDateCouple.setImageResource(R.drawable.datecouple_g)
+            if(data.couple.contains("anniversary")) imgAnniversary.setImageResource(R.drawable.anniversary) else imgAnniversary.setImageResource(R.drawable.anniversary_g)
+            if(data.couple.contains("gift")) imgGift.setImageResource(R.drawable.gift) else imgGift.setImageResource(R.drawable.gift_g)
+            if(data.couple.contains("conflict")) imgConflict.setImageResource(R.drawable.conflict) else imgConflict.setImageResource(R.drawable.conflict_g)
+            if(data.couple.contains("love")) imgLove.setImageResource(R.drawable.love) else imgLove.setImageResource(R.drawable.love_g)
             //eat
-            if(data.eat.contains("breakfast")){
-                imgBreakfast.setImageResource(R.drawable.breakfast)
-            }
-            if(data.eat.contains("lunch")){
-                imgLunch.setImageResource(R.drawable.lunch)
-            }
-            if(data.eat.contains("dinner")){
-                imgDinner.setImageResource(R.drawable.dinner)
-            }
-            if(data.eat.contains("midnightSnack")){
-                imgMidnightSnack.setImageResource(R.drawable.mid)
-            }
+            if(data.eat.contains("breakfast")) imgBreakfast.setImageResource(R.drawable.breakfast) else imgBreakfast.setImageResource(R.drawable.breakfast_g)
+            if(data.eat.contains("lunch")) imgLunch.setImageResource(R.drawable.lunch) else imgLunch.setImageResource(R.drawable.lunch_g)
+            if(data.eat.contains("dinner")) imgDinner.setImageResource(R.drawable.dinner) else imgDinner.setImageResource(R.drawable.dinner_g)
+            if(data.eat.contains("midnightSnack")) imgMidnightSnack.setImageResource(R.drawable.mid) else imgMidnightSnack.setImageResource(R.drawable.mid_g)
             //goods
-            if(data.goods.contains("alcohol")){
-                imgAlcohol.setImageResource(R.drawable.alcohol)
-            }
-            if(data.goods.contains("smoking")){
-                imgSmoking.setImageResource(R.drawable.smoking)
-            }
-            if(data.goods.contains("coffee")){
-                imgCoffee.setImageResource(R.drawable.coffee)
-            }
-            if(data.goods.contains("snack")){
-                imgSnack.setImageResource(R.drawable.snack)
-            }
-            if(data.goods.contains("drink")){
-                imgDrink.setImageResource(R.drawable.drink)
-            }
+            if(data.goods.contains("alcohol")) imgAlcohol.setImageResource(R.drawable.alcohol) else imgAlcohol.setImageResource(R.drawable.alcohol_g)
+            if(data.goods.contains("smoking")) imgSmoking.setImageResource(R.drawable.smoking) else imgSmoking.setImageResource(R.drawable.smoking_g)
+            if(data.goods.contains("coffee")) imgCoffee.setImageResource(R.drawable.coffee) else imgCoffee.setImageResource(R.drawable.coffee_g)
+            if(data.goods.contains("snack")) imgSnack.setImageResource(R.drawable.snack) else imgSnack.setImageResource(R.drawable.snack_g)
+            if(data.goods.contains("drink")) imgDrink.setImageResource(R.drawable.drink) else imgDrink.setImageResource(R.drawable.drink_g)
 
 
             deleteBoardID.setOnClickListener {
