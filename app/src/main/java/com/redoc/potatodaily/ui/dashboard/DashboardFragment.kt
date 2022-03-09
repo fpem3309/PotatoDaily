@@ -104,6 +104,7 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         binding.btnSave.setText("Update")
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

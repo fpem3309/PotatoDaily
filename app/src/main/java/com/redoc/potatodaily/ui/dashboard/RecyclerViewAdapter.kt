@@ -2,6 +2,7 @@ package com.redoc.potatodaily.ui.dashboard
 
 import android.view.LayoutInflater
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.redoc.potatodaily.R
@@ -20,8 +21,11 @@ class RecyclerViewAdapter(val listener : RowClickListener) : RecyclerView.Adapte
         parent: ViewGroup,
         viewType: Int
     ): MyViewHolder {
-        val binding =
-            BoardItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = BoardItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
+        // 항상 닫아노기
+        binding.expandableLayout.visibility = GONE
+
         return MyViewHolder(binding, listener)
     }
 
@@ -33,9 +37,12 @@ class RecyclerViewAdapter(val listener : RowClickListener) : RecyclerView.Adapte
 
         holder.itemView.setOnClickListener {
             listener.onItemClickListener(items[position])
-        }
 
+            // 누를때마다 열고 닫기
+            if(holder.expandableLayout.visibility == VISIBLE) holder.expandableLayout.visibility = GONE else holder.expandableLayout.visibility = VISIBLE
+        }
         holder.bind(items[position])
+
     }
 
 
@@ -82,6 +89,7 @@ class RecyclerViewAdapter(val listener : RowClickListener) : RecyclerView.Adapte
 
 
         private val deleteBoardID = binding.deleteBoardID
+        val expandableLayout = binding.expandableLayout
 
         fun bind(data: BoardEntity) {
             tvTitle.text = data.title
@@ -98,7 +106,7 @@ class RecyclerViewAdapter(val listener : RowClickListener) : RecyclerView.Adapte
             }else if(data.mood == "very_bad"){
                 imgMood.setImageResource(R.drawable.very_bad)
             }else{
-                imgMood.visibility = GONE
+                imgMood.setImageResource(R.drawable.very_good_g)
             }
 
             //weather

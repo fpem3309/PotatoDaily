@@ -164,7 +164,6 @@ class DashAddActivity: AppCompatActivity() {
                     R.id.drink -> goods.remove("drink")
                 }
             }
-//            Log.d(TAG, result.distinct().toString())
             Log.d(TAG+"weather", weather.toString())
             Log.d(TAG+"people", people.toString())
             Log.d(TAG+"school", school.toString())
