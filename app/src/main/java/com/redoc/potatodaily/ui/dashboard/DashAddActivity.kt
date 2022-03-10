@@ -1,6 +1,8 @@
 package com.redoc.potatodaily.ui.dashboard
 
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.ActivityDashaddBinding
 import com.redoc.potatodaily.db.BoardEntity
+import java.lang.Exception
 
 class DashAddActivity: AppCompatActivity() {
 
@@ -27,6 +30,10 @@ class DashAddActivity: AppCompatActivity() {
     var eat = arrayListOf<String>()
     var goods = arrayListOf<String>()
 
+    val REQUEST_CODE = 10
+    var uri: Uri? = null
+
+
     companion object{const val TAG : String = "로그"}
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,8 +41,6 @@ class DashAddActivity: AppCompatActivity() {
 
         addBinding = ActivityDashaddBinding.inflate(layoutInflater)
         setContentView(addBinding.root)
-
-
 
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
         viewModel.getAllBoardObservers()
@@ -57,9 +62,11 @@ class DashAddActivity: AppCompatActivity() {
             var eat = eat.toString()
             var goods = goods.toString()
 
+            var img = uri.toString()
+
             Log.d(TAG, weather.toString())
             if(addBinding.btnSave.text.equals("Save")){
-                val board = BoardEntity(0,title,content,mood,weather,people,school,couple,eat,goods)
+                val board = BoardEntity(0,title,content,mood,weather,people,school,couple,eat,goods,img)
                 viewModel.insertBoard(board)
                 Log.d(TAG,"DashAddActivity - board = $board")
             }
@@ -82,10 +89,24 @@ class DashAddActivity: AppCompatActivity() {
     }
 
     private fun imgClick(){
-        addBinding.imgDailyBtn.setOnClickListener {
+        addBinding.imgDaily.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = MediaStore.Images.Media.CONTENT_TYPE
-            startActivityForResult(intent, 10)
+            startActivityForResult(intent, REQUEST_CODE)
+            Log.d(TAG+"uri","$uri")
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == REQUEST_CODE){ uri = data?.data }
+        try {
+            val inputStream = contentResolver.openInputStream(data?.data!!)
+            val img = BitmapFactory.decodeStream(inputStream)
+            inputStream!!.close()
+            addBinding.imgDaily.setImageBitmap(img)
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 

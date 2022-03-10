@@ -70,13 +70,14 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
             var couple = "[test]"
             var eat = "[test]"
             var goods = "[test]"
+            var img = "test"
 
             if(binding.btnSave.text.equals("Save")) {
-                val board = BoardEntity(0, title, content, mood, weather,people,school,couple,eat,goods)
+                val board = BoardEntity(0, title, content, mood, weather,people,school,couple,eat,goods,img)
                 Log.d(TAG+">>",""+board)
                 viewModel.insertBoard(board)
             } else{
-                val board = BoardEntity(binding.name.getTag(binding.name.id).toString().toInt(), title, content, mood, weather,people,school,couple,eat,goods)
+                val board = BoardEntity(binding.name.getTag(binding.name.id).toString().toInt(), title, content, mood, weather,people,school,couple,eat,goods,img)
                 viewModel.updateBoard(board)
                 binding.btnSave.setText("Save")
             }

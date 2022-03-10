@@ -15,6 +15,8 @@ data class BoardEntity(
     @ColumnInfo(name = "school") val school: String,
     @ColumnInfo(name = "couple") val couple: String,
     @ColumnInfo(name = "eat") val eat: String,
-    @ColumnInfo(name = "goods") val goods: String
+    @ColumnInfo(name = "goods") val goods: String,
+    @ColumnInfo(name = "img") val img: String
+
 
 )

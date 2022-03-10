@@ -1,5 +1,7 @@
 package com.redoc.potatodaily
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -31,5 +33,32 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // SecurityException:Permission Denial: reading com.android.providers.media.MediaProvider uri content: 에러 발생시
+        // API 23이상부터 권한을 기기에서 직접 허락
+        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+
+            // Should we show an explanation?
+            if (shouldShowRequestPermissionRationale(
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                )
+            ) {
+                // Explain to the user why we need to read the contacts
+            }
+            requestPermissions(
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
+            )
+
+            // MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE is an
+            // app-defined int constant that should be quite unique
+            return
+        }
+    }
+
+    companion object {
+        private const val MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 10
     }
 }

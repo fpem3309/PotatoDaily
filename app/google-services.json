@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "497163302926",
+    "project_id": "potatodaily",
+    "storage_bucket": "potatodaily.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497163302926:android:f5c5fba431fab20105a45f",
+        "android_client_info": {
+          "package_name": "com.redoc.potatodaily"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497163302926-bi3d7igoai31hai01begmdsbtvhsl1ug.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.redoc.potatodaily",
+            "certificate_hash": "b7b91e66143750dda236e742eb16c6676f13ce3f"
+          }
+        },
+        {
+          "client_id": "497163302926-mo302l2ph8mbnj4kn37r6eqddr54cpbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDD3LbzTFM1hAs6_s5bGWAqRH6J61UIGkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497163302926-mo302l2ph8mbnj4kn37r6eqddr54cpbb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

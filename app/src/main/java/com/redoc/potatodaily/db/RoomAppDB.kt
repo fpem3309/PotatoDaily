@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [BoardEntity::class],
-    version = 4,
+    version = 6,
 )
 abstract class RoomAppDB : RoomDatabase() {
 
@@ -23,7 +23,7 @@ abstract class RoomAppDB : RoomDatabase() {
                     context.applicationContext,
                     RoomAppDB::class.java,
                     "AppDB"
-                ).allowMainThreadQueries().build()
+                ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
             }
             return INSTANCE
         }

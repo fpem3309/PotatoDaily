@@ -1,5 +1,8 @@
 package com.redoc.potatodaily.ui.dashboard
 
+import android.graphics.BitmapFactory
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -8,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.BoardItemBinding
 import com.redoc.potatodaily.db.BoardEntity
+import com.redoc.potatodaily.ui.dashboard.DashboardViewModel.Companion.TAG
 
 class RecyclerViewAdapter(val listener : RowClickListener) : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
 
@@ -86,7 +90,7 @@ class RecyclerViewAdapter(val listener : RowClickListener) : RecyclerView.Adapte
         private val imgCoffee = binding.imgCoffee
         private val imgSnack = binding.imgSnack
         private val imgDrink = binding.imgDrink
-
+        private val imgDaily = binding.imgDaily
 
         private val deleteBoardID = binding.deleteBoardID
         val expandableLayout = binding.expandableLayout
@@ -94,6 +98,11 @@ class RecyclerViewAdapter(val listener : RowClickListener) : RecyclerView.Adapte
         fun bind(data: BoardEntity) {
             tvTitle.text = data.title
             tvContent.text = data.content
+            Log.d(TAG+"imgUri", data.img)
+
+
+            imgDaily.setImageURI(Uri.parse(data.img))
+
             //moood
             if (data.mood == "very_good"){
                 imgMood.setImageResource(R.drawable.very_good)
