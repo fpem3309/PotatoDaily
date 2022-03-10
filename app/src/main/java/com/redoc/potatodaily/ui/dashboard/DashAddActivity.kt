@@ -36,7 +36,6 @@ class DashAddActivity: AppCompatActivity() {
     val REQUEST_CODE = 10
     var uri: Uri? = null
 
-
     companion object{const val TAG : String = "로그"}
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,11 +51,20 @@ class DashAddActivity: AppCompatActivity() {
         checkboxClick()
         imgClick()
 
+
+
+        //수정 눌러서 intent로 왔을때
         if (intent.hasExtra("update")) {
             var test = intent.getStringExtra("update")
             Log.d( TAG+"update","$test")
             addBinding.btnSave.text = "Update"
 
+            val test2: ArrayList<String>? = test?.split(",") as ArrayList<String>? //Splitting names
+
+            var upid = test2?.get(0).toString()
+            upid = upid.substring(upid.indexOf("=")+1)
+            Log.d(TAG+"d", upid)
+            addBinding.name.setTag(addBinding.name.id, upid)
 
         } else {
             Toast.makeText(this, "전달된 이름이 없습니다", Toast.LENGTH_SHORT).show()
