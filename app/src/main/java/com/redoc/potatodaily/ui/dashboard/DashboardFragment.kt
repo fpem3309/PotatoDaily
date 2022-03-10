@@ -105,6 +105,13 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         binding.btnSave.setText("Update")
     }
 
+    override fun onUpdateBoardListener(board: BoardEntity) {
+        Log.d(TAG+"board", board.toString())
+        var intent = Intent(context, DashAddActivity::class.java)
+        intent.apply { this.putExtra("update",board.toString()) }
+        startActivity(intent)
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

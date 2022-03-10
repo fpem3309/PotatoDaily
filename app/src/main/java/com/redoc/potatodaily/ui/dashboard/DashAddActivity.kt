@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.CompoundButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +18,8 @@ import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.ActivityDashaddBinding
 import com.redoc.potatodaily.db.BoardEntity
 import java.lang.Exception
+import java.util.*
+import kotlin.collections.ArrayList
 
 class DashAddActivity: AppCompatActivity() {
 
@@ -49,6 +52,16 @@ class DashAddActivity: AppCompatActivity() {
         checkboxClick()
         imgClick()
 
+        if (intent.hasExtra("update")) {
+            var test = intent.getStringExtra("update")
+            Log.d( TAG+"update","$test")
+            addBinding.btnSave.text = "Update"
+
+
+        } else {
+            Toast.makeText(this, "전달된 이름이 없습니다", Toast.LENGTH_SHORT).show()
+        }
+
 
         addBinding.btnSave.setOnClickListener{
             var title = addBinding.name.text.toString()
@@ -68,10 +81,15 @@ class DashAddActivity: AppCompatActivity() {
             if(addBinding.btnSave.text.equals("Save")){
                 val board = BoardEntity(0,title,content,mood,weather,people,school,couple,eat,goods,img)
                 viewModel.insertBoard(board)
-                Log.d(TAG,"DashAddActivity - board = $board")
+                Log.d(TAG,"DashAddActivity - board - insert = $board")
+            }else{
+                val board = BoardEntity(addBinding.name.getTag(addBinding.name.id).toString().toInt(),title,content,mood,weather,people,school,couple,eat,goods,img)
+                viewModel.updateBoard(board)
+                Log.d(TAG,"DashAddActivity - board - update = $board")
             }
             finish()
         }
+
     }
 
     private fun radioClick(){

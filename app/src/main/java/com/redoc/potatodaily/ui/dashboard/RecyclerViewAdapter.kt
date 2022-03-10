@@ -93,6 +93,7 @@ class RecyclerViewAdapter(val listener : RowClickListener) : RecyclerView.Adapte
         private val imgDaily = binding.imgDaily
 
         private val deleteBoardID = binding.deleteBoardID
+        private val updateBoardID = binding.updateBoardID
         val expandableLayout = binding.expandableLayout
 
         fun bind(data: BoardEntity) {
@@ -159,11 +160,15 @@ class RecyclerViewAdapter(val listener : RowClickListener) : RecyclerView.Adapte
             deleteBoardID.setOnClickListener {
                 listener.onDeleteBoardClickListener(data)
             }
+            updateBoardID.setOnClickListener{
+                listener.onUpdateBoardListener(data)
+            }
         }
     }
 
     interface RowClickListener{
         fun onDeleteBoardClickListener(board: BoardEntity)
         fun onItemClickListener(board: BoardEntity)
+        fun onUpdateBoardListener(board: BoardEntity)
     }
 }
