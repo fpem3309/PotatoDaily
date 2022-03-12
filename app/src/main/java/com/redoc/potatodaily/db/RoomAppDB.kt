@@ -1,15 +1,13 @@
 package com.redoc.potatodaily.db
 
 import android.content.Context
-import androidx.room.AutoMigration
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 
 @Database(
     entities = [BoardEntity::class],
-    version = 6,
+    version = 7,
 )
+@TypeConverters(Converters::class)
 abstract class RoomAppDB : RoomDatabase() {
 
     abstract fun BoardDao(): BoardDao?

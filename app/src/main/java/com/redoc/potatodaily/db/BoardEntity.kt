@@ -1,8 +1,8 @@
 package com.redoc.potatodaily.db
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
+import com.google.gson.Gson
+import java.util.*
 
 @Entity(tableName = "board")
 data class BoardEntity(
@@ -16,7 +16,23 @@ data class BoardEntity(
     @ColumnInfo(name = "couple") val couple: String,
     @ColumnInfo(name = "eat") val eat: String,
     @ColumnInfo(name = "goods") val goods: String,
-    @ColumnInfo(name = "img") val img: String
+    @ColumnInfo(name = "img") val img: String,
+    @ColumnInfo(name = "date") val date: Date
 
 
 )
+
+@ProvidedTypeConverter
+class Converters(private val gson: Gson){
+
+    @TypeConverter
+    fun listToJson(value: Date): String? {
+        return gson.toJson(value)
+    }
+
+    @TypeConverter
+    fun jsonToList(value: String): Date {
+        return gson.fromJson(value, Date::class.java )
+    }
+
+}

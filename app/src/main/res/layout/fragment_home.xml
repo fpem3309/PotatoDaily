@@ -20,6 +20,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/calendar_header"
+        tools:layout_editor_absoluteX="8dp" />
+
     <LinearLayout
         android:id="@+id/calendar_header"
         android:layout_width="match_parent"
@@ -87,8 +94,4 @@
             android:textColor="#0055FF" />
     </LinearLayout>
 
-    <GridView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/calendar_header" />
 </androidx.constraintlayout.widget.ConstraintLayout>

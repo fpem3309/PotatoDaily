@@ -18,6 +18,7 @@ import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.ActivityDashaddBinding
 import com.redoc.potatodaily.db.BoardEntity
 import java.lang.Exception
+import java.time.LocalDate
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -84,14 +85,16 @@ class DashAddActivity: AppCompatActivity() {
             var goods = goods.toString()
 
             var img = uri.toString()
-
+            val long_now = System.currentTimeMillis()
+            var date = Date(long_now)
+            Log.d(TAG+"date",date.toString())
             Log.d(TAG, weather.toString())
             if(addBinding.btnSave.text.equals("Save")){
-                val board = BoardEntity(0,title,content,mood,weather,people,school,couple,eat,goods,img)
+                val board = BoardEntity(0,title,content,mood,weather,people,school,couple,eat,goods,img,date)
                 viewModel.insertBoard(board)
                 Log.d(TAG,"DashAddActivity - board - insert = $board")
             }else{
-                val board = BoardEntity(addBinding.name.getTag(addBinding.name.id).toString().toInt(),title,content,mood,weather,people,school,couple,eat,goods,img)
+                val board = BoardEntity(addBinding.name.getTag(addBinding.name.id).toString().toInt(),title,content,mood,weather,people,school,couple,eat,goods,img,date)
                 viewModel.updateBoard(board)
                 Log.d(TAG,"DashAddActivity - board - update = $board")
             }

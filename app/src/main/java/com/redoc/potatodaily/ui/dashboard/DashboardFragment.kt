@@ -60,30 +60,30 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
             recyclerViewAdapter.notifyDataSetChanged()
         })
 
-        binding.btnSave.setOnClickListener {
-            var title = binding.name.text.toString()
-            var content = binding.email.text.toString()
-            var mood = binding.mdResult.text.toString()
-            var weather = "[test]"
-            var people = "[test]"
-            var school = "[test]"
-            var couple = "[test]"
-            var eat = "[test]"
-            var goods = "[test]"
-            var img = "test"
-
-            if(binding.btnSave.text.equals("Save")) {
-                val board = BoardEntity(0, title, content, mood, weather,people,school,couple,eat,goods,img)
-                Log.d(TAG+">>",""+board)
-                viewModel.insertBoard(board)
-            } else{
-                val board = BoardEntity(binding.name.getTag(binding.name.id).toString().toInt(), title, content, mood, weather,people,school,couple,eat,goods,img)
-                viewModel.updateBoard(board)
-                binding.btnSave.setText("Save")
-            }
-            binding.name.setText("")
-            binding.email.setText("")
-        }
+//        binding.btnSave.setOnClickListener {
+//            var title = binding.name.text.toString()
+//            var content = binding.email.text.toString()
+//            var mood = binding.mdResult.text.toString()
+//            var weather = "[test]"
+//            var people = "[test]"
+//            var school = "[test]"
+//            var couple = "[test]"
+//            var eat = "[test]"
+//            var goods = "[test]"
+//            var img = "test"
+//
+//            if(binding.btnSave.text.equals("Save")) {
+//                val board = BoardEntity(0, title, content, mood, weather,people,school,couple,eat,goods,img)
+//                Log.d(TAG+">>",""+board)
+//                viewModel.insertBoard(board)
+//            } else{
+//                val board = BoardEntity(binding.name.getTag(binding.name.id).toString().toInt(), title, content, mood, weather,people,school,couple,eat,goods,img)
+//                viewModel.updateBoard(board)
+//                binding.btnSave.setText("Save")
+//            }
+//            binding.name.setText("")
+//            binding.email.setText("")
+//        }
 
         binding.btnAdd.setOnClickListener{
             val intent = Intent(context, DashAddActivity::class.java)
@@ -97,12 +97,12 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
     }
 
     override fun onItemClickListener(board: BoardEntity) {
-        binding.name.setText(board.title)
-        binding.email.setText(board.content)
-
-        binding.name.setTag(binding.name.id, board.id)
-
-        binding.btnSave.setText("Update")
+//        binding.name.setText(board.title)
+//        binding.email.setText(board.content)
+//
+//        binding.name.setTag(binding.name.id, board.id)
+//
+//        binding.btnSave.setText("Update")
     }
 
     override fun onUpdateBoardListener(board: BoardEntity) {

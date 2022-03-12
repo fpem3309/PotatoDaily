@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <ImageView
-        android:id="@+id/img_daily"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/ic_home_black_24dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+     android:layout_height="wrap_content"
+    android:layout_width="match_parent">
 
     <ImageView
         android:id="@+id/updateBoardID"
@@ -21,7 +13,8 @@
         android:layout_height="wrap_content"
         android:src="@android:drawable/ic_menu_edit"
         app:layout_constraintEnd_toStartOf="@+id/deleteBoardID"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/deleteBoardID"
+        android:layout_marginRight="5dp"/>
 
     <ImageView
         android:id="@+id/deleteBoardID"
@@ -29,298 +22,327 @@
         android:layout_height="wrap_content"
         android:src="@android:drawable/ic_menu_close_clear_cancel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"/>
 
-    <TextView
-        android:id="@+id/tv_title"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="text"
+        android:elevation="20dp"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_daily" />
+        app:layout_constraintTop_toBottomOf="@+id/updateBoardID">
 
-    <TextView
-        android:id="@+id/tv_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="text"
-        app:layout_constraintStart_toStartOf="@+id/tv_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        android:layout_margin="5dp"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/expandable_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_content">
+            <ImageView
+                android:id="@+id/img_daily"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_home_black_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/img_mood"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/img_sunny"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_mood" />
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_daily" />
 
-        <ImageView
-            android:id="@+id/img_cloudy"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_sunny"
-            app:layout_constraintStart_toEndOf="@+id/img_sunny"
-            app:layout_constraintTop_toTopOf="@+id/img_sunny" />
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="text"
+                app:layout_constraintStart_toStartOf="@+id/tv_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
-        <ImageView
-            android:id="@+id/img_rainy"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_cloudy"
-            app:layout_constraintStart_toEndOf="@+id/img_cloudy"
-            app:layout_constraintTop_toTopOf="@+id/img_cloudy" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/expandable_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_content">
 
-        <ImageView
-            android:id="@+id/img_snowy"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_rainy"
-            app:layout_constraintStart_toEndOf="@+id/img_rainy"
-            app:layout_constraintTop_toTopOf="@+id/img_rainy" />
+                <ImageView
+                    android:id="@+id/img_mood"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/img_windy"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_snowy"
-            app:layout_constraintStart_toEndOf="@+id/img_snowy"
-            app:layout_constraintTop_toTopOf="@+id/img_snowy" />
+                <ImageView
+                    android:id="@+id/img_sunny"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_mood" />
 
-        <ImageView
-            android:id="@+id/img_friend"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_sunny" />
+                <ImageView
+                    android:id="@+id/img_cloudy"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_sunny"
+                    app:layout_constraintStart_toEndOf="@+id/img_sunny"
+                    app:layout_constraintTop_toTopOf="@+id/img_sunny" />
 
-        <ImageView
-            android:id="@+id/img_family"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_friend"
-            app:layout_constraintStart_toEndOf="@+id/img_friend"
-            app:layout_constraintTop_toTopOf="@+id/img_friend" />
+                <ImageView
+                    android:id="@+id/img_rainy"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_cloudy"
+                    app:layout_constraintStart_toEndOf="@+id/img_cloudy"
+                    app:layout_constraintTop_toTopOf="@+id/img_cloudy" />
 
-        <ImageView
-            android:id="@+id/img_coupleFriend"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_family"
-            app:layout_constraintStart_toEndOf="@+id/img_family"
-            app:layout_constraintTop_toTopOf="@+id/img_family" />
+                <ImageView
+                    android:id="@+id/img_snowy"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_rainy"
+                    app:layout_constraintStart_toEndOf="@+id/img_rainy"
+                    app:layout_constraintTop_toTopOf="@+id/img_rainy" />
 
-        <ImageView
-            android:id="@+id/img_buisnessFriend"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_coupleFriend"
-            app:layout_constraintStart_toEndOf="@+id/img_coupleFriend"
-            app:layout_constraintTop_toTopOf="@+id/img_coupleFriend" />
+                <ImageView
+                    android:id="@+id/img_windy"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_snowy"
+                    app:layout_constraintStart_toEndOf="@+id/img_snowy"
+                    app:layout_constraintTop_toTopOf="@+id/img_snowy" />
 
-        <ImageView
-            android:id="@+id/img_not"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_buisnessFriend"
-            app:layout_constraintStart_toEndOf="@+id/img_buisnessFriend"
-            app:layout_constraintTop_toTopOf="@+id/img_buisnessFriend" />
+                <ImageView
+                    android:id="@+id/img_friend"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_sunny" />
 
-        <ImageView
-            android:id="@+id/img_classtime"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_family" />
+                <ImageView
+                    android:id="@+id/img_family"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_friend"
+                    app:layout_constraintStart_toEndOf="@+id/img_friend"
+                    app:layout_constraintTop_toTopOf="@+id/img_friend" />
 
-        <ImageView
-            android:id="@+id/img_study"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_classtime"
-            app:layout_constraintStart_toEndOf="@+id/img_classtime"
-            app:layout_constraintTop_toTopOf="@+id/img_classtime" />
+                <ImageView
+                    android:id="@+id/img_coupleFriend"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_family"
+                    app:layout_constraintStart_toEndOf="@+id/img_family"
+                    app:layout_constraintTop_toTopOf="@+id/img_family" />
 
-        <ImageView
-            android:id="@+id/img_assignment"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_study"
-            app:layout_constraintStart_toEndOf="@+id/img_study"
-            app:layout_constraintTop_toTopOf="@+id/img_study" />
+                <ImageView
+                    android:id="@+id/img_buisnessFriend"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_coupleFriend"
+                    app:layout_constraintStart_toEndOf="@+id/img_coupleFriend"
+                    app:layout_constraintTop_toTopOf="@+id/img_coupleFriend" />
 
-        <ImageView
-            android:id="@+id/img_test"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_assignment"
-            app:layout_constraintStart_toEndOf="@+id/img_assignment"
-            app:layout_constraintTop_toTopOf="@+id/img_assignment" />
+                <ImageView
+                    android:id="@+id/img_not"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_buisnessFriend"
+                    app:layout_constraintStart_toEndOf="@+id/img_buisnessFriend"
+                    app:layout_constraintTop_toTopOf="@+id/img_buisnessFriend" />
 
-        <ImageView
-            android:id="@+id/img_team"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_test"
-            app:layout_constraintStart_toEndOf="@+id/img_test"
-            app:layout_constraintTop_toTopOf="@+id/img_test" />
+                <ImageView
+                    android:id="@+id/img_classtime"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_family" />
 
-        <ImageView
-            android:id="@+id/img_dateCouple"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_classtime" />
+                <ImageView
+                    android:id="@+id/img_study"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_classtime"
+                    app:layout_constraintStart_toEndOf="@+id/img_classtime"
+                    app:layout_constraintTop_toTopOf="@+id/img_classtime" />
 
-        <ImageView
-            android:id="@+id/img_anniversary"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_dateCouple"
-            app:layout_constraintStart_toEndOf="@+id/img_dateCouple"
-            app:layout_constraintTop_toTopOf="@+id/img_dateCouple" />
+                <ImageView
+                    android:id="@+id/img_assignment"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_study"
+                    app:layout_constraintStart_toEndOf="@+id/img_study"
+                    app:layout_constraintTop_toTopOf="@+id/img_study" />
 
-        <ImageView
-            android:id="@+id/img_gift"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_anniversary"
-            app:layout_constraintStart_toEndOf="@+id/img_anniversary"
-            app:layout_constraintTop_toTopOf="@+id/img_anniversary" />
+                <ImageView
+                    android:id="@+id/img_test"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_assignment"
+                    app:layout_constraintStart_toEndOf="@+id/img_assignment"
+                    app:layout_constraintTop_toTopOf="@+id/img_assignment" />
 
-        <ImageView
-            android:id="@+id/img_conflict"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_gift"
-            app:layout_constraintStart_toEndOf="@+id/img_gift"
-            app:layout_constraintTop_toTopOf="@+id/img_gift" />
+                <ImageView
+                    android:id="@+id/img_team"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_test"
+                    app:layout_constraintStart_toEndOf="@+id/img_test"
+                    app:layout_constraintTop_toTopOf="@+id/img_test" />
 
-        <ImageView
-            android:id="@+id/img_love"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_conflict"
-            app:layout_constraintStart_toEndOf="@+id/img_conflict"
-            app:layout_constraintTop_toTopOf="@+id/img_conflict" />
+                <ImageView
+                    android:id="@+id/img_dateCouple"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_classtime" />
 
-        <ImageView
-            android:id="@+id/img_breakfast"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_mood"
-            app:layout_constraintStart_toEndOf="@+id/img_mood"
-            app:layout_constraintTop_toTopOf="@+id/img_mood" />
+                <ImageView
+                    android:id="@+id/img_anniversary"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_dateCouple"
+                    app:layout_constraintStart_toEndOf="@+id/img_dateCouple"
+                    app:layout_constraintTop_toTopOf="@+id/img_dateCouple" />
 
-        <ImageView
-            android:id="@+id/img_lunch"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_breakfast"
-            app:layout_constraintStart_toEndOf="@+id/img_breakfast"
-            app:layout_constraintTop_toTopOf="@+id/img_breakfast" />
+                <ImageView
+                    android:id="@+id/img_gift"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_anniversary"
+                    app:layout_constraintStart_toEndOf="@+id/img_anniversary"
+                    app:layout_constraintTop_toTopOf="@+id/img_anniversary" />
 
-        <ImageView
-            android:id="@+id/img_dinner"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_lunch"
-            app:layout_constraintStart_toEndOf="@+id/img_lunch"
-            app:layout_constraintTop_toTopOf="@+id/img_lunch" />
+                <ImageView
+                    android:id="@+id/img_conflict"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_gift"
+                    app:layout_constraintStart_toEndOf="@+id/img_gift"
+                    app:layout_constraintTop_toTopOf="@+id/img_gift" />
 
-        <ImageView
-            android:id="@+id/img_midnightSnack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_dinner"
-            app:layout_constraintStart_toEndOf="@+id/img_dinner"
-            app:layout_constraintTop_toTopOf="@+id/img_dinner" />
+                <ImageView
+                    android:id="@+id/img_love"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_conflict"
+                    app:layout_constraintStart_toEndOf="@+id/img_conflict"
+                    app:layout_constraintTop_toTopOf="@+id/img_conflict" />
 
-        <ImageView
-            android:id="@+id/img_alcohol"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_dateCouple" />
+                <ImageView
+                    android:id="@+id/img_breakfast"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_mood"
+                    app:layout_constraintStart_toEndOf="@+id/img_mood"
+                    app:layout_constraintTop_toTopOf="@+id/img_mood" />
 
-        <ImageView
-            android:id="@+id/img_smoking"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_alcohol"
-            app:layout_constraintStart_toEndOf="@+id/img_alcohol"
-            app:layout_constraintTop_toTopOf="@+id/img_alcohol" />
+                <ImageView
+                    android:id="@+id/img_lunch"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_breakfast"
+                    app:layout_constraintStart_toEndOf="@+id/img_breakfast"
+                    app:layout_constraintTop_toTopOf="@+id/img_breakfast" />
 
-        <ImageView
-            android:id="@+id/img_coffee"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_smoking"
-            app:layout_constraintStart_toEndOf="@+id/img_smoking"
-            app:layout_constraintTop_toTopOf="@+id/img_smoking" />
+                <ImageView
+                    android:id="@+id/img_dinner"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_lunch"
+                    app:layout_constraintStart_toEndOf="@+id/img_lunch"
+                    app:layout_constraintTop_toTopOf="@+id/img_lunch" />
 
-        <ImageView
-            android:id="@+id/img_snack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_coffee"
-            app:layout_constraintStart_toEndOf="@+id/img_coffee"
-            app:layout_constraintTop_toTopOf="@+id/img_coffee" />
+                <ImageView
+                    android:id="@+id/img_midnightSnack"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_dinner"
+                    app:layout_constraintStart_toEndOf="@+id/img_dinner"
+                    app:layout_constraintTop_toTopOf="@+id/img_dinner" />
 
-        <ImageView
-            android:id="@+id/img_drink"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_snack"
-            app:layout_constraintStart_toEndOf="@+id/img_snack"
-            app:layout_constraintTop_toTopOf="@+id/img_snack" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/img_alcohol"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_dateCouple" />
+
+                <ImageView
+                    android:id="@+id/img_smoking"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_alcohol"
+                    app:layout_constraintStart_toEndOf="@+id/img_alcohol"
+                    app:layout_constraintTop_toTopOf="@+id/img_alcohol" />
+
+                <ImageView
+                    android:id="@+id/img_coffee"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_smoking"
+                    app:layout_constraintStart_toEndOf="@+id/img_smoking"
+                    app:layout_constraintTop_toTopOf="@+id/img_smoking" />
+
+                <ImageView
+                    android:id="@+id/img_snack"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_coffee"
+                    app:layout_constraintStart_toEndOf="@+id/img_coffee"
+                    app:layout_constraintTop_toTopOf="@+id/img_coffee" />
+
+                <ImageView
+                    android:id="@+id/img_drink"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_snack"
+                    app:layout_constraintStart_toEndOf="@+id/img_snack"
+                    app:layout_constraintTop_toTopOf="@+id/img_snack" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
