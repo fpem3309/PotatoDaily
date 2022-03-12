@@ -22,17 +22,16 @@ data class BoardEntity(
 
 )
 
-@ProvidedTypeConverter
-class Converters(private val gson: Gson){
+class Converters{
 
     @TypeConverter
-    fun listToJson(value: Date): String? {
-        return gson.toJson(value)
+    fun fromTimestamp(value: Long?): Date? {
+        return value?.let { Date(it) }
     }
 
     @TypeConverter
-    fun jsonToList(value: String): Date {
-        return gson.fromJson(value, Date::class.java )
+    fun dateToTimestamp(date: Date?): Long? {
+        return date?.time
     }
 
 }
