@@ -18,6 +18,8 @@ import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.ActivityDashaddBinding
 import com.redoc.potatodaily.db.BoardEntity
 import java.lang.Exception
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
 import kotlin.collections.ArrayList
@@ -84,9 +86,12 @@ class DashAddActivity: AppCompatActivity() {
             var eat = eat.toString()
             var goods = goods.toString()
 
-            var img = uri.toString()
-            val long_now = System.currentTimeMillis()
-            var date = Date(long_now)
+            val img = uri.toString()
+            val long_now = System.currentTimeMillis()   // 작성한 시간 가져오기
+            val date_now = Date(long_now)   // Date 타입으로 변환
+            val date_format = SimpleDateFormat("yyyy-MM-dd", Locale("ko", "KR"))  // 날짜 가져올 형태
+            val date = date_format.format(date_now)
+
             Log.d(TAG+"date",date.toString())
             Log.d(TAG, weather.toString())
             if(addBinding.btnSave.text.equals("Save")){

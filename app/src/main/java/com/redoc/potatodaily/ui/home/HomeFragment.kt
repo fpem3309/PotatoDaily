@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.FragmentHomeBinding
+import com.redoc.potatodaily.db.BoardEntity
 import com.redoc.potatodaily.ui.dashboard.DashAddActivity
 
 class HomeFragment : Fragment() {
@@ -44,8 +45,14 @@ class HomeFragment : Fragment() {
             Log.d("로그 widget", widget.toString())
             Log.d("로그 date", date.toString())
             Log.d("로그 selected", selected.toString())
+            var pa_date = date.toString()
+            pa_date = pa_date.substring(pa_date.indexOf("{")+1, pa_date.length-1)
+            Log.d("로그 데이트",pa_date)
+//            var intent =  Intent(context, DashAddActivity::class.java)
+//            startActivity(intent)
 
-            var intent =  Intent(context, DashAddActivity::class.java)
+            var intent = Intent(context, DashAddActivity::class.java)
+            intent.apply { this.putExtra("goboard",pa_date) }
             startActivity(intent)
 
         })
@@ -53,6 +60,10 @@ class HomeFragment : Fragment() {
 
         return root
     }
+
+
+
+
 
 
 
