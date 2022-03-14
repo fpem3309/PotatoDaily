@@ -59,10 +59,6 @@ class DashAddActivity: AppCompatActivity() {
         checkboxClick()
         imgClick()
 
-
-
-        val img = uri.toString()
-
         //수정 눌러서 intent로 왔을때
         if (intent.hasExtra("update")) {
             var test = intent.getStringExtra("update")
@@ -121,6 +117,7 @@ class DashAddActivity: AppCompatActivity() {
             val couple = couple.toString()
             val eat = eat.toString()
             val goods = goods.toString()
+            val img = uri.toString()
 
             Log.d(TAG+"date",date.toString())
             Log.d(TAG, weather.toString())

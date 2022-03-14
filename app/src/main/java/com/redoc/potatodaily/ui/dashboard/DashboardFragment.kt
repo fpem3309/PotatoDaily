@@ -85,10 +85,10 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
 //            binding.email.setText("")
 //        }
 
-        binding.btnAdd.setOnClickListener{
-            val intent = Intent(context, DashAddActivity::class.java)
-            startActivity(intent)
-        }
+//        binding.btnAdd.setOnClickListener{
+//            val intent = Intent(context, DashAddActivity::class.java)
+//            startActivity(intent)
+//        }
 
     }
 
