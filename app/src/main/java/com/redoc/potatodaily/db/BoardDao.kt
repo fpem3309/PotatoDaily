@@ -8,6 +8,9 @@ interface BoardDao {
     @Query("SELECT * FROM board ORDER BY id DESC")
     fun getAllBoard() : List<BoardEntity>?
 
+    @Query("SELECT * FROM board WHERE date =:date")
+    fun getDayBoard(date: String) : List<BoardEntity>?
+
     @Insert
     fun insertBoard(board : BoardEntity?)
 

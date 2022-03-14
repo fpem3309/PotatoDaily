@@ -6,7 +6,8 @@ import java.util.*
 
 @Entity(tableName = "board")
 data class BoardEntity(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int = 0,
+    @PrimaryKey val date: String,
+    @ColumnInfo(name = "id") val id: Int = 0,
     @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "content") val content: String,
     @ColumnInfo(name = "mood") val mood: String,
@@ -17,7 +18,6 @@ data class BoardEntity(
     @ColumnInfo(name = "eat") val eat: String,
     @ColumnInfo(name = "goods") val goods: String,
     @ColumnInfo(name = "img") val img: String,
-    @ColumnInfo(name = "date") val date: String
 
 
 )

@@ -3,7 +3,6 @@ package com.redoc.potatodaily.ui.dashboard
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.redoc.potatodaily.db.BoardEntity
 import com.redoc.potatodaily.db.RoomAppDB
@@ -26,6 +25,12 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
     fun getAllBoardObservers(): MutableLiveData<List<BoardEntity>> {
         getAllBoard()
         return allBoards
+    }
+
+    fun getDayBoard(resultDate: String) {
+        val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
+        val list = boardDao?.getDayBoard(resultDate)
+        Log.d(TAG+"getDayBoard","$list")
     }
 
     private fun getAllBoard() {

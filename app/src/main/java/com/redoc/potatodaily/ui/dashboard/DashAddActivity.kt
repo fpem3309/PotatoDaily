@@ -61,6 +61,8 @@ class DashAddActivity: AppCompatActivity() {
 
 
 
+        val img = uri.toString()
+
         //수정 눌러서 intent로 왔을때
         if (intent.hasExtra("update")) {
             var test = intent.getStringExtra("update")
@@ -69,21 +71,24 @@ class DashAddActivity: AppCompatActivity() {
 
             val test2: ArrayList<String>? = test?.split(",") as ArrayList<String>? //Splitting names
 
-            var upid = test2?.get(0).toString()
+            var upid = test2?.get(1).toString()
             upid = upid.substring(upid.indexOf("=")+1)
-            Log.d(TAG+"d", upid)
+            Log.d(TAG+"puid", upid)
             addBinding.name.setTag(addBinding.name.id, upid)
 
-            var udate = test2?.get(11).toString()
+            var udate = test2?.get(0).toString()
             udate = udate.substring(udate.indexOf("=")+1)
-            Log.d(TAG+"d", udate)
+            Log.d(TAG+"udate", udate)
             addBinding.writeDate.text = udate
 
         }else if(intent.hasExtra("goboard")){
+
             var abc = intent.getStringExtra("goboard")
 
             addBinding.writeDate.text = abc
             addBinding.writeDate.setTag(addBinding.writeDate.id,abc)
+
+            //Log.d("goboard로그", board.toString()+addBinding.name.getTag(addBinding.name.id).toString())
 
         } else {
             addBinding.writeDate.text = date
@@ -92,31 +97,29 @@ class DashAddActivity: AppCompatActivity() {
 
 
         addBinding.btnSave.setOnClickListener{
-            var title = addBinding.name.text.toString()
-            var content = addBinding.email.text.toString()
-            var mood = addBinding.mdResult.text.toString()
 
-            var weather = weather.toString()
-            var people = people.toString()
-            var school = school.toString()
-            var couple = couple.toString()
-            var eat = eat.toString()
-            var goods = goods.toString()
-            var setDate = addBinding.writeDate.text.toString()
+            val setDate = addBinding.writeDate.text.toString()
+            val title = addBinding.name.text.toString()
+            val content = addBinding.email.text.toString()
+            val mood = addBinding.mdResult.text.toString()
 
-            val img = uri.toString()
-
+            val weather = weather.toString()
+            val people = people.toString()
+            val school = school.toString()
+            val couple = couple.toString()
+            val eat = eat.toString()
+            val goods = goods.toString()
 
             Log.d(TAG+"date",date.toString())
             Log.d(TAG, weather.toString())
             if(addBinding.btnSave.text.equals("Save")){
-                val board = BoardEntity(0,title,content,mood,weather,people,school,couple,eat,goods,img,setDate)
+                val board = BoardEntity(setDate,0,title,content,mood,weather,people,school,couple,eat,goods,img)
                 viewModel.insertBoard(board)
                 Log.d(TAG,"DashAddActivity - board - insert = $board")
             }else{
-                val board = BoardEntity(addBinding.name.getTag(addBinding.name.id).toString().toInt(),title,content,mood,weather,people,school,couple,eat,goods,img,setDate)
+                val board = BoardEntity(setDate,addBinding.name.getTag(addBinding.name.id).toString().toInt(),title,content,mood,weather,people,school,couple,eat,goods,img)
                 viewModel.updateBoard(board)
-                Log.d(TAG,"DashAddActivity - board - update = $board")
+                Log.d(TAG,"DashAddActivity - board - update = $board"+addBinding.name.getTag(addBinding.name.id).toString())
             }
             finish()
         }
