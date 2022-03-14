@@ -50,6 +50,11 @@ class DashAddActivity: AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
         viewModel.getAllBoardObservers()
 
+        val long_now = System.currentTimeMillis()   // 작성한 시간 가져오기
+        val date_now = Date(long_now)   // Date 타입으로 변환
+        val date_format = SimpleDateFormat("yyyy-MM-dd", Locale("ko", "KR"))  // 날짜 가져올 형태
+        val date = date_format.format(date_now)
+
         radioClick()
         checkboxClick()
         imgClick()
@@ -69,7 +74,19 @@ class DashAddActivity: AppCompatActivity() {
             Log.d(TAG+"d", upid)
             addBinding.name.setTag(addBinding.name.id, upid)
 
+            var udate = test2?.get(11).toString()
+            udate = udate.substring(udate.indexOf("=")+1)
+            Log.d(TAG+"d", udate)
+            addBinding.writeDate.text = udate
+
+        }else if(intent.hasExtra("goboard")){
+            var abc = intent.getStringExtra("goboard")
+
+            addBinding.writeDate.text = abc
+            addBinding.writeDate.setTag(addBinding.writeDate.id,abc)
+
         } else {
+            addBinding.writeDate.text = date
             Toast.makeText(this, "전달된 이름이 없습니다", Toast.LENGTH_SHORT).show()
         }
 
@@ -85,21 +102,19 @@ class DashAddActivity: AppCompatActivity() {
             var couple = couple.toString()
             var eat = eat.toString()
             var goods = goods.toString()
+            var setDate = addBinding.writeDate.text.toString()
 
             val img = uri.toString()
-            val long_now = System.currentTimeMillis()   // 작성한 시간 가져오기
-            val date_now = Date(long_now)   // Date 타입으로 변환
-            val date_format = SimpleDateFormat("yyyy-MM-dd", Locale("ko", "KR"))  // 날짜 가져올 형태
-            val date = date_format.format(date_now)
+
 
             Log.d(TAG+"date",date.toString())
             Log.d(TAG, weather.toString())
             if(addBinding.btnSave.text.equals("Save")){
-                val board = BoardEntity(0,title,content,mood,weather,people,school,couple,eat,goods,img,date)
+                val board = BoardEntity(0,title,content,mood,weather,people,school,couple,eat,goods,img,setDate)
                 viewModel.insertBoard(board)
                 Log.d(TAG,"DashAddActivity - board - insert = $board")
             }else{
-                val board = BoardEntity(addBinding.name.getTag(addBinding.name.id).toString().toInt(),title,content,mood,weather,people,school,couple,eat,goods,img,date)
+                val board = BoardEntity(addBinding.name.getTag(addBinding.name.id).toString().toInt(),title,content,mood,weather,people,school,couple,eat,goods,img,setDate)
                 viewModel.updateBoard(board)
                 Log.d(TAG,"DashAddActivity - board - update = $board")
             }
