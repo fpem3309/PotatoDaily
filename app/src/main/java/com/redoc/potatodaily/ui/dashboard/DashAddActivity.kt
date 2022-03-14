@@ -88,6 +88,18 @@ class DashAddActivity: AppCompatActivity() {
             addBinding.writeDate.text = abc
             addBinding.writeDate.setTag(addBinding.writeDate.id,abc)
 
+            if (abc != null) {
+                Log.d("로그대시", viewModel.getDayBoard(abc).toString())
+                if(viewModel.getDayBoard(abc).toString() != "[]"){
+                    Log.d("로그대시","Update")
+                    addBinding.btnSave.text = "Update"
+                }else{
+                    Log.d("로그대시","New")
+                }
+            }
+
+
+
             //Log.d("goboard로그", board.toString()+addBinding.name.getTag(addBinding.name.id).toString())
 
         } else {
@@ -117,7 +129,7 @@ class DashAddActivity: AppCompatActivity() {
                 viewModel.insertBoard(board)
                 Log.d(TAG,"DashAddActivity - board - insert = $board")
             }else{
-                val board = BoardEntity(setDate,addBinding.name.getTag(addBinding.name.id).toString().toInt(),title,content,mood,weather,people,school,couple,eat,goods,img)
+                val board = BoardEntity(setDate,0,title,content,mood,weather,people,school,couple,eat,goods,img)
                 viewModel.updateBoard(board)
                 Log.d(TAG,"DashAddActivity - board - update = $board"+addBinding.name.getTag(addBinding.name.id).toString())
             }
