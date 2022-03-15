@@ -1,11 +1,14 @@
 package com.redoc.potatodaily.ui.dashboard
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -38,14 +41,14 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
 
     override fun onResume() {
         super.onResume()
-        Log.d(TAG,"resume")
+        Log.d(TAG, "resume")
 
         binding.recycler.apply {
             layoutManager = LinearLayoutManager(context)
             recyclerViewAdapter = RecyclerViewAdapter(this@DashboardFragment)
             adapter = recyclerViewAdapter
 
-            val divider = DividerItemDecoration(context,VERTICAL)
+            val divider = DividerItemDecoration(context, VERTICAL)
             addItemDecoration(divider)
         }
 
@@ -93,7 +96,19 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
     }
 
     override fun onDeleteBoardClickListener(board: BoardEntity) {
-        viewModel.deleteBoard(board)
+
+        var builder = AlertDialog.Builder(context)
+        builder.setTitle("기록을 삭제할까요?")
+        builder.setMessage("삭제시 취소 불가능합니다")
+
+        var dialog_listener = DialogInterface.OnClickListener { dialog, which ->
+            when (which) {
+                DialogInterface.BUTTON_POSITIVE -> viewModel.deleteBoard(board)
+            }
+        }
+        builder.setPositiveButton("삭제하기",dialog_listener)
+        builder.setNegativeButton("취소",null)
+        builder.show()
     }
 
     override fun onItemClickListener(board: BoardEntity) {
@@ -106,9 +121,14 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
     }
 
     override fun onUpdateBoardListener(board: BoardEntity) {
-        Log.d(TAG+"board", board.toString().substring(12, board.toString().length -1 ))
+        Log.d(TAG + "board", board.toString().substring(12, board.toString().length - 1))
         var intent = Intent(context, DashAddActivity::class.java)
-        intent.apply { this.putExtra("update",board.toString().substring(12, board.toString().length -1 )) }
+        intent.apply {
+            this.putExtra(
+                "update",
+                board.toString().substring(12, board.toString().length - 1)
+            )
+        }
         startActivity(intent)
     }
 
