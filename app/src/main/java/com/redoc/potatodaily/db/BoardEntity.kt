@@ -7,7 +7,6 @@ import java.util.*
 @Entity(tableName = "board")
 data class BoardEntity(
     @PrimaryKey val date: String,
-    @ColumnInfo(name = "id") val id: Int = 0,
     @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "content") val content: String,
     @ColumnInfo(name = "mood") val mood: String,

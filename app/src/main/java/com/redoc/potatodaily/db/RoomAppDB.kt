@@ -5,7 +5,7 @@ import androidx.room.*
 
 @Database(
     entities = [BoardEntity::class],
-    version = 9,
+    version = 10,
 )
 @TypeConverters(Converters::class)
 abstract class RoomAppDB : RoomDatabase() {

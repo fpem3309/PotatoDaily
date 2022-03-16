@@ -54,11 +54,8 @@ class HomeFragment : Fragment() {
 
             var day = dayArray[2]
 
-
-            var resultDate = "$year-0$month-$day"
+            var resultDate = "$year-$month-$day"
             Log.d("로그 resultDate",resultDate)
-
-            //viewModel.getDayBoard(resultDate)
 
             var intent = Intent(context, DashAddActivity::class.java)
             intent.apply { this.putExtra("goboard", resultDate) }

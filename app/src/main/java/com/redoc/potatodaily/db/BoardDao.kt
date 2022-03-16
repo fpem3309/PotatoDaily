@@ -5,7 +5,7 @@ import androidx.room.*
 @Dao
 interface BoardDao {
 
-    @Query("SELECT * FROM board ORDER BY id DESC")
+    @Query("SELECT * FROM board ORDER BY date DESC")
     fun getAllBoard() : List<BoardEntity>?
 
     @Query("SELECT * FROM board WHERE date =:date")
