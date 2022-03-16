@@ -42,14 +42,17 @@ class HomeFragment : Fragment() {
             Log.d("로그 selected", selected.toString())
 
             var all_day = date.toString()
+
             all_day = all_day.substring(all_day.indexOf("{") + 1, all_day.length - 1)
 
-            var year = all_day.substring(0,4)
+            val dayArray = all_day.split("-".toRegex())
 
-            var month = all_day.substring(5,all_day.length - 3).toInt()
+            var year = dayArray[0]
+
+            var month = dayArray[1].toInt()
             month += 1
 
-            var day = all_day.substring(7)
+            var day = dayArray[2]
 
 
             var resultDate = "$year-0$month-$day"
