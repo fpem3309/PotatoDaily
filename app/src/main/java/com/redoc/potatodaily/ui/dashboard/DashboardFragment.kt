@@ -99,7 +99,7 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
 
         var builder = AlertDialog.Builder(context)
         builder.setTitle("기록을 삭제할까요?")
-        builder.setMessage("삭제시 취소 불가능합니다")
+        builder.setMessage("삭제시 복구 불가능합니다")
 
         var dialog_listener = DialogInterface.OnClickListener { dialog, which ->
             when (which) {

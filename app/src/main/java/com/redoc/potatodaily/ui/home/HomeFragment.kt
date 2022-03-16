@@ -51,6 +51,7 @@ class HomeFragment : Fragment() {
 
             var day = all_day.substring(7)
 
+
             var resultDate = "$year-0$month-$day"
             Log.d("로그 resultDate",resultDate)
 
@@ -61,6 +62,8 @@ class HomeFragment : Fragment() {
             startActivity(intent)
 
         }
+
+
 
 
         return root

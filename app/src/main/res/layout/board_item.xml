@@ -72,7 +72,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/expandable_layout"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +82,7 @@
                     android:id="@+id/img_mood"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,7 +90,7 @@
                     android:id="@+id/img_sunny"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/img_mood" />
 
@@ -98,7 +98,7 @@
                     android:id="@+id/img_cloudy"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_sunny"
                     app:layout_constraintStart_toEndOf="@+id/img_sunny"
                     app:layout_constraintTop_toTopOf="@+id/img_sunny" />
@@ -107,7 +107,7 @@
                     android:id="@+id/img_rainy"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_cloudy"
                     app:layout_constraintStart_toEndOf="@+id/img_cloudy"
                     app:layout_constraintTop_toTopOf="@+id/img_cloudy" />
@@ -116,7 +116,7 @@
                     android:id="@+id/img_snowy"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_rainy"
                     app:layout_constraintStart_toEndOf="@+id/img_rainy"
                     app:layout_constraintTop_toTopOf="@+id/img_rainy" />
@@ -125,7 +125,7 @@
                     android:id="@+id/img_windy"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_snowy"
                     app:layout_constraintStart_toEndOf="@+id/img_snowy"
                     app:layout_constraintTop_toTopOf="@+id/img_snowy" />
@@ -134,8 +134,7 @@
                     android:id="@+id/img_friend"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/img_sunny" />
 
@@ -143,7 +142,7 @@
                     android:id="@+id/img_family"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_friend"
                     app:layout_constraintStart_toEndOf="@+id/img_friend"
                     app:layout_constraintTop_toTopOf="@+id/img_friend" />
@@ -152,7 +151,7 @@
                     android:id="@+id/img_coupleFriend"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_family"
                     app:layout_constraintStart_toEndOf="@+id/img_family"
                     app:layout_constraintTop_toTopOf="@+id/img_family" />
@@ -161,7 +160,7 @@
                     android:id="@+id/img_buisnessFriend"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_coupleFriend"
                     app:layout_constraintStart_toEndOf="@+id/img_coupleFriend"
                     app:layout_constraintTop_toTopOf="@+id/img_coupleFriend" />
@@ -170,7 +169,7 @@
                     android:id="@+id/img_not"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_buisnessFriend"
                     app:layout_constraintStart_toEndOf="@+id/img_buisnessFriend"
                     app:layout_constraintTop_toTopOf="@+id/img_buisnessFriend" />
@@ -179,7 +178,7 @@
                     android:id="@+id/img_classtime"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/img_family" />
 
@@ -187,7 +186,7 @@
                     android:id="@+id/img_study"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_classtime"
                     app:layout_constraintStart_toEndOf="@+id/img_classtime"
                     app:layout_constraintTop_toTopOf="@+id/img_classtime" />
@@ -196,7 +195,7 @@
                     android:id="@+id/img_assignment"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_study"
                     app:layout_constraintStart_toEndOf="@+id/img_study"
                     app:layout_constraintTop_toTopOf="@+id/img_study" />
@@ -205,7 +204,7 @@
                     android:id="@+id/img_test"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_assignment"
                     app:layout_constraintStart_toEndOf="@+id/img_assignment"
                     app:layout_constraintTop_toTopOf="@+id/img_assignment" />
@@ -214,7 +213,7 @@
                     android:id="@+id/img_team"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_test"
                     app:layout_constraintStart_toEndOf="@+id/img_test"
                     app:layout_constraintTop_toTopOf="@+id/img_test" />
@@ -223,7 +222,7 @@
                     android:id="@+id/img_dateCouple"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/img_classtime" />
 
@@ -231,7 +230,7 @@
                     android:id="@+id/img_anniversary"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_dateCouple"
                     app:layout_constraintStart_toEndOf="@+id/img_dateCouple"
                     app:layout_constraintTop_toTopOf="@+id/img_dateCouple" />
@@ -240,7 +239,7 @@
                     android:id="@+id/img_gift"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_anniversary"
                     app:layout_constraintStart_toEndOf="@+id/img_anniversary"
                     app:layout_constraintTop_toTopOf="@+id/img_anniversary" />
@@ -249,7 +248,7 @@
                     android:id="@+id/img_conflict"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_gift"
                     app:layout_constraintStart_toEndOf="@+id/img_gift"
                     app:layout_constraintTop_toTopOf="@+id/img_gift" />
@@ -258,7 +257,7 @@
                     android:id="@+id/img_love"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_conflict"
                     app:layout_constraintStart_toEndOf="@+id/img_conflict"
                     app:layout_constraintTop_toTopOf="@+id/img_conflict" />
@@ -267,7 +266,7 @@
                     android:id="@+id/img_breakfast"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_mood"
                     app:layout_constraintStart_toEndOf="@+id/img_mood"
                     app:layout_constraintTop_toTopOf="@+id/img_mood" />
@@ -276,7 +275,7 @@
                     android:id="@+id/img_lunch"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_breakfast"
                     app:layout_constraintStart_toEndOf="@+id/img_breakfast"
                     app:layout_constraintTop_toTopOf="@+id/img_breakfast" />
@@ -285,7 +284,7 @@
                     android:id="@+id/img_dinner"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_lunch"
                     app:layout_constraintStart_toEndOf="@+id/img_lunch"
                     app:layout_constraintTop_toTopOf="@+id/img_lunch" />
@@ -294,7 +293,7 @@
                     android:id="@+id/img_midnightSnack"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_dinner"
                     app:layout_constraintStart_toEndOf="@+id/img_dinner"
                     app:layout_constraintTop_toTopOf="@+id/img_dinner" />
@@ -303,7 +302,7 @@
                     android:id="@+id/img_alcohol"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/img_dateCouple" />
 
@@ -311,7 +310,7 @@
                     android:id="@+id/img_smoking"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_alcohol"
                     app:layout_constraintStart_toEndOf="@+id/img_alcohol"
                     app:layout_constraintTop_toTopOf="@+id/img_alcohol" />
@@ -320,7 +319,7 @@
                     android:id="@+id/img_coffee"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_smoking"
                     app:layout_constraintStart_toEndOf="@+id/img_smoking"
                     app:layout_constraintTop_toTopOf="@+id/img_smoking" />
@@ -329,7 +328,7 @@
                     android:id="@+id/img_snack"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_coffee"
                     app:layout_constraintStart_toEndOf="@+id/img_coffee"
                     app:layout_constraintTop_toTopOf="@+id/img_coffee" />
@@ -338,7 +337,7 @@
                     android:id="@+id/img_drink"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_snack"
                     app:layout_constraintStart_toEndOf="@+id/img_snack"
                     app:layout_constraintTop_toTopOf="@+id/img_snack" />
