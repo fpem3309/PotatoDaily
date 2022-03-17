@@ -206,7 +206,7 @@ class DashAddActivity : AppCompatActivity() {
         if (getEat.contains("breakfast")) addBinding.breakfast.isChecked = true
         if (getEat.contains("lunch")) addBinding.lunch.isChecked = true
         if (getEat.contains("dinner")) addBinding.dinner.isChecked = true
-        if (getEat.contains("love")) addBinding.midnightSnack.isChecked = true
+        if (getEat.contains("midnightSnack")) addBinding.midnightSnack.isChecked = true
 
         if (getGoods.contains("alcohol")) addBinding.alcohol.isChecked = true
         if (getGoods.contains("smoking")) addBinding.smoking.isChecked = true
@@ -214,7 +214,9 @@ class DashAddActivity : AppCompatActivity() {
         if (getGoods.contains("snack")) addBinding.snack.isChecked = true
         if (getGoods.contains("drink")) addBinding.drink.isChecked = true
 
+        Log.d("로그 이미지",getImg)
         if (getImg != "null") addBinding.imgDaily.setImageURI(Uri.parse(getImg))
+        uri = (Uri.parse(getImg))
 
     }
 
@@ -341,13 +343,14 @@ class DashAddActivity : AppCompatActivity() {
                     R.id.drink -> goods.remove("drink")
                 }
             }
-            Log.d(TAG + "weather", weather.toString())
-            Log.d(TAG + "people", people.toString())
-            Log.d(TAG + "school", school.toString())
-            Log.d(TAG + "couple", couple.toString())
-            Log.d(TAG + "eat", eat.toString())
-            Log.d(TAG + "goods", goods.toString())
         }
+        Log.d(TAG + "weather", weather.toString())
+        Log.d(TAG + "people", people.toString())
+        Log.d(TAG + "school", school.toString())
+        Log.d(TAG + "couple", couple.toString())
+        Log.d(TAG + "eat", eat.toString())
+        Log.d(TAG + "goods", goods.toString())
+
         addBinding.sunny.setOnCheckedChangeListener(listener)
         addBinding.cloudy.setOnCheckedChangeListener(listener)
         addBinding.rainy.setOnCheckedChangeListener(listener)

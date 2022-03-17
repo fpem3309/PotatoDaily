@@ -8,10 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.redoc.potatodaily.databinding.FragmentHomeBinding
 import com.redoc.potatodaily.ui.dashboard.DashAddActivity
 
 import com.redoc.potatodaily.ui.dashboard.DashboardViewModel
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class HomeFragment : Fragment() {
@@ -63,8 +67,21 @@ class HomeFragment : Fragment() {
 
         }
 
+        var testdate = viewModel.getDayBoard("2022-3-15")
+        val date = testdate?.get(0)?.date
+        Log.d("로그DATE",date!!)
 
+        var clearYear = date.substring(0,4)
+        var clearMonth = date.substring(5,6)
+        var clearDay = date.substring(7)
 
+        val calList = ArrayList<CalendarDay>()
+        calList.add(CalendarDay.from(clearYear.toInt(), clearMonth.toInt()-1, clearDay.toInt()))
+        calList.add(CalendarDay.from(2022, 3, 22))
+        calList.add(CalendarDay.from(2022, 3, 23))
+        for (calDay in calList){
+            binding.calendarView.addDecorators(CurrentDayDecorator(context,calDay))
+        }
 
         return root
     }
