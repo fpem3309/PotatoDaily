@@ -66,55 +66,10 @@ class DashAddActivity: AppCompatActivity() {
             Log.d( TAG+"update","$uData")
             addBinding.btnSave.text = "Update"
 
-            val uDataArray: ArrayList<String>? = uData?.split(",") as ArrayList<String>?  // String으로 왔으니 다시 array로 만들기
 
-            var uDate = uDataArray?.get(0).toString()
-            uDate = uDate.substring(uDate.indexOf("=")+1)
-            Log.d(TAG+"udate", uDate)
-            addBinding.writeDate.text = uDate
+            var getdata = viewModel.getDayBoard(uData!!)
 
-            var uDataMood = uDataArray!![3]
-            uDataMood = uDataMood.substring(uDataMood.indexOf("=")+1)
-
-            var uDataWeather = uDataArray[4]
-            uDataWeather = uDataWeather.substring(uDataWeather.indexOf("=")+1)
-
-            var uDataPeople = uDataArray[5]
-            uDataPeople = uDataPeople.substring(uDataPeople.indexOf("=")+1)
-
-            var uDataSchool = uDataArray[6]
-            uDataSchool = uDataSchool.substring(uDataSchool.indexOf("=")+1)
-
-            var uDataCouple = uDataArray[7]
-            uDataCouple = uDataCouple.substring(uDataCouple.indexOf("=")+1)
-
-            var uDataEat = uDataArray[8]
-            uDataEat = uDataEat.substring(uDataEat.indexOf("=")+1)
-
-            var uDataGoods = uDataArray[8]
-            uDataGoods = uDataGoods.substring(uDataGoods.indexOf("=")+1)
-
-
-            when (uDataMood) {
-                "very_good" -> addBinding.mdVeryGood.isChecked = true
-                "good" -> addBinding.mdGood.isChecked = true
-                "soso" -> addBinding.mdSoso.isChecked = true
-                "bad" -> addBinding.mdBad.isChecked = true
-                "very_bad" -> addBinding.mdVeryBad.isChecked = true
-            }
-
-            if(uDataWeather == "[sunny]") addBinding.sunny.isChecked = true
-//            if(uDataWeather == "[cloudy]") addBinding.cloudy.isChecked = true
-//            if(uDataWeather == "[rainy]") addBinding.rainy.isChecked = true
-//            if(uDataWeather == "[snowy]") addBinding.snowy.isChecked = true
-//            if(uDataWeather == "[windy]") addBinding.windy.isChecked = true
-//
-//            if(uDataPeople == "[friend]") addBinding.friend.isChecked = true
-//            if(uDataPeople == "[family]") addBinding.family.isChecked = true
-//            if(uDataPeople == "[coupleFriend]") addBinding.coupleFriend.isChecked = true
-//            if(uDataPeople == "[businessFriend]") addBinding.businessFriend.isChecked = true
-//            if(uDataPeople == "[not]") addBinding.not.isChecked = true
-
+            updateCheck(getdata!!)
 
 
         }else if(intent.hasExtra("goboard")){   // calendar에서 날짜 선택했을때
@@ -158,6 +113,70 @@ class DashAddActivity: AppCompatActivity() {
             finish()
         }
 
+
+    }
+
+    private fun updateCheck(getdata : List<BoardEntity>){
+
+        val getDate = getdata[0].date
+        val getTitle = getdata[0].title
+        val getContent = getdata[0].content
+        val getMood = getdata[0].mood
+        val getWeather = getdata[0].weather
+        val getPeople = getdata[0].people
+        val getSchool = getdata[0].school
+        val getCouple = getdata[0].couple
+        val getEat = getdata[0].eat
+        val getGoods = getdata[0].goods
+        val getImg = getdata[0].img
+
+        addBinding.writeDate.text = getDate
+        addBinding.name.setText(getTitle)
+        addBinding.email.setText(getContent)
+
+        when (getMood) {
+            "very_good" -> addBinding.mdVeryGood.isChecked = true
+            "good" -> addBinding.mdGood.isChecked = true
+            "soso" -> addBinding.mdSoso.isChecked = true
+            "bad" -> addBinding.mdBad.isChecked = true
+            "very_bad" -> addBinding.mdVeryBad.isChecked = true
+        }
+        if(getWeather.contains("sunny")) addBinding.sunny.isChecked = true
+        if(getWeather.contains("cloudy")) addBinding.cloudy.isChecked = true
+        if(getWeather.contains("rainy")) addBinding.rainy.isChecked = true
+        if(getWeather.contains("snowy")) addBinding.snowy.isChecked = true
+        if(getWeather.contains("windy")) addBinding.windy.isChecked = true
+
+        if(getPeople.contains("friend")) addBinding.friend.isChecked = true
+        if(getPeople.contains("family")) addBinding.family.isChecked = true
+        if(getPeople.contains("coupleFriend")) addBinding.coupleFriend.isChecked = true
+        if(getPeople.contains("businessFriend")) addBinding.businessFriend.isChecked = true
+        if(getPeople.contains("not")) addBinding.not.isChecked = true
+
+        if(getSchool.contains("classtime")) addBinding.classtime.isChecked = true
+        if(getSchool.contains("study")) addBinding.study.isChecked = true
+        if(getSchool.contains("assignment")) addBinding.assignment.isChecked = true
+        if(getSchool.contains("test")) addBinding.test.isChecked = true
+        if(getSchool.contains("team")) addBinding.team.isChecked = true
+
+        if(getCouple.contains("dateCouple")) addBinding.dateCouple.isChecked = true
+        if(getCouple.contains("anniversary")) addBinding.anniversary.isChecked = true
+        if(getCouple.contains("gift")) addBinding.gift.isChecked = true
+        if(getCouple.contains("conflict")) addBinding.conflict.isChecked = true
+        if(getCouple.contains("love")) addBinding.love.isChecked = true
+
+        if(getEat.contains("breakfast")) addBinding.breakfast.isChecked = true
+        if(getEat.contains("lunch")) addBinding.lunch.isChecked = true
+        if(getEat.contains("dinner")) addBinding.dinner.isChecked = true
+        if(getEat.contains("love")) addBinding.midnightSnack.isChecked = true
+
+        if(getGoods.contains("alcohol")) addBinding.alcohol.isChecked = true
+        if(getGoods.contains("smoking")) addBinding.smoking.isChecked = true
+        if(getGoods.contains("coffee")) addBinding.coffee.isChecked = true
+        if(getGoods.contains("snack")) addBinding.snack.isChecked = true
+        if(getGoods.contains("drink")) addBinding.drink.isChecked = true
+
+        if(getImg != "null") addBinding.imgDaily.setImageURI(Uri.parse(getImg))
 
     }
 

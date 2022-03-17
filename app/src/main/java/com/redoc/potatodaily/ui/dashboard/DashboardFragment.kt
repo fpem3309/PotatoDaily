@@ -121,13 +121,11 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
     }
 
     override fun onUpdateBoardListener(board: BoardEntity) {
-        Log.d(TAG + "board", board.toString().substring(12, board.toString().length - 1))
+
+        Log.d(TAG + "board", board.date)
         var intent = Intent(context, DashAddActivity::class.java)
         intent.apply {
-            this.putExtra(
-                "update",
-                board.toString().substring(12, board.toString().length - 1)
-            )
+            this.putExtra("update", board.date)
         }
         startActivity(intent)
     }
