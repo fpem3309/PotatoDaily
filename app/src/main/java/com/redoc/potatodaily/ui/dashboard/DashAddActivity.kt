@@ -24,7 +24,7 @@ import java.time.LocalDate
 import java.util.*
 import kotlin.collections.ArrayList
 
-class DashAddActivity: AppCompatActivity() {
+class DashAddActivity : AppCompatActivity() {
 
     private lateinit var addBinding: ActivityDashaddBinding
     lateinit var viewModel: DashboardViewModel
@@ -39,7 +39,9 @@ class DashAddActivity: AppCompatActivity() {
     val REQUEST_CODE = 10
     var uri: Uri? = null
 
-    companion object{const val TAG : String = "로그"}
+    companion object {
+        const val TAG: String = "로그"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,28 +65,36 @@ class DashAddActivity: AppCompatActivity() {
         if (intent.hasExtra("update")) {    // 수정 눌렀을때
 
             val uData = intent.getStringExtra("update")
-            Log.d( TAG+"update","$uData")
+            Log.d(TAG + "update", "$uData")
             addBinding.btnSave.text = "Update"
 
 
-            var getdata = viewModel.getDayBoard(uData!!)
+            val getdata = viewModel.getDayBoard(uData!!)
 
             updateCheck(getdata!!)
 
 
-        }else if(intent.hasExtra("goboard")){   // calendar에서 날짜 선택했을때
+        } else if (intent.hasExtra("goboard")) {   // calendar에서 날짜 선택했을때
 
             val getDate = intent.getStringExtra("goboard")
 
             addBinding.writeDate.text = getDate
-            addBinding.writeDate.setTag(addBinding.writeDate.id,getDate)
+            addBinding.writeDate.setTag(addBinding.writeDate.id, getDate)
+
 
             // 해당 날짜가 있으면 Update 없으면 Save
-            if(viewModel.getDayBoard(getDate!!).toString() != "[]") addBinding.btnSave.text = "Update" else addBinding.btnSave.text = "Save"
+            if (viewModel.getDayBoard(getDate!!).toString() != "[]") {
+                addBinding.btnSave.text = "Update"
+                val getdata = viewModel.getDayBoard(getDate)
+                updateCheck(getdata!!)
+            } else {
+                addBinding.btnSave.text = "Save"
+            }
+
 
         }
 
-        addBinding.btnSave.setOnClickListener{
+        addBinding.btnSave.setOnClickListener {
 
             val setDate = addBinding.writeDate.text.toString()
             val title = addBinding.name.text.toString()
@@ -99,16 +109,44 @@ class DashAddActivity: AppCompatActivity() {
             val goods = goods.toString()
             val img = uri.toString()
 
-            Log.d(TAG+"date",date.toString())
+            Log.d(TAG + "date", date.toString())
 
-            if(addBinding.btnSave.text.equals("Save")){
-                val board = BoardEntity(setDate,title,content,mood,weather,people,school,couple,eat,goods,img)
+            if (addBinding.btnSave.text.equals("Save")) {
+                val board = BoardEntity(
+                    setDate,
+                    title,
+                    content,
+                    mood,
+                    weather,
+                    people,
+                    school,
+                    couple,
+                    eat,
+                    goods,
+                    img
+                )
                 viewModel.insertBoard(board)
-                Log.d(TAG,"DashAddActivity - board - insert = $board")
-            }else{  // Update 일때
-                val board = BoardEntity(setDate,title,content,mood,weather,people,school,couple,eat,goods,img)
+                Log.d(TAG, "DashAddActivity - board - insert = $board")
+            } else {  // Update 일때
+                val board = BoardEntity(
+                    setDate,
+                    title,
+                    content,
+                    mood,
+                    weather,
+                    people,
+                    school,
+                    couple,
+                    eat,
+                    goods,
+                    img
+                )
                 viewModel.updateBoard(board)
-                Log.d(TAG,"DashAddActivity - board - update = $board"+addBinding.name.getTag(addBinding.name.id).toString())
+                Log.d(
+                    TAG,
+                    "DashAddActivity - board - update = $board" + addBinding.name.getTag(addBinding.name.id)
+                        .toString()
+                )
             }
             finish()
         }
@@ -116,7 +154,7 @@ class DashAddActivity: AppCompatActivity() {
 
     }
 
-    private fun updateCheck(getdata : List<BoardEntity>){
+    private fun updateCheck(getdata: List<BoardEntity>) {
 
         val getDate = getdata[0].date
         val getTitle = getdata[0].title
@@ -141,46 +179,46 @@ class DashAddActivity: AppCompatActivity() {
             "bad" -> addBinding.mdBad.isChecked = true
             "very_bad" -> addBinding.mdVeryBad.isChecked = true
         }
-        if(getWeather.contains("sunny")) addBinding.sunny.isChecked = true
-        if(getWeather.contains("cloudy")) addBinding.cloudy.isChecked = true
-        if(getWeather.contains("rainy")) addBinding.rainy.isChecked = true
-        if(getWeather.contains("snowy")) addBinding.snowy.isChecked = true
-        if(getWeather.contains("windy")) addBinding.windy.isChecked = true
+        if (getWeather.contains("sunny")) addBinding.sunny.isChecked = true
+        if (getWeather.contains("cloudy")) addBinding.cloudy.isChecked = true
+        if (getWeather.contains("rainy")) addBinding.rainy.isChecked = true
+        if (getWeather.contains("snowy")) addBinding.snowy.isChecked = true
+        if (getWeather.contains("windy")) addBinding.windy.isChecked = true
 
-        if(getPeople.contains("friend")) addBinding.friend.isChecked = true
-        if(getPeople.contains("family")) addBinding.family.isChecked = true
-        if(getPeople.contains("coupleFriend")) addBinding.coupleFriend.isChecked = true
-        if(getPeople.contains("businessFriend")) addBinding.businessFriend.isChecked = true
-        if(getPeople.contains("not")) addBinding.not.isChecked = true
+        if (getPeople.contains("friend")) addBinding.friend.isChecked = true
+        if (getPeople.contains("family")) addBinding.family.isChecked = true
+        if (getPeople.contains("coupleFriend")) addBinding.coupleFriend.isChecked = true
+        if (getPeople.contains("businessFriend")) addBinding.businessFriend.isChecked = true
+        if (getPeople.contains("not")) addBinding.not.isChecked = true
 
-        if(getSchool.contains("classtime")) addBinding.classtime.isChecked = true
-        if(getSchool.contains("study")) addBinding.study.isChecked = true
-        if(getSchool.contains("assignment")) addBinding.assignment.isChecked = true
-        if(getSchool.contains("test")) addBinding.test.isChecked = true
-        if(getSchool.contains("team")) addBinding.team.isChecked = true
+        if (getSchool.contains("classtime")) addBinding.classtime.isChecked = true
+        if (getSchool.contains("study")) addBinding.study.isChecked = true
+        if (getSchool.contains("assignment")) addBinding.assignment.isChecked = true
+        if (getSchool.contains("test")) addBinding.test.isChecked = true
+        if (getSchool.contains("team")) addBinding.team.isChecked = true
 
-        if(getCouple.contains("dateCouple")) addBinding.dateCouple.isChecked = true
-        if(getCouple.contains("anniversary")) addBinding.anniversary.isChecked = true
-        if(getCouple.contains("gift")) addBinding.gift.isChecked = true
-        if(getCouple.contains("conflict")) addBinding.conflict.isChecked = true
-        if(getCouple.contains("love")) addBinding.love.isChecked = true
+        if (getCouple.contains("dateCouple")) addBinding.dateCouple.isChecked = true
+        if (getCouple.contains("anniversary")) addBinding.anniversary.isChecked = true
+        if (getCouple.contains("gift")) addBinding.gift.isChecked = true
+        if (getCouple.contains("conflict")) addBinding.conflict.isChecked = true
+        if (getCouple.contains("love")) addBinding.love.isChecked = true
 
-        if(getEat.contains("breakfast")) addBinding.breakfast.isChecked = true
-        if(getEat.contains("lunch")) addBinding.lunch.isChecked = true
-        if(getEat.contains("dinner")) addBinding.dinner.isChecked = true
-        if(getEat.contains("love")) addBinding.midnightSnack.isChecked = true
+        if (getEat.contains("breakfast")) addBinding.breakfast.isChecked = true
+        if (getEat.contains("lunch")) addBinding.lunch.isChecked = true
+        if (getEat.contains("dinner")) addBinding.dinner.isChecked = true
+        if (getEat.contains("love")) addBinding.midnightSnack.isChecked = true
 
-        if(getGoods.contains("alcohol")) addBinding.alcohol.isChecked = true
-        if(getGoods.contains("smoking")) addBinding.smoking.isChecked = true
-        if(getGoods.contains("coffee")) addBinding.coffee.isChecked = true
-        if(getGoods.contains("snack")) addBinding.snack.isChecked = true
-        if(getGoods.contains("drink")) addBinding.drink.isChecked = true
+        if (getGoods.contains("alcohol")) addBinding.alcohol.isChecked = true
+        if (getGoods.contains("smoking")) addBinding.smoking.isChecked = true
+        if (getGoods.contains("coffee")) addBinding.coffee.isChecked = true
+        if (getGoods.contains("snack")) addBinding.snack.isChecked = true
+        if (getGoods.contains("drink")) addBinding.drink.isChecked = true
 
-        if(getImg != "null") addBinding.imgDaily.setImageURI(Uri.parse(getImg))
+        if (getImg != "null") addBinding.imgDaily.setImageURI(Uri.parse(getImg))
 
     }
 
-    private fun radioClick(){
+    private fun radioClick() {
 
         addBinding.mdGroup.setOnCheckedChangeListener { group, i ->
             when (i) {
@@ -190,22 +228,24 @@ class DashAddActivity: AppCompatActivity() {
                 R.id.md_bad -> addBinding.mdResult.text = "bad"
                 R.id.md_veryBad -> addBinding.mdResult.text = "very_bad"
             }
-            Log.d(TAG,""+addBinding.mdResult.text)
+            Log.d(TAG, "" + addBinding.mdResult.text)
         }
     }
 
-    private fun imgClick(){
+    private fun imgClick() {
         addBinding.imgDaily.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = MediaStore.Images.Media.CONTENT_TYPE
             startActivityForResult(intent, REQUEST_CODE)
-            Log.d(TAG+"uri","$uri")
+            Log.d(TAG + "uri", "$uri")
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == REQUEST_CODE){ uri = data?.data }
+        if (requestCode == REQUEST_CODE) {
+            uri = data?.data
+        }
         try {
             val inputStream = contentResolver.openInputStream(data?.data!!)
             val img = BitmapFactory.decodeStream(inputStream)
@@ -216,7 +256,7 @@ class DashAddActivity: AppCompatActivity() {
         }
     }
 
-    private fun checkboxClick(){
+    private fun checkboxClick() {
 
         weather = arrayListOf()
         people = arrayListOf()
@@ -225,9 +265,9 @@ class DashAddActivity: AppCompatActivity() {
         eat = arrayListOf()
         goods = arrayListOf()
 
-        var listener = CompoundButton.OnCheckedChangeListener{ bottonView, isChecked ->
-            if(isChecked){
-                when(bottonView.id){
+        var listener = CompoundButton.OnCheckedChangeListener { bottonView, isChecked ->
+            if (isChecked) {
+                when (bottonView.id) {
                     R.id.sunny -> weather.add("sunny")
                     R.id.cloudy -> weather.add("cloudy")
                     R.id.rainy -> weather.add("rainy")
@@ -263,9 +303,8 @@ class DashAddActivity: AppCompatActivity() {
                     R.id.snack -> goods.add("snack")
                     R.id.drink -> goods.add("drink")
                 }
-            }
-            else{
-                when(bottonView.id){
+            } else {
+                when (bottonView.id) {
                     R.id.sunny -> weather.remove("sunny")
                     R.id.cloudy -> weather.remove("cloudy")
                     R.id.rainy -> weather.remove("rainy")
@@ -302,12 +341,12 @@ class DashAddActivity: AppCompatActivity() {
                     R.id.drink -> goods.remove("drink")
                 }
             }
-            Log.d(TAG+"weather", weather.toString())
-            Log.d(TAG+"people", people.toString())
-            Log.d(TAG+"school", school.toString())
-            Log.d(TAG+"couple", couple.toString())
-            Log.d(TAG+"eat", eat.toString())
-            Log.d(TAG+"goods", goods.toString())
+            Log.d(TAG + "weather", weather.toString())
+            Log.d(TAG + "people", people.toString())
+            Log.d(TAG + "school", school.toString())
+            Log.d(TAG + "couple", couple.toString())
+            Log.d(TAG + "eat", eat.toString())
+            Log.d(TAG + "goods", goods.toString())
         }
         addBinding.sunny.setOnCheckedChangeListener(listener)
         addBinding.cloudy.setOnCheckedChangeListener(listener)
