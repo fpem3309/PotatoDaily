@@ -68,4 +68,6 @@ dependencies {
     implementation "com.prolificinteractive:material-calendarview:1.4.3"
     //gson
     implementation 'com.google.code.gson:gson:2.8.5'
+    //chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

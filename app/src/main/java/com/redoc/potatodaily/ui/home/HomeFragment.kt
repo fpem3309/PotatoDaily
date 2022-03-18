@@ -34,6 +34,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
         binding.calendarView.setOnDateChangedListener { widget, date, selected ->
 
@@ -62,9 +63,11 @@ class HomeFragment : Fragment() {
             startActivity(intent)
 
         }
+        return root
+    }
 
-        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
-
+    override fun onResume() {
+        super.onResume()
         viewModel.getAllBoardObservers().observe(this, androidx.lifecycle.Observer {
 
             val calList = ArrayList<CalendarDay>()
@@ -79,31 +82,11 @@ class HomeFragment : Fragment() {
                 calList.add(CalendarDay.from(java.sql.Date.valueOf(board[i].date)))
                 moodlist.add(board[i].mood)
             }
-                for (calDay in calList){
+            for (calDay in calList){
                 binding.calendarView.addDecorators(CurrentDayDecorator(context,calDay,moodlist[calList.indexOf(calDay)]))
-                }
+            }
 
         })
-
-
-
-//        var testdate = viewModel.getDayBoard("2022-3-15")
-//        val date = testdate?.get(0)?.date
-//        Log.d("로그DATE",date!!)
-//
-//        var clearYear = date.substring(0,4)
-//        var clearMonth = date.substring(5,6)
-//        var clearDay = date.substring(7)
-//
-//        val calList = ArrayList<CalendarDay>()
-//        calList.add(CalendarDay.from(java.sql.Date.valueOf(date)))
-//        calList.add(CalendarDay.from(2022, 3, 22))
-//        calList.add(CalendarDay.from(2022, 3, 23))
-//        for (calDay in calList){
-//            binding.calendarView.addDecorators(CurrentDayDecorator(context,calDay))
-//        }
-
-        return root
     }
 
 

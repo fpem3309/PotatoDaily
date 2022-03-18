@@ -16,6 +16,7 @@ class CurrentDayDecorator(context: Context?, currentDay: CalendarDay, moodlist: 
     private val soDrawable: Drawable = context?.getDrawable(R.drawable.soso)!!
     private val bDrawable: Drawable = context?.getDrawable(R.drawable.bad)!!
     private val vbDrawable: Drawable = context?.getDrawable(R.drawable.very_bad)!!
+    private val noDrawable: Drawable = context?.getDrawable(R.drawable.very_good_g)!!
 
     private var myDay = currentDay
     private var mood = moodlist
@@ -40,6 +41,8 @@ class CurrentDayDecorator(context: Context?, currentDay: CalendarDay, moodlist: 
             view?.setBackgroundDrawable(bDrawable)
         }else if(mood == "very_bad"){
             view?.setBackgroundDrawable(vbDrawable)
+        }else{
+            view?.setBackgroundDrawable(noDrawable)
         }
 
 
