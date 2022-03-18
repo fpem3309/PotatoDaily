@@ -13,8 +13,6 @@ import com.redoc.potatodaily.databinding.FragmentHomeBinding
 import com.redoc.potatodaily.ui.dashboard.DashAddActivity
 
 import com.redoc.potatodaily.ui.dashboard.DashboardViewModel
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -70,6 +68,7 @@ class HomeFragment : Fragment() {
         viewModel.getAllBoardObservers().observe(this, androidx.lifecycle.Observer {
 
             val calList = ArrayList<CalendarDay>()
+            var moodlist = ArrayList<String>()
 
             val board = it
             Log.d("로그board", board.toString())
@@ -78,10 +77,12 @@ class HomeFragment : Fragment() {
                 board[i].date
                 Log.d("로그board2", board[i].date)
                 calList.add(CalendarDay.from(java.sql.Date.valueOf(board[i].date)))
+                moodlist.add(board[i].mood)
             }
                 for (calDay in calList){
-                binding.calendarView.addDecorators(CurrentDayDecorator(context,calDay))
+                binding.calendarView.addDecorators(CurrentDayDecorator(context,calDay,moodlist[calList.indexOf(calDay)]))
                 }
+
         })
 
 

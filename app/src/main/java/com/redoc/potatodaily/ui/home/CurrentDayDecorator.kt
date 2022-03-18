@@ -1,6 +1,5 @@
 package com.redoc.potatodaily.ui.home
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.Log
@@ -10,17 +9,39 @@ import com.prolificinteractive.materialcalendarview.DayViewFacade
 import com.redoc.potatodaily.R
 
 
-class CurrentDayDecorator(context: Context?, currentDay: CalendarDay) : DayViewDecorator {
+class CurrentDayDecorator(context: Context?, currentDay: CalendarDay, moodlist: String) : DayViewDecorator {
 
-    private val drawable: Drawable = context?.getDrawable(R.drawable.very_good)!!
+    private val vgDrawable: Drawable = context?.getDrawable(R.drawable.very_good)!!
+    private val gDrawable: Drawable = context?.getDrawable(R.drawable.good)!!
+    private val soDrawable: Drawable = context?.getDrawable(R.drawable.soso)!!
+    private val bDrawable: Drawable = context?.getDrawable(R.drawable.bad)!!
+    private val vbDrawable: Drawable = context?.getDrawable(R.drawable.very_bad)!!
+
     private var myDay = currentDay
+    private var mood = moodlist
+
+
+
 
     override fun shouldDecorate(day: CalendarDay): Boolean {
         return day == myDay
-
     }
 
     override fun decorate(view: DayViewFacade?) {
-        view?.setBackgroundDrawable(drawable)
+        Log.d("mood로그", mood)
+
+        if(mood == "very_good"){
+            view?.setBackgroundDrawable(vgDrawable)
+        }else if(mood == "good"){
+            view?.setBackgroundDrawable(gDrawable)
+        }else if(mood == "soso"){
+            view?.setBackgroundDrawable(soDrawable)
+        }else if(mood == "bad"){
+            view?.setBackgroundDrawable(bDrawable)
+        }else if(mood == "very_bad"){
+            view?.setBackgroundDrawable(vbDrawable)
+        }
+
+
     }
 }
