@@ -20,7 +20,7 @@ import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 
-    private lateinit var viewModel: DashboardViewModel
+    lateinit var viewModel: DashboardViewModel
     private var _binding: FragmentHomeBinding? = null
 
     // This property is only valid between onCreateView and
@@ -32,8 +32,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
-        viewModel.getAllBoardObservers()
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -66,6 +64,21 @@ class HomeFragment : Fragment() {
             startActivity(intent)
 
         }
+
+        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+
+        viewModel.getAllBoardObservers().observe(this, androidx.lifecycle.Observer {
+            val board = it
+            Log.d("로그board", board.toString())
+
+            for(i: Int in 0..board.size-1){
+                board[i].date
+                Log.d("로그board2", board[i].date)
+            }
+
+        })
+
+
 
         var testdate = viewModel.getDayBoard("2022-3-15")
         val date = testdate?.get(0)?.date
