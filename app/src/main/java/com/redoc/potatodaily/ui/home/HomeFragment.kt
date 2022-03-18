@@ -68,33 +68,39 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
         viewModel.getAllBoardObservers().observe(this, androidx.lifecycle.Observer {
+
+            val calList = ArrayList<CalendarDay>()
+
             val board = it
             Log.d("로그board", board.toString())
 
             for(i: Int in 0..board.size-1){
                 board[i].date
                 Log.d("로그board2", board[i].date)
+                calList.add(CalendarDay.from(java.sql.Date.valueOf(board[i].date)))
             }
-
+                for (calDay in calList){
+                binding.calendarView.addDecorators(CurrentDayDecorator(context,calDay))
+                }
         })
 
 
 
-        var testdate = viewModel.getDayBoard("2022-3-15")
-        val date = testdate?.get(0)?.date
-        Log.d("로그DATE",date!!)
-
-        var clearYear = date.substring(0,4)
-        var clearMonth = date.substring(5,6)
-        var clearDay = date.substring(7)
-
-        val calList = ArrayList<CalendarDay>()
-        calList.add(CalendarDay.from(clearYear.toInt(), clearMonth.toInt()-1, clearDay.toInt()))
-        calList.add(CalendarDay.from(2022, 3, 22))
-        calList.add(CalendarDay.from(2022, 3, 23))
-        for (calDay in calList){
-            binding.calendarView.addDecorators(CurrentDayDecorator(context,calDay))
-        }
+//        var testdate = viewModel.getDayBoard("2022-3-15")
+//        val date = testdate?.get(0)?.date
+//        Log.d("로그DATE",date!!)
+//
+//        var clearYear = date.substring(0,4)
+//        var clearMonth = date.substring(5,6)
+//        var clearDay = date.substring(7)
+//
+//        val calList = ArrayList<CalendarDay>()
+//        calList.add(CalendarDay.from(java.sql.Date.valueOf(date)))
+//        calList.add(CalendarDay.from(2022, 3, 22))
+//        calList.add(CalendarDay.from(2022, 3, 23))
+//        for (calDay in calList){
+//            binding.calendarView.addDecorators(CurrentDayDecorator(context,calDay))
+//        }
 
         return root
     }
