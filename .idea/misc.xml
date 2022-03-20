@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SMART/.gradle/caches/transforms-3/d4956738ae24d206ffafdc33a8d4a081/transformed/appcompat-1.4.1/res/layout/support_simple_spinner_dropdown_item.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/PotatoDaily/app/src/main/res/drawable-v24/breakfast_chkbox.xml" value="0.2875" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/PotatoDaily/app/src/main/res/drawable-v24/couple_chkbox.xml" value="0.13148148148148148" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/PotatoDaily/app/src/main/res/drawable-v24/dinner_chkbox.xml" value="0.2875" />
@@ -52,9 +53,10 @@
         <entry key="..\:/Users/SMART/AndroidStudioProjects/PotatoDaily/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/PotatoDaily/app/src/main/res/layout/board_item.xml" value="0.25" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/PotatoDaily/app/src/main/res/layout/card_item.xml" value="0.2713541666666667" />
-        <entry key="..\:/Users/SMART/AndroidStudioProjects/PotatoDaily/app/src/main/res/layout/fragment_dashboard.xml" value="0.2" />
+        <entry key="..\:/Users/SMART/AndroidStudioProjects/PotatoDaily/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/PotatoDaily/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/PotatoDaily/app/src/main/res/layout/fragment_notifications.xml" value="0.25" />
+        <entry key="..\:/Users/SMART/AndroidStudioProjects/PotatoDaily/app/src/main/res/layout/simple_list_item_1.xml" value="0.2630208333333333" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/PotatoDaily/app/src/main/res/layout/test.xml" value="0.5" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/PotatoDaily/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36614583333333334" />
       </map>

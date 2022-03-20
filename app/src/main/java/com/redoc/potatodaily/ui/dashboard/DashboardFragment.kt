@@ -1,6 +1,8 @@
 package com.redoc.potatodaily.ui.dashboard
 
 import android.app.AlertDialog
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +10,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,9 +19,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager.VERTICAL
+import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.FragmentDashboardBinding
 import com.redoc.potatodaily.db.BoardEntity
 import com.redoc.potatodaily.ui.dashboard.DashAddActivity.Companion.TAG
+import java.util.*
+import kotlin.collections.ArrayList
 
 class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
 
@@ -35,6 +42,27 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
     ): View? {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+            val data = resources.getStringArray(R.array.itemList)
+            val adapter = ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, data)
+            binding.time.adapter = adapter
+
+
+        binding.time.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (position != 0) Toast.makeText(context, data[position], Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+        }
+
 
         return root
     }

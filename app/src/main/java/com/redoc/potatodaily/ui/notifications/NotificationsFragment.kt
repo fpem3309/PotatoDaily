@@ -52,13 +52,6 @@ class NotificationsFragment : Fragment() {
         test.add(PieEntry(1.2f, ResourcesCompat.getDrawable(resources,R.drawable.very_badchart,null)))
 
 
-
-//        test.add(PieEntry(1.2f, ResourcesCompat.getDrawable(resources,R.drawable.very_good,null)))
-//        test.add(PieEntry(1.2f,ResourcesCompat.getDrawable(resources,R.drawable.good,null)))
-//        test.add(PieEntry(1.2f,ResourcesCompat.getDrawable(resources,R.drawable.soso,null)))
-//        test.add(PieEntry(1.2f,ResourcesCompat.getDrawable(resources,R.drawable.bad,null)))
-//        test.add(PieEntry(1.2f,ResourcesCompat.getDrawable(resources,R.drawable.very_bad,null)))
-
         val colorsItems = ArrayList<Int>()
         for( c in ColorTemplate.VORDIPLOM_COLORS) colorsItems.add(c)
         for( c in ColorTemplate.JOYFUL_COLORS) colorsItems.add(c)

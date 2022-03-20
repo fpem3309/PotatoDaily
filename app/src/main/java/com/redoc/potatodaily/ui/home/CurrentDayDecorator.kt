@@ -22,8 +22,6 @@ class CurrentDayDecorator(context: Context?, currentDay: CalendarDay, moodlist: 
     private var mood = moodlist
 
 
-
-
     override fun shouldDecorate(day: CalendarDay): Boolean {
         return day == myDay
     }
