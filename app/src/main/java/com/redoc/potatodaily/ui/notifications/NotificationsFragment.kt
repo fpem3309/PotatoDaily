@@ -45,11 +45,11 @@ class NotificationsFragment : Fragment() {
         chart.setUsePercentValues(true)
 
         val test = ArrayList<PieEntry>()
-        test.add(PieEntry(1.2f, "매우 좋음",ResourcesCompat.getDrawable(resources,R.drawable.very_good,null),null))
-        test.add(PieEntry(1.2f, "좋음"))
-        test.add(PieEntry(1.2f, "보통"))
-        test.add(PieEntry(1.2f, "나쁨"))
-        test.add(PieEntry(1.2f, "매우 나쁨"))
+        test.add(PieEntry(1.2f, ResourcesCompat.getDrawable(resources,R.drawable.very_goodchart,null)))
+        test.add(PieEntry(1.2f, ResourcesCompat.getDrawable(resources,R.drawable.goodchart,null)))
+        test.add(PieEntry(1.2f, ResourcesCompat.getDrawable(resources,R.drawable.sosochart,null)))
+        test.add(PieEntry(1.2f, ResourcesCompat.getDrawable(resources,R.drawable.badchart,null)))
+        test.add(PieEntry(1.2f, ResourcesCompat.getDrawable(resources,R.drawable.very_badchart,null)))
 
 
 
@@ -71,7 +71,7 @@ class NotificationsFragment : Fragment() {
         pieDataSet.apply {
             colors = colorsItems
             valueTextColor = Color.BLACK
-            valueTextSize = 16f
+            valueTextSize = 0f
         }
 
         val pieData = PieData(pieDataSet)
