@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="itemList">
-        <item>선택안함</item>
-        <item>촛불</item>
-        <item>강낭콩</item>
-        <item>담쟁이</item>
+    <string-array name="MonthList">
+        <item>1월</item>
+        <item>2월</item>
+        <item>3월</item>
+        <item>4월</item>
+        <item>5월</item>
+        <item>6월</item>
+        <item>7월</item>
+        <item>8월</item>
+        <item>9월</item>
+        <item>10월</item>
+        <item>11월</item>
+        <item>12월</item>
+    </string-array>
+
+    <string-array name="YearList">
+        <item>2022년</item>
+        <item>2023년</item>
+        <item>2024년</item>
+        <item>2025년</item>
+        <item>2026년</item>
+        <item>2027년</item>
+        <item>2028년</item>
+        <item>2029년</item>
+        <item>2030년</item>
     </string-array>
 </resources>

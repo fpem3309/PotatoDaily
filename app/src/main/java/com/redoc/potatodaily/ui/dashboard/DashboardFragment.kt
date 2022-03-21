@@ -23,6 +23,7 @@ import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.FragmentDashboardBinding
 import com.redoc.potatodaily.db.BoardEntity
 import com.redoc.potatodaily.ui.dashboard.DashAddActivity.Companion.TAG
+import java.time.LocalDateTime
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -35,6 +36,10 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
     lateinit var viewModel: DashboardViewModel
     lateinit var recyclerViewAdapter: RecyclerViewAdapter
 
+    lateinit var monthData: Array<String>
+
+    private val now: LocalDateTime = LocalDateTime.now()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,19 +48,25 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-            val data = resources.getStringArray(R.array.itemList)
-            val adapter = ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, data)
-            binding.time.adapter = adapter
+        val yearData = resources.getStringArray(R.array.YearList)
+
+        monthData = resources.getStringArray(R.array.MonthList)
 
 
-        binding.time.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+        val yearAdapter = ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, yearData)
+        binding.year.adapter = yearAdapter
+
+        val monthAdapter= ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, monthData)
+        binding.month.adapter = monthAdapter
+
+        binding.year.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
                 id: Long
             ) {
-                if (position != 0) Toast.makeText(context, data[position], Toast.LENGTH_SHORT)
+                if (position != 0) Toast.makeText(context, yearData[position], Toast.LENGTH_SHORT)
                     .show()
             }
 
@@ -85,41 +96,38 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         // 가져올 뷰모델 클래스를 넣어서 뷰모델 가져오기
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
-        // 뷰 모델이 가지고있는 값의 변경사항을 관찰할 수 있는 라이브 데이터를 옵저빙한다
-        viewModel.getAllBoardObservers().observe(this, Observer {
-            recyclerViewAdapter.setListData(ArrayList(it))
-            recyclerViewAdapter.notifyDataSetChanged()
-        })
+        val nowMonth = now.toString().substring(6,7)
+        Log.d("로그 현재달", nowMonth)
 
-//        binding.btnSave.setOnClickListener {
-//            var title = binding.name.text.toString()
-//            var content = binding.email.text.toString()
-//            var mood = binding.mdResult.text.toString()
-//            var weather = "[test]"
-//            var people = "[test]"
-//            var school = "[test]"
-//            var couple = "[test]"
-//            var eat = "[test]"
-//            var goods = "[test]"
-//            var img = "test"
-//
-//            if(binding.btnSave.text.equals("Save")) {
-//                val board = BoardEntity(0, title, content, mood, weather,people,school,couple,eat,goods,img)
-//                Log.d(TAG+">>",""+board)
-//                viewModel.insertBoard(board)
-//            } else{
-//                val board = BoardEntity(binding.name.getTag(binding.name.id).toString().toInt(), title, content, mood, weather,people,school,couple,eat,goods,img)
-//                viewModel.updateBoard(board)
-//                binding.btnSave.setText("Save")
-//            }
-//            binding.name.setText("")
-//            binding.email.setText("")
-//        }
+        binding.month.setSelection(nowMonth.toInt()-1)  // 현재 3월이면 -1해서 index값이 2인 3월
 
-//        binding.btnAdd.setOnClickListener{
-//            val intent = Intent(context, DashAddActivity::class.java)
-//            startActivity(intent)
-//        }
+        binding.month.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (position != 0) Toast.makeText(context, monthData[position], Toast.LENGTH_SHORT)
+                    .show()
+
+                val month = viewModel.getDayBoardObservers(monthData[position].substring(0,monthData[position].length-1))
+
+                Log.d("로그ㅋㅋㅋㅋ", month.toString())
+
+                // 뷰 모델이 가지고있는 값의 변경사항을 관찰할 수 있는 라이브 데이터를 옵저빙한다
+                viewModel.getAllBoardObservers().observe(this@DashboardFragment, Observer {
+                    recyclerViewAdapter.setListData(month as ArrayList<BoardEntity>)
+                    recyclerViewAdapter.notifyDataSetChanged()
+                })
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+        }
+
+
+
 
     }
 

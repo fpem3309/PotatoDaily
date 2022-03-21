@@ -27,6 +27,13 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
         return allBoards
     }
 
+    fun getDayBoardObservers(resultDate: String): List<BoardEntity>? {
+        val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
+        val list = boardDao?.getMonthBoard(resultDate)
+        Log.d(TAG+"getDayBoardObservers","$list")
+        return list
+    }
+
     fun getDayBoard(resultDate: String): List<BoardEntity>? {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         val list = boardDao?.getDayBoard(resultDate)
