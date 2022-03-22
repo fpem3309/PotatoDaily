@@ -48,31 +48,11 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val yearData = resources.getStringArray(R.array.YearList)
 
         monthData = resources.getStringArray(R.array.MonthList)
 
-
-        val yearAdapter = ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, yearData)
-        binding.year.adapter = yearAdapter
-
         val monthAdapter= ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, monthData)
         binding.month.adapter = monthAdapter
-
-        binding.year.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                if (position != 0) Toast.makeText(context, yearData[position], Toast.LENGTH_SHORT)
-                    .show()
-            }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-            }
-        }
 
 
         return root
@@ -96,11 +76,19 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         // 가져올 뷰모델 클래스를 넣어서 뷰모델 가져오기
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
-        val nowMonth = now.toString().substring(6,7)
-        Log.d("로그 현재달", nowMonth)
+        val nowMonth = now.toString().substring(6,7) // 현재 month
+        binding.month.setSelection(nowMonth.toInt()-1)  // 현재 3월이면 -1해서 index값이 2인 3월이 spinner set
 
-        binding.month.setSelection(nowMonth.toInt()-1)  // 현재 3월이면 -1해서 index값이 2인 3월
+        var month = viewModel.getDayBoardObservers(nowMonth) //현재월의 board
 
+        // 뷰 모델이 가지고있는 값의 변경사항을 관찰할 수 있는 라이브 데이터를 옵저빙한다
+        viewModel.getAllBoardObservers().observe(this@DashboardFragment, Observer {
+            recyclerViewAdapter.setListData(month as ArrayList<BoardEntity>) //현재월을 set
+            recyclerViewAdapter.notifyDataSetChanged()
+        })
+
+
+        // spinner month 눌렀을때
         binding.month.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -111,7 +99,7 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
                 if (position != 0) Toast.makeText(context, monthData[position], Toast.LENGTH_SHORT)
                     .show()
 
-                val month = viewModel.getDayBoardObservers(monthData[position].substring(0,monthData[position].length-1))
+                month = viewModel.getDayBoardObservers(monthData[position].substring(0,monthData[position].length-1))
 
                 Log.d("로그ㅋㅋㅋㅋ", month.toString())
 
@@ -125,8 +113,6 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
         }
-
-
 
 
     }

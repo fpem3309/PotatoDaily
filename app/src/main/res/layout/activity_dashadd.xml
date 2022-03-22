@@ -19,7 +19,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/md_card"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:elevation="10dp"
         app:cardCornerRadius="10dp"
@@ -45,7 +45,7 @@
         <RadioGroup
             android:id="@+id/md_group"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="horizontal"
@@ -54,40 +54,97 @@
 
             <RadioButton
                 android:id="@+id/md_veryGood"
-                android:button="@null"
-                android:background="@drawable/very_good_radio"
                 android:layout_width="50dp"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/very_good_radio"
+                android:button="@null" />
 
             <RadioButton
                 android:id="@+id/md_good"
-                android:button="@null"
-                android:background="@drawable/good_radio"
                 android:layout_width="50dp"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/good_radio"
+                android:button="@null" />
 
             <RadioButton
                 android:id="@+id/md_soso"
-                android:button="@null"
-                android:background="@drawable/soso_radio"
                 android:layout_width="50dp"
-                android:layout_height="50dp" />
+                android:layout_height="55dp"
+                android:background="@drawable/soso_radio"
+                android:button="@null" />
 
             <RadioButton
                 android:id="@+id/md_bad"
-                android:button="@null"
-                android:background="@drawable/bad_radio"
                 android:layout_width="50dp"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/bad_radio"
+                android:button="@null" />
 
             <RadioButton
                 android:id="@+id/md_veryBad"
-                android:button="@null"
-                android:background="@drawable/very_bad_radio"
                 android:layout_width="50dp"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/very_bad_radio"
+                android:button="@null" />
 
         </RadioGroup>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_vg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="매우좋음"
+                android:layout_marginRight="30dp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_g"
+                app:layout_constraintTop_toTopOf="@+id/tv_g" />
+
+            <TextView
+                android:id="@+id/tv_g"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="35dp"
+                android:text="좋음"
+                app:layout_constraintEnd_toStartOf="@+id/tv_s"
+                app:layout_constraintTop_toTopOf="@+id/tv_s" />
+
+            <TextView
+                android:id="@+id/tv_s"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="보통"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="80dp"/>
+
+            <TextView
+                android:id="@+id/tv_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="나쁨"
+                android:layout_marginLeft="35dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_s"
+                app:layout_constraintTop_toTopOf="@+id/tv_s" />
+
+            <TextView
+                android:id="@+id/tv_vb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="매우나쁨"
+                android:layout_marginLeft="30dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_b"
+                app:layout_constraintTop_toTopOf="@+id/tv_b" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -111,8 +168,8 @@
                 android:id="@+id/breakfast"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:button="@null"
                 android:background="@drawable/breakfast_chkbox"
+                android:button="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -120,8 +177,8 @@
                 android:id="@+id/lunch"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:button="@null"
                 android:background="@drawable/lunch_chkbox"
+                android:button="@null"
                 app:layout_constraintStart_toEndOf="@+id/breakfast"
                 app:layout_constraintTop_toTopOf="@+id/breakfast" />
 
@@ -129,8 +186,8 @@
                 android:id="@+id/dinner"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:button="@null"
                 android:background="@drawable/dinner_chkbox"
+                android:button="@null"
                 app:layout_constraintStart_toEndOf="@+id/lunch"
                 app:layout_constraintTop_toTopOf="@+id/lunch" />
 
@@ -138,12 +195,56 @@
                 android:id="@+id/midnightSnack"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:button="@null"
                 android:background="@drawable/mid_chkbox"
+                android:button="@null"
                 app:layout_constraintStart_toEndOf="@+id/dinner"
                 app:layout_constraintTop_toTopOf="@+id/dinner" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_break"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="85dp"
+                android:layout_marginTop="80dp"
+                android:text="아침"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_lunch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="점심"
+                android:layout_marginLeft="20dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_break"
+                app:layout_constraintTop_toTopOf="@+id/tv_break" />
+
+            <TextView
+                android:id="@+id/tv_dinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="저녁"
+                android:layout_marginLeft="25dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_lunch"
+                app:layout_constraintTop_toTopOf="@+id/tv_lunch" />
+
+            <TextView
+                android:id="@+id/tv_mid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="야식"
+                android:layout_marginLeft="25dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_dinner"
+                app:layout_constraintTop_toTopOf="@+id/tv_dinner" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -184,8 +285,9 @@
                 android:id="@+id/rainy"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:button="@null"
                 android:background="@drawable/rainy_chkbox"
+                android:gravity="center"
+                android:button="@null"
                 app:layout_constraintStart_toEndOf="@+id/cloudy"
                 app:layout_constraintTop_toTopOf="@+id/cloudy" />
 
@@ -206,6 +308,63 @@
                 android:background="@drawable/windy_chkbox"
                 app:layout_constraintStart_toEndOf="@+id/snowy"
                 app:layout_constraintTop_toTopOf="@+id/snowy" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_sunny"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="흐림"
+                android:layout_marginRight="25dp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_cloudy"
+                app:layout_constraintTop_toTopOf="@+id/tv_cloudy" />
+
+            <TextView
+                android:id="@+id/tv_cloudy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="흐림"
+                android:layout_marginRight="30dp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_rainy"
+                app:layout_constraintTop_toTopOf="@+id/tv_rainy" />
+
+            <TextView
+                android:id="@+id/tv_rainy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:text="비"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_snowy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="눈"
+                android:layout_marginLeft="37dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_rainy"
+                app:layout_constraintTop_toTopOf="@+id/tv_rainy" />
+
+            <TextView
+                android:id="@+id/tv_windy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="바람"
+                android:layout_marginLeft="33dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_snowy"
+                app:layout_constraintTop_toTopOf="@+id/tv_snowy" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -270,6 +429,59 @@
                 app:layout_constraintStart_toEndOf="@+id/businessFriend"
                 app:layout_constraintTop_toTopOf="@+id/businessFriend" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_friend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="친구"
+                android:layout_marginRight="25dp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_family"
+                app:layout_constraintTop_toTopOf="@+id/tv_family" />
+
+            <TextView
+                android:id="@+id/tv_family"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="가족"
+                android:layout_marginRight="25dp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_coupleFriend"
+                app:layout_constraintTop_toTopOf="@+id/tv_coupleFriend" />
+
+            <TextView
+                android:id="@+id/tv_coupleFriend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:text="연인"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_businessFriend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="지인"
+                android:layout_marginLeft="25dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_coupleFriend"
+                app:layout_constraintTop_toTopOf="@+id/tv_coupleFriend" />
+
+            <TextView
+                android:id="@+id/tv_not"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="안 만남"
+                android:layout_marginLeft="18dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_businessFriend"
+                app:layout_constraintTop_toTopOf="@+id/tv_businessFriend" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -333,6 +545,59 @@
                 app:layout_constraintStart_toEndOf="@+id/test"
                 app:layout_constraintTop_toTopOf="@+id/test" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_classtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="수업"
+                android:layout_marginRight="25dp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_study"
+                app:layout_constraintTop_toTopOf="@+id/tv_study" />
+
+            <TextView
+                android:id="@+id/tv_study"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="공부"
+                android:layout_marginRight="25dp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_assignment"
+                app:layout_constraintTop_toTopOf="@+id/tv_assignment" />
+
+            <TextView
+                android:id="@+id/tv_assignment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:text="과제"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시험"
+                android:layout_marginLeft="22dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_assignment"
+                app:layout_constraintTop_toTopOf="@+id/tv_assignment" />
+
+            <TextView
+                android:id="@+id/tv_team"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="팀플"
+                android:layout_marginLeft="27dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_test"
+                app:layout_constraintTop_toTopOf="@+id/tv_test" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -396,6 +661,59 @@
                 app:layout_constraintStart_toEndOf="@+id/conflict"
                 app:layout_constraintTop_toTopOf="@+id/conflict" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_dateCouple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="데이트"
+                android:layout_marginRight="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_anniversary"
+                app:layout_constraintTop_toTopOf="@+id/tv_anniversary" />
+
+            <TextView
+                android:id="@+id/tv_anniversary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기념일"
+                android:layout_marginRight="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_gift"
+                app:layout_constraintTop_toTopOf="@+id/tv_gift" />
+
+            <TextView
+                android:id="@+id/tv_gift"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:text="선물"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_conflict"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="다툼"
+                android:layout_marginLeft="22dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_gift"
+                app:layout_constraintTop_toTopOf="@+id/tv_gift" />
+
+            <TextView
+                android:id="@+id/tv_love"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="관계"
+                android:layout_marginLeft="27dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_conflict"
+                app:layout_constraintTop_toTopOf="@+id/tv_conflict" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
 
@@ -461,6 +779,59 @@
                 app:layout_constraintStart_toEndOf="@+id/snack"
                 app:layout_constraintTop_toTopOf="@+id/snack" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_alcohol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="술"
+                android:layout_marginRight="30dp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_smoking"
+                app:layout_constraintTop_toTopOf="@+id/tv_smoking" />
+
+            <TextView
+                android:id="@+id/tv_smoking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="담배"
+                android:layout_marginRight="25dp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_coffee"
+                app:layout_constraintTop_toTopOf="@+id/tv_coffee" />
+
+            <TextView
+                android:id="@+id/tv_coffee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:text="커피"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_snack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="간식"
+                android:layout_marginLeft="25dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_coffee"
+                app:layout_constraintTop_toTopOf="@+id/tv_coffee" />
+
+            <TextView
+                android:id="@+id/tv_drink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="음료"
+                android:layout_marginLeft="25dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_snack"
+                app:layout_constraintTop_toTopOf="@+id/tv_snack" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
