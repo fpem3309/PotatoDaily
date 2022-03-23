@@ -8,10 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.ViewCompat.animate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.widget.ViewPager2
 import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -20,6 +23,7 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.FragmentNotificationsBinding
 import com.redoc.potatodaily.ui.dashboard.DashboardViewModel
+import com.redoc.potatodaily.ui.dashboard.PagerRecyclerAdapter
 
 class NotificationsFragment : Fragment() {
 
@@ -53,6 +57,8 @@ class NotificationsFragment : Fragment() {
 
         var chart = binding.pieChart
         chart.setUsePercentValues(true)
+
+        chart.legend.isEnabled = false // x-Values List false 안보이게
 
         val pieList = ArrayList<PieEntry>()
 
@@ -98,8 +104,32 @@ class NotificationsFragment : Fragment() {
         }
 
 
+        // Adapter를 생성하면서 넘길 색상이 담긴 ArrayList<Int> 생성
+        var bgColors = arrayListOf<Int>(
+            R.color.purple_500,
+            R.color.white,
+            R.color.teal_200,
+            R.color.purple_200,
+            R.color.teal_700
+        )
+
+        // RecyclerView.Adapter<ViewHolder>()
+        binding.viewpager.adapter = PagerRecyclerAdapter(bgColors)
+        // ViewPager의 Paging 방향은 Horizontal
+        binding.viewpager.orientation =  ViewPager2.ORIENTATION_HORIZONTAL
+        binding.viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+
+            // Paging 완료되면 호출
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                Log.d("로그ViewPagerFragment", "Page ${position+1}")
+            }
+        })
+
+
         return root
     }
+
 
 
     override fun onDestroyView() {

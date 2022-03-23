@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager.VERTICAL
+import androidx.viewpager2.widget.ViewPager2
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.FragmentDashboardBinding
 import com.redoc.potatodaily.db.BoardEntity
@@ -67,8 +68,6 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
             recyclerViewAdapter = RecyclerViewAdapter(this@DashboardFragment)
             adapter = recyclerViewAdapter
 
-            val divider = DividerItemDecoration(context, VERTICAL)
-            addItemDecoration(divider)
         }
 
         // 뷰 모델 프로바이더를 통해 뷰모델 가져오기
