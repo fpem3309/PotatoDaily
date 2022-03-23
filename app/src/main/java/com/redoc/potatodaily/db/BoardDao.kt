@@ -14,6 +14,9 @@ interface BoardDao {
     @Query("SELECT * FROM board WHERE substr(date,6,1) =:month")
     fun getMonthBoard(month: String) : List<BoardEntity>?
 
+    @Query("SELECT count(*) FROM board WHERE mood =:mood")
+    fun getMoodBoard(mood: String) : Int?
+
     @Insert
     fun insertBoard(board : BoardEntity?)
 

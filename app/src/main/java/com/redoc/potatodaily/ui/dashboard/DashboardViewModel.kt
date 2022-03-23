@@ -41,6 +41,13 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
         return list
     }
 
+    fun getMoodBoard(mood: String): Int? {
+        val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
+        val cnt = boardDao?.getMoodBoard(mood)
+        Log.d(TAG+"getMoodBoard","$cnt")
+        return cnt
+    }
+
     private fun getAllBoard() {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         val list = boardDao?.getAllBoard()
