@@ -78,7 +78,6 @@ class HomeFragment : Fragment() {
 
             for(i: Int in 0..board.size-1){
                 board[i].date
-                Log.d("로그board2", board[i].date)
                 calList.add(CalendarDay.from(java.sql.Date.valueOf(board[i].date)))
                 moodlist.add(board[i].mood)
             }

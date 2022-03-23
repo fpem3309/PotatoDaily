@@ -57,6 +57,7 @@ class RecyclerViewAdapter(val listener: RowClickListener) :
 
         private val tvTitle = binding.tvTitle
         private val tvContent = binding.tvContent
+        private val tvWriteDate = binding.tvWriteDate
 
         private val imgMood = binding.imgMood
         private val imgSunny = binding.imgSunny
@@ -102,9 +103,10 @@ class RecyclerViewAdapter(val listener: RowClickListener) :
         fun bind(data: BoardEntity) {
             tvTitle.text = data.title
             tvContent.text = data.content
+            tvWriteDate.text = data.date
 
             //img
-            Log.d(TAG + "imgUri", data.img)
+            //Log.d(TAG + "imgUri", data.img)
             if (data.img == "null")imgDaily.visibility = GONE else imgDaily.setImageURI(Uri.parse(data.img))
 
             //moood

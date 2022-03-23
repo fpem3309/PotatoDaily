@@ -3,6 +3,7 @@
     <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -33,16 +34,24 @@
                 app:layout_constraintEnd_toStartOf="@+id/deleteBoardID"
                 app:layout_constraintTop_toTopOf="@+id/deleteBoardID" />
 
+            <TextView
+                android:id="@+id/tv_writeDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageView
                 android:id="@+id/img_daily"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:scaleType="centerCrop"
-                android:layout_marginStart="50dp"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/ic_home_black_24dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="@+id/tv_writeDate"
+                app:layout_constraintTop_toBottomOf="@+id/tv_writeDate" />
 
 
             <TextView
