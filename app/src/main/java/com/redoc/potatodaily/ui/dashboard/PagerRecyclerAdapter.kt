@@ -1,39 +1,42 @@
 package com.redoc.potatodaily.ui.dashboard
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.annotation.ColorRes
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.redoc.potatodaily.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class PagerRecyclerAdapter(private val bgColors: ArrayList<Int>) : RecyclerView.Adapter<PagerRecyclerAdapter.PagerViewHolder>() {
+    class PagerRecyclerAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
 
-    inner class PagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var fragments : ArrayList<Fragment> = ArrayList()
 
-        private val pageName: TextView = itemView.findViewById(R.id.pageName)
-
-        fun bind(@ColorRes bgColor: Int, position: Int) {
-            pageName.text = "Page ${position+1}"
-            pageName.setBackgroundColor(ContextCompat.getColor(pageName.context, bgColor))
-
+        override fun getItemCount(): Int {
+            return fragments.size
         }
-    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.item_view,
-            parent,
-            false
-        )
-        return PagerViewHolder(view)
-    }
-    override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
-        holder.bind(bgColors[position], position)
-    }
+        override fun createFragment(position: Int): Fragment {
+            return fragments[position]
+        }
 
-    override fun getItemCount(): Int = bgColors.size
-}
+        fun addFragment(fragment: Fragment) {
+            fragments.add(fragment)
+            notifyItemInserted(fragments.size-1)
+        }
+
+        fun removeFragment() {
+            fragments.removeLast()
+            notifyItemRemoved(fragments.size)
+        }
+
+
+
+
+//    inner class PagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+//
+//        private val pageName: TextView = itemView.findViewById(R.id.pageName)
+//
+//        fun bind(@ColorRes bgColor: Int, position: Int) {
+//            pageName.text = "Page ${position+1}"
+//            pageName.setBackgroundColor(ContextCompat.getColor(pageName.context, bgColor))
+//
+//        }
+//    }
+    }

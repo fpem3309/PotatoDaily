@@ -33,13 +33,6 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
         return allBoards
     }
 
-//    fun getMonthBoard(resultDate: String): List<BoardEntity>? {
-//        val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
-//        val list = boardDao?.getMonthBoard(resultDate)
-//        Log.d(TAG+"getDayBoardObservers","$list")
-//        return list
-//    }
-
     fun getMonthBoard(resultDate: String) {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         val list = boardDao?.getMonthBoard(resultDate)
@@ -58,6 +51,14 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
     fun getMoodBoard(mood: String): Int? {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         val cnt = boardDao?.getMoodBoard(mood)
+        Log.d(TAG+"getMoodBoard","$cnt")
+        return cnt
+    }
+
+    //Barchart
+    fun getMealBoard(eat: String): Int? {
+        val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
+        val cnt = boardDao?.getMealBoard(eat)
         Log.d(TAG+"getMoodBoard","$cnt")
         return cnt
     }

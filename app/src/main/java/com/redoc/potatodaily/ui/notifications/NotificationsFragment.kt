@@ -114,13 +114,19 @@ class NotificationsFragment : Fragment() {
         )
 
         // RecyclerView.Adapter<ViewHolder>()
-        binding.viewpager.adapter = PagerRecyclerAdapter(bgColors)
+        //binding.viewpager.adapter = PagerRecyclerAdapter(bgColors)
         // ViewPager의 Paging 방향은 Horizontal
-        binding.viewpager.orientation =  ViewPager2.ORIENTATION_HORIZONTAL
+        //binding.viewpager.orientation =  ViewPager2.ORIENTATION_HORIZONTAL
+
+        val pagerAdapter = PagerRecyclerAdapter(requireActivity())
+
+        pagerAdapter.addFragment(MealFragment())
+        pagerAdapter.addFragment(DashboardFragment())
+
+        binding.viewpager.adapter = pagerAdapter
 
 
-
-            binding.viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        binding.viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
 
             // Paging 완료되면 호출
             override fun onPageSelected(position: Int) {

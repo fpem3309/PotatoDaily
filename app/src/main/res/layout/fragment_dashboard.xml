@@ -10,7 +10,7 @@
         android:id="@+id/month"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
+        android:spinnerMode="dialog"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

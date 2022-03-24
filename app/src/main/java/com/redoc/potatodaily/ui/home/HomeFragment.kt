@@ -74,7 +74,6 @@ class HomeFragment : Fragment() {
             var moodlist = ArrayList<String>()
 
             val board = it
-            Log.d("로그board", board.toString())
 
             for(i: Int in 0..board.size-1){
                 board[i].date
