@@ -27,12 +27,26 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
         return allBoards
     }
 
-    fun getMonthBoard(resultDate: String): List<BoardEntity>? {
+
+    fun getMonthBoardObservers(month: String): MutableLiveData<List<BoardEntity>> {
+        getMonthBoard(month)
+        return allBoards
+    }
+
+//    fun getMonthBoard(resultDate: String): List<BoardEntity>? {
+//        val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
+//        val list = boardDao?.getMonthBoard(resultDate)
+//        Log.d(TAG+"getDayBoardObservers","$list")
+//        return list
+//    }
+
+    fun getMonthBoard(resultDate: String) {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         val list = boardDao?.getMonthBoard(resultDate)
-        Log.d(TAG+"getDayBoardObservers","$list")
-        return list
+        Log.d(TAG+"getMonthBoard2","$list")
+        allBoards.postValue(list!!)
     }
+
 
     fun getDayBoard(resultDate: String): List<BoardEntity>? {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
@@ -64,7 +78,8 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
     fun deleteBoard(entity: BoardEntity){
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         boardDao?.deleteBoard(entity)
-        getAllBoard()
+        //getAllBoard()
+        getMonthBoard(entity.date.substring(5,6))
     }
 
     fun updateBoard(entity: BoardEntity){

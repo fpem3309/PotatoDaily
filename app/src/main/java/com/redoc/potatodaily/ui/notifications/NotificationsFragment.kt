@@ -6,24 +6,23 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.ViewCompat.animate
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.github.mikephil.charting.animation.Easing
-import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.FragmentNotificationsBinding
+import com.redoc.potatodaily.ui.dashboard.DashboardFragment
 import com.redoc.potatodaily.ui.dashboard.DashboardViewModel
 import com.redoc.potatodaily.ui.dashboard.PagerRecyclerAdapter
+import com.redoc.potatodaily.ui.home.HomeFragment
 
 class NotificationsFragment : Fragment() {
 
@@ -33,6 +32,7 @@ class NotificationsFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val NUM_PAGES = 3
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -117,7 +117,10 @@ class NotificationsFragment : Fragment() {
         binding.viewpager.adapter = PagerRecyclerAdapter(bgColors)
         // ViewPager의 Paging 방향은 Horizontal
         binding.viewpager.orientation =  ViewPager2.ORIENTATION_HORIZONTAL
-        binding.viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+
+
+
+            binding.viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
 
             // Paging 완료되면 호출
             override fun onPageSelected(position: Int) {

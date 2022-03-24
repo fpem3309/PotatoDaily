@@ -1,9 +1,6 @@
 package com.redoc.potatodaily.ui.dashboard
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -14,14 +11,10 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager.VERTICAL
-import androidx.viewpager2.widget.ViewPager2
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.FragmentDashboardBinding
 import com.redoc.potatodaily.db.BoardEntity
@@ -51,12 +44,13 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
         monthData = resources.getStringArray(R.array.MonthList)
 
         val monthAdapter= ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, monthData)
         binding.month.adapter = monthAdapter
 
+        val nowMonth = now.toString().substring(6,7) // 현재 month
+        binding.month.setSelection(nowMonth.toInt()-1)  // 현재 3월이면 -1해서 index값이 2인 3월이 spinner set
 
         return root
     }
@@ -72,19 +66,19 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
 
         }
 
+
         // 뷰 모델 프로바이더를 통해 뷰모델 가져오기
         // 라이프사이클을 가지고 있는 녀석을 넣어줌(자기 자신)
         // 가져올 뷰모델 클래스를 넣어서 뷰모델 가져오기
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
-        val nowMonth = now.toString().substring(6,7) // 현재 month
-        binding.month.setSelection(nowMonth.toInt()-1)  // 현재 3월이면 -1해서 index값이 2인 3월이 spinner set
-
-        var month = viewModel.getMonthBoard(nowMonth) //현재월의 board
+        val sleMonth = binding.month.selectedItem.toString().substring(0,1)
 
         // 뷰 모델이 가지고있는 값의 변경사항을 관찰할 수 있는 라이브 데이터를 옵저빙한다
-        viewModel.getAllBoardObservers().observe(this@DashboardFragment, Observer {
-            recyclerViewAdapter.setListData(month as ArrayList<BoardEntity>) //현재월을 set
+        // 이때부턴 선택해놓은 spinner에 선택된 month 로
+        viewModel.getMonthBoardObservers(sleMonth).observe(this, Observer {
+            recyclerViewAdapter.setListData(ArrayList(it)) //현재월을 set
+            Log.d("로그잇", it.toString()+" 그리고 "+ArrayList(it))
             recyclerViewAdapter.notifyDataSetChanged()
         })
 
@@ -98,12 +92,12 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
                 id: Long
             ) {
                 if (position != 0) Toast.makeText(context, monthData[position], Toast.LENGTH_SHORT).show()
-                month = viewModel.getMonthBoard(monthData[position].substring(0,monthData[position].length-1))
 
+                val sleMonth = binding.month.selectedItem.toString().substring(0,1) // 선택한 spinner month
 
                 // 뷰 모델이 가지고있는 값의 변경사항을 관찰할 수 있는 라이브 데이터를 옵저빙한다
-                viewModel.getAllBoardObservers().observe(this@DashboardFragment, Observer {
-                    recyclerViewAdapter.setListData(month as ArrayList<BoardEntity>)
+                viewModel.getMonthBoardObservers(sleMonth).observe(this@DashboardFragment, Observer {
+                    recyclerViewAdapter.setListData(ArrayList(it))
                     recyclerViewAdapter.notifyDataSetChanged()
                 })
             }
@@ -112,9 +106,7 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
             }
         }
 
-
     }
-
 
     override fun onDeleteBoardClickListener(board: BoardEntity) {
 
@@ -130,7 +122,6 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         builder.setPositiveButton("삭제하기",dialog_listener)
         builder.setNegativeButton("취소",null)
         builder.show()
-
     }
 
     override fun onItemClickListener(board: BoardEntity) {
