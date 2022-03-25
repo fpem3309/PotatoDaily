@@ -25,18 +25,4 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
             fragments.removeLast()
             notifyItemRemoved(fragments.size)
         }
-
-
-
-
-//    inner class PagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//
-//        private val pageName: TextView = itemView.findViewById(R.id.pageName)
-//
-//        fun bind(@ColorRes bgColor: Int, position: Int) {
-//            pageName.text = "Page ${position+1}"
-//            pageName.setBackgroundColor(ContextCompat.getColor(pageName.context, bgColor))
-//
-//        }
-//    }
     }

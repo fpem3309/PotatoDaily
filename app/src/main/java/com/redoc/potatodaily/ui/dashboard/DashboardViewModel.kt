@@ -48,13 +48,6 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
         return list
     }
 
-    fun getMoodBoard(mood: String): Int? {
-        val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
-        val cnt = boardDao?.getMoodBoard(mood)
-        Log.d(TAG+"getMoodBoard","$cnt")
-        return cnt
-    }
-
     private fun getAllBoard() {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         val list = boardDao?.getAllBoard()
@@ -81,6 +74,13 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
         getAllBoard()
     }
 
+    //Piechart
+    fun getMoodBoard(mood: String): Int? {
+        val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
+        val cnt = boardDao?.getMoodBoard(mood)
+        Log.d(TAG+"getMoodBoard","$cnt")
+        return cnt
+    }
     //Barchart
     fun getMealBoard(eat: String): Int? {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
@@ -92,7 +92,12 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
     fun getWeatherBoard(weather: String): Int? {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         val cnt = boardDao?.getWeatherBoard(weather)
-        Log.d(TAG+"getWeatherBoard","$cnt")
+        return cnt
+    }
+
+    fun getPeopleBoard(people: String): Int? {
+        val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
+        val cnt = boardDao?.getPeopleBoard(people)
         return cnt
     }
 

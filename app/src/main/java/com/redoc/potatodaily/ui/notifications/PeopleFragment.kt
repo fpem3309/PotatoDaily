@@ -16,13 +16,13 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.FragmentMealBinding
-import com.redoc.potatodaily.databinding.FragmentNotificationsBinding
+import com.redoc.potatodaily.databinding.FragmentPeopleBinding
+import com.redoc.potatodaily.databinding.FragmentWeatherBinding
 import com.redoc.potatodaily.ui.dashboard.DashboardViewModel
 
-class MealFragment : Fragment() {
-
+class PeopleFragment : Fragment() {
     lateinit var viewModel: DashboardViewModel
-    private var _binding: FragmentMealBinding? = null
+    private var _binding: FragmentPeopleBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -32,24 +32,25 @@ class MealFragment : Fragment() {
     ): View? {
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
-        _binding = FragmentMealBinding.inflate(inflater, container, false)
+        _binding = FragmentPeopleBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val breakCnt = viewModel.getMealBoard("breakfast")
-        val lunchCnt = viewModel.getMealBoard("lunch")
-        val dinnerCnt = viewModel.getMealBoard("dinner")
-        val midCnt = viewModel.getMealBoard("midnightSnack")
-
+        val friendCnt = viewModel.getPeopleBoard("friend")
+        val familyCnt = viewModel.getPeopleBoard("family")
+        val coupleFriendCnt = viewModel.getPeopleBoard("coupleFriend")
+        val businessFriendCnt = viewModel.getPeopleBoard("businessFriend")
+        val notCnt = viewModel.getPeopleBoard("not")
 
         var chart = binding.barChart
 
         val entries = ArrayList<BarEntry>()
-        entries.add(BarEntry(1.0f,breakCnt!!.toFloat()))
-        entries.add(BarEntry(2.0f,lunchCnt!!.toFloat()))
-        entries.add(BarEntry(3.0f,dinnerCnt!!.toFloat()))
-        entries.add(BarEntry(4.0f,midCnt!!.toFloat()))
+        entries.add(BarEntry(1.0f,friendCnt!!.toFloat()))
+        entries.add(BarEntry(2.0f,familyCnt!!.toFloat()))
+        entries.add(BarEntry(3.0f,coupleFriendCnt!!.toFloat()))
+        entries.add(BarEntry(4.0f,businessFriendCnt!!.toFloat()))
+        entries.add(BarEntry(5.0f,notCnt!!.toFloat()))
 
-        var barDataSet = BarDataSet(entries,"식사")//데이터셋 초기화 하기
+        var barDataSet = BarDataSet(entries,"사람")//데이터셋 초기화 하기
 
         val dataSet :ArrayList<IBarDataSet> = ArrayList()
         dataSet.add(barDataSet)
@@ -63,14 +64,14 @@ class MealFragment : Fragment() {
             description.isEnabled = false //차트 옆에 별도로 표기되는 description이다. false로 설정하여 안보이게 했다.
             setPinchZoom(false) // 핀치줌(두손가락으로 줌인 줌 아웃하는것) 설정
 
-            axisLeft.run {
+            axisLeft.run {  //Y방향 축
                 axisMinimum = 0f // 최소값 0
                 granularity = 50f // 50 단위마다 선을 그리려고 granularity 설정 해 주었다.
             }
             xAxis.run {
                 position = XAxis.XAxisPosition.BOTTOM//X축을 아래에다가 둔다.
-                setDrawGridLines(false) // 격자
                 granularity = 1.0f //  단위만큼 간격 두기
+                setDrawGridLines(false) // 격자
                 valueFormatter = MyXAxisFormatter() // 축 라벨 값 바꿔주기 위함
             }
             axisRight.isEnabled = false // 오른쪽 Y축을 안보이게 해줌.
@@ -83,7 +84,7 @@ class MealFragment : Fragment() {
     }
 
     inner class MyXAxisFormatter : ValueFormatter(){
-        private val days = arrayOf("아침","점심","저녁","야식")
+        private val days = arrayOf("친구","가족","연인","지인","안 만남")
         override fun getAxisLabel(value: Float, axis: AxisBase?): String {
             return days.getOrNull(value.toInt()-1) ?: value.toString()
         }
