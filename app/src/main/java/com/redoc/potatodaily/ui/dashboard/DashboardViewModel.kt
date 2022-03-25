@@ -101,4 +101,22 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
         return cnt
     }
 
+    fun getSchoolBoard(school: String): Int? {
+        val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
+        val cnt = boardDao?.getSchoolBoard(school)
+        return cnt
+    }
+
+    fun getCoupleBoard(couple: String): Int? {
+        val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
+        val cnt = boardDao?.getCoupleBoard(couple)
+        return cnt
+    }
+
+    fun getGoodsBoard(goods: String): Int? {
+        val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
+        val cnt = boardDao?.getGoodsBoard(goods)
+        return cnt
+    }
+
 }

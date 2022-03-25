@@ -73,7 +73,9 @@ class MealFragment : Fragment() {
                 granularity = 1.0f //  단위만큼 간격 두기
                 valueFormatter = MyXAxisFormatter() // 축 라벨 값 바꿔주기 위함
             }
+            setTouchEnabled(false) // 그래프 터치해도 아무 변화없게 막음
             axisRight.isEnabled = false // 오른쪽 Y축을 안보이게 해줌.
+            axisLeft.isEnabled = false
             animateY(1000) // 밑에서부터 올라오는 애니매이션 적용
         }
 

@@ -123,6 +123,9 @@ class NotificationsFragment : Fragment() {
         pagerAdapter.addFragment(MealFragment())
         pagerAdapter.addFragment(WeatherFragment())
         pagerAdapter.addFragment(PeopleFragment())
+        pagerAdapter.addFragment(SchoolFragment())
+        pagerAdapter.addFragment(CoupleFragment())
+        pagerAdapter.addFragment(GoodsFragment())
 
         binding.viewpager.adapter = pagerAdapter
 

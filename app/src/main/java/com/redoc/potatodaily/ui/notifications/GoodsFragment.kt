@@ -15,13 +15,15 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.redoc.potatodaily.R
+import com.redoc.potatodaily.databinding.FragmentGoodsBinding
 import com.redoc.potatodaily.databinding.FragmentMealBinding
+import com.redoc.potatodaily.databinding.FragmentPeopleBinding
 import com.redoc.potatodaily.databinding.FragmentWeatherBinding
 import com.redoc.potatodaily.ui.dashboard.DashboardViewModel
 
-class WeatherFragment : Fragment() {
+class GoodsFragment : Fragment() {
     lateinit var viewModel: DashboardViewModel
-    private var _binding: FragmentWeatherBinding? = null
+    private var _binding: FragmentGoodsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -31,26 +33,25 @@ class WeatherFragment : Fragment() {
     ): View? {
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
-        _binding = FragmentWeatherBinding.inflate(inflater, container, false)
+        _binding = FragmentGoodsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val sunnyCnt = viewModel.getWeatherBoard("sunny")
-        val cludyCnt = viewModel.getWeatherBoard("cloudy")
-        val rainyCnt = viewModel.getWeatherBoard("rainy")
-        val snowyCnt = viewModel.getWeatherBoard("snowy")
-        val windyCnt = viewModel.getWeatherBoard("windy")
-
+        val alcoholCnt = viewModel.getGoodsBoard("alcohol")
+        val smokingCnt = viewModel.getGoodsBoard("smoking")
+        val coffeeCnt = viewModel.getGoodsBoard("coffee")
+        val snackCnt = viewModel.getGoodsBoard("snack")
+        val drinkCnt = viewModel.getGoodsBoard("drink")
 
         var chart = binding.barChart
 
         val entries = ArrayList<BarEntry>()
-        entries.add(BarEntry(1.0f,sunnyCnt!!.toFloat()))
-        entries.add(BarEntry(2.0f,cludyCnt!!.toFloat()))
-        entries.add(BarEntry(3.0f,rainyCnt!!.toFloat()))
-        entries.add(BarEntry(4.0f,snowyCnt!!.toFloat()))
-        entries.add(BarEntry(5.0f,windyCnt!!.toFloat()))
+        entries.add(BarEntry(1.0f,alcoholCnt!!.toFloat()))
+        entries.add(BarEntry(2.0f,smokingCnt!!.toFloat()))
+        entries.add(BarEntry(3.0f,coffeeCnt!!.toFloat()))
+        entries.add(BarEntry(4.0f,snackCnt!!.toFloat()))
+        entries.add(BarEntry(5.0f,drinkCnt!!.toFloat()))
 
-        var barDataSet = BarDataSet(entries,"날씨")//데이터셋 초기화 하기
+        var barDataSet = BarDataSet(entries,"기호품")//데이터셋 초기화 하기
 
         val dataSet :ArrayList<IBarDataSet> = ArrayList()
         dataSet.add(barDataSet)
@@ -86,7 +87,7 @@ class WeatherFragment : Fragment() {
     }
 
     inner class MyXAxisFormatter : ValueFormatter(){
-        private val days = arrayOf("맑음","구름","비","눈","바람")
+        private val days = arrayOf("술","담배","커피","간식","음료")
         override fun getAxisLabel(value: Float, axis: AxisBase?): String {
             return days.getOrNull(value.toInt()-1) ?: value.toString()
         }

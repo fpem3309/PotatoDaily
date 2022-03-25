@@ -14,6 +14,16 @@ interface BoardDao {
     @Query("SELECT * FROM board WHERE substr(date,6,1) =:month ORDER BY date DESC")
     fun getMonthBoard(month: String) : List<BoardEntity>?
 
+    @Insert
+    fun insertBoard(board : BoardEntity?)
+
+    @Delete
+    fun deleteBoard(board : BoardEntity?)
+
+    @Update
+    fun updateBoard(board: BoardEntity?)
+
+
     @Query("SELECT count(*) FROM board WHERE mood =:mood")
     fun getMoodBoard(mood: String) : Int?
 
@@ -26,12 +36,12 @@ interface BoardDao {
     @Query("SELECT count(*) FROM board WHERE people LIKE '%' || :people || '%'")
     fun getPeopleBoard(people: String) : Int?
 
-    @Insert
-    fun insertBoard(board : BoardEntity?)
+    @Query("SELECT count(*) FROM board WHERE school LIKE '%' || :school || '%'")
+    fun getSchoolBoard(school: String) : Int?
 
-    @Delete
-    fun deleteBoard(board : BoardEntity?)
+    @Query("SELECT count(*) FROM board WHERE couple LIKE '%' || :couple || '%'")
+    fun getCoupleBoard(couple: String) : Int?
 
-    @Update
-    fun updateBoard(board: BoardEntity?)
+    @Query("SELECT count(*) FROM board WHERE goods LIKE '%' || :goods || '%'")
+    fun getGoodsBoard(goods: String) : Int?
 }
