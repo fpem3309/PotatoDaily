@@ -1,11 +1,16 @@
 package com.redoc.potatodaily.ui.notifications
 
+import android.content.Context
+import android.content.res.TypedArray
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
@@ -57,6 +62,12 @@ class WeatherFragment : Fragment() {
         val data = BarData(dataSet)
         data.barWidth = 0.2f//막대 너비 설정하기
 
+        barDataSet.valueFormatter = object : ValueFormatter() {
+            override fun getFormattedValue(value: Float): String {
+                return (value.toInt().toString())
+            }
+        }
+
         chart.run {
             this.data = data //차트의 데이터를 data로 설정해줌.
             setFitBars(true)
@@ -87,6 +98,7 @@ class WeatherFragment : Fragment() {
 
     inner class MyXAxisFormatter : ValueFormatter(){
         private val days = arrayOf("맑음","구름","비","눈","바람")
+
         override fun getAxisLabel(value: Float, axis: AxisBase?): String {
             return days.getOrNull(value.toInt()-1) ?: value.toString()
         }

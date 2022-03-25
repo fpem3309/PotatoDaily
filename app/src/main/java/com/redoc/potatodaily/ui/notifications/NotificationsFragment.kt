@@ -104,20 +104,6 @@ class NotificationsFragment : Fragment() {
         }
 
 
-        // Adapter를 생성하면서 넘길 색상이 담긴 ArrayList<Int> 생성
-        var bgColors = arrayListOf<Int>(
-            R.color.purple_500,
-            R.color.white,
-            R.color.teal_200,
-            R.color.purple_200,
-            R.color.teal_700
-        )
-
-        // RecyclerView.Adapter<ViewHolder>()
-        //binding.viewpager.adapter = PagerRecyclerAdapter(bgColors)
-        // ViewPager의 Paging 방향은 Horizontal
-        //binding.viewpager.orientation =  ViewPager2.ORIENTATION_HORIZONTAL
-
         val pagerAdapter = PagerRecyclerAdapter(requireActivity())
 
         pagerAdapter.addFragment(MealFragment())
@@ -138,7 +124,6 @@ class NotificationsFragment : Fragment() {
                 Log.d("로그ViewPagerFragment", "Page ${position+1}")
             }
         })
-
 
         return root
     }

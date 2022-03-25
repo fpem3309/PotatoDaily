@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="mealCharf">#6BFF4A</color>
+    <color name="peopleCharf">#CF75FF</color>
+    <color name="schoolCharf">#7290FF</color>
+    <color name="coupleCharf">#FF75E1</color>
+    <color name="goodsCharf">#FFD760</color>
 </resources>

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
@@ -50,11 +51,18 @@ class MealFragment : Fragment() {
         entries.add(BarEntry(4.0f,midCnt!!.toFloat()))
 
         var barDataSet = BarDataSet(entries,"식사")//데이터셋 초기화 하기
+        barDataSet.color = ContextCompat.getColor(context!!,R.color.mealCharf)
 
         val dataSet :ArrayList<IBarDataSet> = ArrayList()
         dataSet.add(barDataSet)
         val data = BarData(dataSet)
         data.barWidth = 0.2f//막대 너비 설정하기
+
+        barDataSet.valueFormatter = object : ValueFormatter() {
+            override fun getFormattedValue(value: Float): String {
+                return (value.toInt().toString())
+            }
+        }
 
         chart.run {
             this.data = data //차트의 데이터를 data로 설정해줌.
@@ -78,6 +86,7 @@ class MealFragment : Fragment() {
             axisLeft.isEnabled = false
             animateY(1000) // 밑에서부터 올라오는 애니매이션 적용
         }
+
 
 
 

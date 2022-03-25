@@ -26,4 +26,10 @@
         <item>2029년</item>
         <item>2030년</item>
     </string-array>
+
+    <array name="sample_image">
+        <item>@drawable/sunny</item>
+        <item>@drawable/windy</item>
+    </array>
+
 </resources>
