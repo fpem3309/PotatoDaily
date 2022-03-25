@@ -20,6 +20,9 @@ interface BoardDao {
     @Query("SELECT count(*) FROM board WHERE eat LIKE '%' || :eat || '%'")
     fun getMealBoard(eat: String) : Int?
 
+    @Query("SELECT count(*) FROM board WHERE weather LIKE '%' || :weather || '%'")
+    fun getWeatherBoard(weather: String) : Int?
+
     @Insert
     fun insertBoard(board : BoardEntity?)
 

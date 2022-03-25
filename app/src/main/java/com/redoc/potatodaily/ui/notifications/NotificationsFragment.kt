@@ -121,7 +121,7 @@ class NotificationsFragment : Fragment() {
         val pagerAdapter = PagerRecyclerAdapter(requireActivity())
 
         pagerAdapter.addFragment(MealFragment())
-        pagerAdapter.addFragment(DashboardFragment())
+        pagerAdapter.addFragment(WeatherFragment())
 
         binding.viewpager.adapter = pagerAdapter
 

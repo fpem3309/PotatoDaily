@@ -55,14 +55,6 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
         return cnt
     }
 
-    //Barchart
-    fun getMealBoard(eat: String): Int? {
-        val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
-        val cnt = boardDao?.getMealBoard(eat)
-        Log.d(TAG+"getMoodBoard","$cnt")
-        return cnt
-    }
-
     private fun getAllBoard() {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         val list = boardDao?.getAllBoard()
@@ -88,4 +80,20 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
         boardDao?.updateBoard(entity)
         getAllBoard()
     }
+
+    //Barchart
+    fun getMealBoard(eat: String): Int? {
+        val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
+        val cnt = boardDao?.getMealBoard(eat)
+        Log.d(TAG+"getMoodBoard","$cnt")
+        return cnt
+    }
+
+    fun getWeatherBoard(weather: String): Int? {
+        val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
+        val cnt = boardDao?.getWeatherBoard(weather)
+        Log.d(TAG+"getWeatherBoard","$cnt")
+        return cnt
+    }
+
 }
