@@ -78,7 +78,12 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         // 뷰 모델이 가지고있는 값의 변경사항을 관찰할 수 있는 라이브 데이터를 옵저빙한다
         // 이때부턴 선택해놓은 spinner에 선택된 month 로
         viewModel.getMonthBoardObservers(sleMonth).observe(this, Observer {
-            recyclerViewAdapter.setListData(ArrayList(it)) //현재월을 set
+             val test: List<BoardEntity> = listOf(BoardEntity("2022-2-3", "", "", "", "", "", "", "", "", ""))
+            if (it.toString() == "[]"){
+                recyclerViewAdapter.setListData(ArrayList(test)) //현재월을 set
+            }else{
+                recyclerViewAdapter.setListData(ArrayList(it)) //현재월을 set
+            }
             Log.d("로그잇", it.toString()+" 그리고 "+ArrayList(it))
             recyclerViewAdapter.notifyDataSetChanged()
         })
