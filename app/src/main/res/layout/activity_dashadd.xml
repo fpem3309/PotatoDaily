@@ -964,12 +964,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="내용을 입력해주세요"/>
-
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter board content"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

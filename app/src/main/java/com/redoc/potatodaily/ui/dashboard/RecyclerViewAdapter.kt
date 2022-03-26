@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.BoardItemBinding
 import com.redoc.potatodaily.db.BoardEntity
-import com.redoc.potatodaily.ui.dashboard.DashboardViewModel.Companion.TAG
 
 class RecyclerViewAdapter(val listener: RowClickListener) :
     RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
@@ -19,7 +18,8 @@ class RecyclerViewAdapter(val listener: RowClickListener) :
     var items = ArrayList<BoardEntity>()
 
     fun setListData(data: ArrayList<BoardEntity>) {
-        this.items = data
+
+            this.items = data
     }
 
     override fun onCreateViewHolder(
@@ -56,7 +56,6 @@ class RecyclerViewAdapter(val listener: RowClickListener) :
         RecyclerView.ViewHolder(binding.root) {
 
         private val tvTitle = binding.tvTitle
-        private val tvContent = binding.tvContent
         private val tvWriteDate = binding.tvWriteDate
 
         private val imgMood = binding.imgMood
@@ -101,8 +100,8 @@ class RecyclerViewAdapter(val listener: RowClickListener) :
         val expandableLayout = binding.expandableLayout
 
         fun bind(data: BoardEntity) {
+
             tvTitle.text = data.title
-            tvContent.text = data.content
             tvWriteDate.text = data.date
 
             //img

@@ -8,7 +8,6 @@ import java.util.*
 data class BoardEntity(
     @PrimaryKey val date: String,
     @ColumnInfo(name = "title") val title: String,
-    @ColumnInfo(name = "content") val content: String,
     @ColumnInfo(name = "mood") val mood: String,
     @ColumnInfo(name = "weather") val weather: String,
     @ColumnInfo(name = "people") val people: String,

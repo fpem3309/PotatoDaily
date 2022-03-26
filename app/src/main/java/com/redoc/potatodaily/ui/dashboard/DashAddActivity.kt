@@ -98,7 +98,6 @@ class DashAddActivity : AppCompatActivity() {
 
             val setDate = addBinding.writeDate.text.toString()
             val title = addBinding.name.text.toString()
-            val content = addBinding.email.text.toString()
             val mood = addBinding.mdResult.text.toString()
 
             val weather = weather.toString()
@@ -115,7 +114,6 @@ class DashAddActivity : AppCompatActivity() {
                 val board = BoardEntity(
                     setDate,
                     title,
-                    content,
                     mood,
                     weather,
                     people,
@@ -131,7 +129,6 @@ class DashAddActivity : AppCompatActivity() {
                 val board = BoardEntity(
                     setDate,
                     title,
-                    content,
                     mood,
                     weather,
                     people,
@@ -158,7 +155,6 @@ class DashAddActivity : AppCompatActivity() {
 
         val getDate = getdata[0].date
         val getTitle = getdata[0].title
-        val getContent = getdata[0].content
         val getMood = getdata[0].mood
         val getWeather = getdata[0].weather
         val getPeople = getdata[0].people
@@ -170,7 +166,6 @@ class DashAddActivity : AppCompatActivity() {
 
         addBinding.writeDate.text = getDate
         addBinding.name.setText(getTitle)
-        addBinding.email.setText(getContent)
 
         when (getMood) {
             "very_good" -> addBinding.mdVeryGood.isChecked = true
