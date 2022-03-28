@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.BoardItemBinding
@@ -104,9 +105,13 @@ class RecyclerViewAdapter(val listener: RowClickListener) :
             tvTitle.text = data.title
             tvWriteDate.text = data.date
 
-            //img
-            //Log.d(TAG + "imgUri", data.img)
             if (data.img == "null")imgDaily.visibility = GONE else imgDaily.setImageURI(Uri.parse(data.img))
+
+            if(tvTitle.text.equals("기록이 없어요")){
+                deleteBoardID.visibility = GONE
+                updateBoardID.visibility = GONE
+                itemView.isEnabled = false
+            }
 
             //moood
             if (data.mood == "very_good") {

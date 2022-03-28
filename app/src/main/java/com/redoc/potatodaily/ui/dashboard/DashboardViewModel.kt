@@ -64,7 +64,6 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
     fun deleteBoard(entity: BoardEntity){
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         boardDao?.deleteBoard(entity)
-        //getAllBoard()
         getMonthBoard(entity.date.substring(5,6))
     }
 
