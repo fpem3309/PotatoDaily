@@ -36,7 +36,7 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
     fun getMonthBoard(resultDate: String) {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         val list = boardDao?.getMonthBoard(resultDate)
-        Log.d(TAG+"getMonthBoard2","$list")
+        Log.d(TAG+"getMonthBoard","$list")
         allBoards.postValue(list!!)
     }
 
@@ -51,7 +51,7 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
     private fun getAllBoard() {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         val list = boardDao?.getAllBoard()
-        Log.d(TAG,"$list")
+        //Log.d(TAG,"$list")
         allBoards.postValue(list!!)
     }
 

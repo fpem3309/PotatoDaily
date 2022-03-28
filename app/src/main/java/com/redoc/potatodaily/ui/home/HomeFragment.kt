@@ -38,10 +38,6 @@ class HomeFragment : Fragment() {
 
         binding.calendarView.setOnDateChangedListener { widget, date, selected ->
 
-            Log.d("로그 widget", widget.toString())
-            Log.d("로그 date", date.toString())
-            Log.d("로그 selected", selected.toString())
-
             var all_day = date.toString()
 
             all_day = all_day.substring(all_day.indexOf("{") + 1, all_day.length - 1)
@@ -56,7 +52,7 @@ class HomeFragment : Fragment() {
             var day = dayArray[2]
 
             var resultDate = "$year-$month-$day"
-            Log.d("로그 resultDate",resultDate)
+            //Log.d("로그 resultDate",resultDate)
 
             var intent = Intent(context, DashAddActivity::class.java)
             intent.apply { this.putExtra("goboard", resultDate) }

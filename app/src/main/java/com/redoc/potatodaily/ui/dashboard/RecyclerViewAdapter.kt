@@ -1,13 +1,11 @@
 package com.redoc.potatodaily.ui.dashboard
 
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.BoardItemBinding

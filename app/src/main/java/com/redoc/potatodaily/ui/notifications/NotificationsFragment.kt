@@ -120,10 +120,7 @@ class NotificationsFragment : Fragment() {
 
             // Paging 완료되면 호출
             override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                Log.d("로그ViewPagerFragment", "Page ${position+1}")
-            }
-        })
+                super.onPageSelected(position) } })
 
         return root
     }

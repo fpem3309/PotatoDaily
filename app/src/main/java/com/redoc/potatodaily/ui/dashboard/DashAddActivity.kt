@@ -7,22 +7,14 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.CompoundButton
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.ActivityDashaddBinding
 import com.redoc.potatodaily.db.BoardEntity
 import java.lang.Exception
-import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.*
-import kotlin.collections.ArrayList
 
 class DashAddActivity : AppCompatActivity() {
 
@@ -66,7 +58,7 @@ class DashAddActivity : AppCompatActivity() {
 
             val uData = intent.getStringExtra("update")
             Log.d(TAG + "update", "$uData")
-            addBinding.btnSave.text = "Update"
+            addBinding.btnSave.text = "수정완료"
 
 
             val getdata = viewModel.getDayBoard(uData!!)
@@ -84,11 +76,11 @@ class DashAddActivity : AppCompatActivity() {
 
             // 해당 날짜가 있으면 Update 없으면 Save
             if (viewModel.getDayBoard(getDate!!).toString() != "[]") {
-                addBinding.btnSave.text = "Update"
+                addBinding.btnSave.text = "수정완료"
                 val getdata = viewModel.getDayBoard(getDate)
                 updateCheck(getdata!!)
             } else {
-                addBinding.btnSave.text = "Save"
+                addBinding.btnSave.text = "작성완료"
             }
 
 
@@ -110,7 +102,7 @@ class DashAddActivity : AppCompatActivity() {
 
             Log.d(TAG + "date", date.toString())
 
-            if (addBinding.btnSave.text.equals("Save")) {
+            if (addBinding.btnSave.text.equals("작성완료")) {
                 val board = BoardEntity(
                     setDate,
                     title,
@@ -209,10 +201,10 @@ class DashAddActivity : AppCompatActivity() {
         if (getGoods.contains("snack")) addBinding.snack.isChecked = true
         if (getGoods.contains("drink")) addBinding.drink.isChecked = true
 
-        Log.d("로그 이미지",getImg)
-        if (getImg != "null") addBinding.imgDaily.setImageURI(Uri.parse(getImg))
-        uri = (Uri.parse(getImg))
-
+        if (getImg != "null"){
+            addBinding.imgDaily.setImageURI(Uri.parse(getImg))
+            uri = (Uri.parse(getImg))
+        }
     }
 
     private fun radioClick() {
@@ -225,7 +217,6 @@ class DashAddActivity : AppCompatActivity() {
                 R.id.md_bad -> addBinding.mdResult.text = "bad"
                 R.id.md_veryBad -> addBinding.mdResult.text = "very_bad"
             }
-            Log.d(TAG, "" + addBinding.mdResult.text)
         }
     }
 
@@ -339,12 +330,7 @@ class DashAddActivity : AppCompatActivity() {
                 }
             }
         }
-        Log.d(TAG + "weather", weather.toString())
-        Log.d(TAG + "people", people.toString())
-        Log.d(TAG + "school", school.toString())
-        Log.d(TAG + "couple", couple.toString())
-        Log.d(TAG + "eat", eat.toString())
-        Log.d(TAG + "goods", goods.toString())
+        //Log array
 
         addBinding.sunny.setOnCheckedChangeListener(listener)
         addBinding.cloudy.setOnCheckedChangeListener(listener)

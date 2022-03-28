@@ -73,19 +73,10 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         // 가져올 뷰모델 클래스를 넣어서 뷰모델 가져오기
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
-        val sleMonth = binding.month.selectedItem.toString().substring(0,1)
-        val nullBoard: List<BoardEntity> = listOf(BoardEntity("", "기록이 없어요", "", "", "", "", "", "", "", "null"))
 
         // 뷰 모델이 가지고있는 값의 변경사항을 관찰할 수 있는 라이브 데이터를 옵저빙한다
         // 이때부턴 선택해놓은 spinner에 선택된 month 로
-        viewModel.getMonthBoardObservers(sleMonth).observe(this, Observer {
-            if (it.toString() == "[]"){
-                recyclerViewAdapter.setListData(ArrayList(nullBoard)) //현재월을 set
-            }else{
-                recyclerViewAdapter.setListData(ArrayList(it)) //현재월을 set
-            }
-            recyclerViewAdapter.notifyDataSetChanged()
-        })
+        adapterList()
 
 
         // spinner month 눌렀을때
@@ -98,24 +89,29 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
             ) {
                 if (position != 0) Toast.makeText(context, monthData[position], Toast.LENGTH_SHORT).show()
 
-                val sleMonth = binding.month.selectedItem.toString().substring(0,1) // 선택한 spinner month
-
                 // 뷰 모델이 가지고있는 값의 변경사항을 관찰할 수 있는 라이브 데이터를 옵저빙한다
-                viewModel.getMonthBoardObservers(sleMonth).observe(this@DashboardFragment, Observer {
-
-                    if (it.toString() == "[]"){
-                        recyclerViewAdapter.setListData(ArrayList(nullBoard)) //현재월을 set
-                    }else{
-                        recyclerViewAdapter.setListData(ArrayList(it)) //현재월을 set
-                    }
-                    recyclerViewAdapter.notifyDataSetChanged()
-                })
+                adapterList()
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
         }
 
+    }
+
+    fun adapterList(){
+
+        val sleMonth = binding.month.selectedItem.toString().substring(0,1)
+        val nullBoard: List<BoardEntity> = listOf(BoardEntity("", "기록이 없어요", "", "", "", "", "", "", "", "null"))
+
+        viewModel.getMonthBoardObservers(sleMonth).observe(this, Observer {
+            if (it.toString() == "[]"){
+                recyclerViewAdapter.setListData(ArrayList(nullBoard))
+            }else{
+                recyclerViewAdapter.setListData(ArrayList(it)) //현재월을 set
+            }
+            recyclerViewAdapter.notifyDataSetChanged()
+        })
     }
 
     override fun onDeleteBoardClickListener(board: BoardEntity) {
