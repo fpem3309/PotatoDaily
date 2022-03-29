@@ -77,14 +77,14 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
     fun getMoodBoard(mood: String): Int? {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         val cnt = boardDao?.getMoodBoard(mood)
-        Log.d(TAG+"getMoodBoard","$cnt")
+        //Log.d(TAG+"getMoodBoard","$cnt")
         return cnt
     }
     //Barchart
     fun getMealBoard(eat: String): Int? {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         val cnt = boardDao?.getMealBoard(eat)
-        Log.d(TAG+"getMoodBoard","$cnt")
+        //Log.d(TAG+"getMealBoard","$cnt")
         return cnt
     }
 

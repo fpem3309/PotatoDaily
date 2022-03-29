@@ -352,7 +352,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="흐림"
+                android:text="맑음"
                 android:layout_marginRight="25dp"
                 app:layout_constraintEnd_toStartOf="@+id/tv_cloudy"
                 app:layout_constraintTop_toTopOf="@+id/tv_cloudy" />

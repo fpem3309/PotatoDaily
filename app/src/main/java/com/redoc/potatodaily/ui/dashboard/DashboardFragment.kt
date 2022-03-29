@@ -64,9 +64,7 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
             layoutManager = LinearLayoutManager(context)
             recyclerViewAdapter = RecyclerViewAdapter(this@DashboardFragment)
             adapter = recyclerViewAdapter
-
         }
-
 
         // 뷰 모델 프로바이더를 통해 뷰모델 가져오기
         // 라이프사이클을 가지고 있는 녀석을 넣어줌(자기 자신)
@@ -131,12 +129,6 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
     }
 
     override fun onItemClickListener(board: BoardEntity) {
-//        binding.name.setText(board.title)
-//        binding.email.setText(board.content)
-//
-//        binding.name.setTag(binding.name.id, board.id)
-//
-//        binding.btnSave.setText("Update")
     }
 
     override fun onUpdateBoardListener(board: BoardEntity) {
