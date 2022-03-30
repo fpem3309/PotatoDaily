@@ -53,6 +53,8 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         val nowMonth = now.toString().substring(6,7) // 현재 month
         binding.month.setSelection(nowMonth.toInt()-1)  // 현재 3월이면 -1해서 index값이 2인 3월이 spinner set
 
+        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+
         return root
     }
 
@@ -69,7 +71,6 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         // 뷰 모델 프로바이더를 통해 뷰모델 가져오기
         // 라이프사이클을 가지고 있는 녀석을 넣어줌(자기 자신)
         // 가져올 뷰모델 클래스를 넣어서 뷰모델 가져오기
-        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
 
         // 뷰 모델이 가지고있는 값의 변경사항을 관찰할 수 있는 라이브 데이터를 옵저빙한다
