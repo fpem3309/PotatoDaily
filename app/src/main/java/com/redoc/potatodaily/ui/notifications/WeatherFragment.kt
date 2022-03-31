@@ -1,16 +1,11 @@
 package com.redoc.potatodaily.ui.notifications
 
-import android.content.Context
-import android.content.res.TypedArray
+
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.graphics.drawable.toDrawable
 import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
@@ -19,8 +14,6 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
-import com.redoc.potatodaily.R
-import com.redoc.potatodaily.databinding.FragmentMealBinding
 import com.redoc.potatodaily.databinding.FragmentWeatherBinding
 import com.redoc.potatodaily.ui.dashboard.DashboardViewModel
 
@@ -46,7 +39,7 @@ class WeatherFragment : Fragment() {
         val windyCnt = viewModel.getWeatherBoard("windy")
 
 
-        var chart = binding.barChart
+        val chart = binding.barChart
 
         val entries = ArrayList<BarEntry>()
         entries.add(BarEntry(1.0f,sunnyCnt!!.toFloat()))
@@ -55,7 +48,7 @@ class WeatherFragment : Fragment() {
         entries.add(BarEntry(4.0f,snowyCnt!!.toFloat()))
         entries.add(BarEntry(5.0f,windyCnt!!.toFloat()))
 
-        var barDataSet = BarDataSet(entries,"날씨")//데이터셋 초기화 하기
+        val barDataSet = BarDataSet(entries,"날씨")//데이터셋 초기화 하기
 
         val dataSet :ArrayList<IBarDataSet> = ArrayList()
         dataSet.add(barDataSet)

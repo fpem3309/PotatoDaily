@@ -1,7 +1,6 @@
 package com.redoc.potatodaily.ui.notifications
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +16,6 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.FragmentMealBinding
-import com.redoc.potatodaily.databinding.FragmentNotificationsBinding
 import com.redoc.potatodaily.ui.dashboard.DashboardViewModel
 
 class MealFragment : Fragment() {
@@ -42,7 +40,7 @@ class MealFragment : Fragment() {
         val midCnt = viewModel.getMealBoard("midnightSnack")
 
 
-        var chart = binding.barChart
+        val chart = binding.barChart
 
         val entries = ArrayList<BarEntry>()
         entries.add(BarEntry(1.0f,breakCnt!!.toFloat()))
@@ -50,7 +48,7 @@ class MealFragment : Fragment() {
         entries.add(BarEntry(3.0f,dinnerCnt!!.toFloat()))
         entries.add(BarEntry(4.0f,midCnt!!.toFloat()))
 
-        var barDataSet = BarDataSet(entries,"식사")//데이터셋 초기화 하기
+        val barDataSet = BarDataSet(entries,"식사")//데이터셋 초기화 하기
         barDataSet.color = ContextCompat.getColor(context!!,R.color.mealCharf)
 
         val dataSet :ArrayList<IBarDataSet> = ArrayList()
@@ -86,10 +84,6 @@ class MealFragment : Fragment() {
             axisLeft.isEnabled = false
             animateY(1000) // 밑에서부터 올라오는 애니매이션 적용
         }
-
-
-
-
         return root
     }
 

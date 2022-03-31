@@ -1,7 +1,6 @@
 package com.redoc.potatodaily.ui.notifications
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,9 +16,6 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.FragmentGoodsBinding
-import com.redoc.potatodaily.databinding.FragmentMealBinding
-import com.redoc.potatodaily.databinding.FragmentPeopleBinding
-import com.redoc.potatodaily.databinding.FragmentWeatherBinding
 import com.redoc.potatodaily.ui.dashboard.DashboardViewModel
 
 class GoodsFragment : Fragment() {
@@ -43,7 +39,7 @@ class GoodsFragment : Fragment() {
         val snackCnt = viewModel.getGoodsBoard("snack")
         val drinkCnt = viewModel.getGoodsBoard("drink")
 
-        var chart = binding.barChart
+        val chart = binding.barChart
 
         val entries = ArrayList<BarEntry>()
         entries.add(BarEntry(1.0f,alcoholCnt!!.toFloat()))
@@ -52,7 +48,7 @@ class GoodsFragment : Fragment() {
         entries.add(BarEntry(4.0f,snackCnt!!.toFloat()))
         entries.add(BarEntry(5.0f,drinkCnt!!.toFloat()))
 
-        var barDataSet = BarDataSet(entries,"기호품")//데이터셋 초기화 하기
+        val barDataSet = BarDataSet(entries,"기호품")//데이터셋 초기화 하기
         barDataSet.color = ContextCompat.getColor(context!!,R.color.goodsCharf)
 
         val dataSet :ArrayList<IBarDataSet> = ArrayList()

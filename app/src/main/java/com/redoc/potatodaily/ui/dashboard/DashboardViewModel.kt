@@ -13,12 +13,12 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
     // 뮤터블 라이브 데이터(수정 가능)
     // 라이브 데이터 (수정 불가능, 읽기 전용)
 
-    lateinit var allBoards : MutableLiveData<List<BoardEntity>>
+    //    lateinit var allBoards : MutableLiveData<List<BoardEntity>>
+    var allBoards : MutableLiveData<List<BoardEntity>> = MutableLiveData()
 
     companion object{const val TAG : String = "로그"}
 
     init {
-        allBoards = MutableLiveData()
         Log.d(TAG, "DashboardViewModel - 생성자 호출")
     }
 

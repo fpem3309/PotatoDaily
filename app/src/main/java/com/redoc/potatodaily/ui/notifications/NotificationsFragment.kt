@@ -2,15 +2,12 @@ package com.redoc.potatodaily.ui.notifications
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.data.PieData
@@ -19,20 +16,15 @@ import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.FragmentNotificationsBinding
-import com.redoc.potatodaily.ui.dashboard.DashboardFragment
 import com.redoc.potatodaily.ui.dashboard.DashboardViewModel
 import com.redoc.potatodaily.ui.dashboard.PagerRecyclerAdapter
-import com.redoc.potatodaily.ui.home.HomeFragment
 
 class NotificationsFragment : Fragment() {
 
     lateinit var viewModel: DashboardViewModel
     private var _binding: FragmentNotificationsBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
-    private val NUM_PAGES = 3
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,7 +47,7 @@ class NotificationsFragment : Fragment() {
         val root: View = binding.root
 
 
-        var chart = binding.pieChart
+        val chart = binding.pieChart
         chart.setUsePercentValues(true)
 
         chart.legend.isEnabled = false // x-Values List false 안보이게
@@ -103,7 +95,6 @@ class NotificationsFragment : Fragment() {
             animate()
         }
 
-
         val pagerAdapter = PagerRecyclerAdapter(requireActivity())
 
         pagerAdapter.addFragment(MealFragment())
@@ -115,7 +106,6 @@ class NotificationsFragment : Fragment() {
 
         binding.viewpager.adapter = pagerAdapter
 
-
         binding.viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
 
             // Paging 완료되면 호출
@@ -124,7 +114,6 @@ class NotificationsFragment : Fragment() {
 
         return root
     }
-
 
 
     override fun onDestroyView() {

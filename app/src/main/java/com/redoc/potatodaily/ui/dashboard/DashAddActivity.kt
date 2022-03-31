@@ -103,39 +103,13 @@ class DashAddActivity : AppCompatActivity() {
             Log.d(TAG + "date", date.toString())
 
             if (addBinding.btnSave.text.equals("작성완료")) {
-                val board = BoardEntity(
-                    setDate,
-                    title,
-                    mood,
-                    weather,
-                    people,
-                    school,
-                    couple,
-                    eat,
-                    goods,
-                    img
-                )
+                val board = BoardEntity(setDate, title, mood, weather, people, school, couple, eat, goods, img)
                 viewModel.insertBoard(board)
                 Log.d(TAG, "DashAddActivity - board - insert = $board")
             } else {  // Update 일때
-                val board = BoardEntity(
-                    setDate,
-                    title,
-                    mood,
-                    weather,
-                    people,
-                    school,
-                    couple,
-                    eat,
-                    goods,
-                    img
-                )
+                val board = BoardEntity(setDate, title, mood, weather, people, school, couple, eat, goods, img)
                 viewModel.updateBoard(board)
-                Log.d(
-                    TAG,
-                    "DashAddActivity - board - update = $board" + addBinding.name.getTag(addBinding.name.id)
-                        .toString()
-                )
+                Log.d(TAG, "DashAddActivity - board - update = $board" + addBinding.name.getTag(addBinding.name.id).toString())
             }
             finish()
         }

@@ -2,7 +2,6 @@ package com.redoc.potatodaily.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,26 +37,20 @@ class HomeFragment : Fragment() {
 
         binding.calendarView.setOnDateChangedListener { widget, date, selected ->
 
-            var all_day = date.toString()
+            var allDay = date.toString()
+            allDay = allDay.substring(allDay.indexOf("{") + 1, allDay.length - 1)
 
-            all_day = all_day.substring(all_day.indexOf("{") + 1, all_day.length - 1)
-
-            val dayArray = all_day.split("-".toRegex())
-
-            var year = dayArray[0]
-
+            val dayArray = allDay.split("-".toRegex())
+            val year = dayArray[0]
             var month = dayArray[1].toInt()
-            month += 1
+            month += 1 // 0월 -> 1월
 
-            var day = dayArray[2]
+            val day = dayArray[2]
+            val resultDate = "$year-$month-$day"
 
-            var resultDate = "$year-$month-$day"
-            //Log.d("로그 resultDate",resultDate)
-
-            var intent = Intent(context, DashAddActivity::class.java)
+            val intent = Intent(context, DashAddActivity::class.java)
             intent.apply { this.putExtra("goboard", resultDate) }
             startActivity(intent)
-
         }
         return root
     }
@@ -67,17 +60,17 @@ class HomeFragment : Fragment() {
         viewModel.getAllBoardObservers().observe(this, androidx.lifecycle.Observer {
 
             val calList = ArrayList<CalendarDay>()
-            var moodlist = ArrayList<String>()
+            val moodList = ArrayList<String>()
 
             val board = it
 
-            for(i: Int in 0..board.size-1){
+            for(i: Int in board.indices){
                 board[i].date
                 calList.add(CalendarDay.from(java.sql.Date.valueOf(board[i].date)))
-                moodlist.add(board[i].mood)
+                moodList.add(board[i].mood)
             }
             for (calDay in calList){
-                binding.calendarView.addDecorators(CurrentDayDecorator(context,calDay,moodlist[calList.indexOf(calDay)]))
+                binding.calendarView.addDecorators(CurrentDayDecorator(context,calDay,moodList[calList.indexOf(calDay)]))
             }
 
         })

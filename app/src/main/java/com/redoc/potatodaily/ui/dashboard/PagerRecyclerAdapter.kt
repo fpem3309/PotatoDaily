@@ -20,9 +20,4 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
             fragments.add(fragment)
             notifyItemInserted(fragments.size-1)
         }
-
-//        fun removeFragment() {
-//            fragments.removeLast()
-//            notifyItemRemoved(fragments.size)
-//        }
     }

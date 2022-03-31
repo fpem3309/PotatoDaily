@@ -1,7 +1,6 @@
 package com.redoc.potatodaily.ui.notifications
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,10 +15,7 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.redoc.potatodaily.R
-import com.redoc.potatodaily.databinding.FragmentMealBinding
-import com.redoc.potatodaily.databinding.FragmentPeopleBinding
 import com.redoc.potatodaily.databinding.FragmentSchoolBinding
-import com.redoc.potatodaily.databinding.FragmentWeatherBinding
 import com.redoc.potatodaily.ui.dashboard.DashboardViewModel
 
 class SchoolFragment : Fragment() {
@@ -88,9 +84,6 @@ class SchoolFragment : Fragment() {
             axisLeft.isEnabled = false
             animateY(1000) // 밑에서부터 올라오는 애니매이션 적용
         }
-
-
-
         return root
     }
 

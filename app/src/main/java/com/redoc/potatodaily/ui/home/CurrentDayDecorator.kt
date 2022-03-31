@@ -2,7 +2,6 @@ package com.redoc.potatodaily.ui.home
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.util.Log
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.DayViewDecorator
 import com.prolificinteractive.materialcalendarview.DayViewFacade
