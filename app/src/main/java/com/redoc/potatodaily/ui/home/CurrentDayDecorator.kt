@@ -26,7 +26,6 @@ class CurrentDayDecorator(context: Context?, currentDay: CalendarDay, moodlist: 
     }
 
     override fun decorate(view: DayViewFacade?) {
-        //Log.d("mood로그", mood)
 
         if(mood == "very_good"){
             view?.setBackgroundDrawable(vgDrawable)

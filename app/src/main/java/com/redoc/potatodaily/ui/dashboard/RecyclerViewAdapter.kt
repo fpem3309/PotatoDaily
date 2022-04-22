@@ -17,7 +17,6 @@ class RecyclerViewAdapter(val listener: RowClickListener) :
     var items = ArrayList<BoardEntity>()
 
     fun setListData(data: ArrayList<BoardEntity>) {
-        Log.d("data로그", data.toString())
             this.items = data
     }
 

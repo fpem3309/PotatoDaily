@@ -51,7 +51,6 @@ class DashboardViewModel(app:Application) : AndroidViewModel(app) {
     private fun getAllBoard() {
         val boardDao = RoomAppDB.getAppDatabase((getApplication()))?.BoardDao()
         val list = boardDao?.getAllBoard()
-        //Log.d(TAG,"$list")
         allBoards.postValue(list!!)
     }
 

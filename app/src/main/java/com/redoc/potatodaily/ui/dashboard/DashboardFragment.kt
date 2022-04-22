@@ -78,13 +78,7 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
-                id: Long
-            ) {
-                if (position != 0) Toast.makeText(context, monthData[position], Toast.LENGTH_SHORT).show()
-
-                // 뷰 모델이 가지고있는 값의 변경사항을 관찰할 수 있는 라이브 데이터를 옵저빙한다
-                adapterList()
-            }
+                id: Long) { adapterList() }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
@@ -115,12 +109,12 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         builder.setTitle("기록을 삭제할까요?")
         builder.setMessage("삭제시 복구 불가능합니다")
 
-        var dialog_listener = DialogInterface.OnClickListener { dialog, which ->
+        var dialogListener = DialogInterface.OnClickListener { dialog, which ->
             when (which) {
                 DialogInterface.BUTTON_POSITIVE -> viewModel.deleteBoard(board)
             }
         }
-        builder.setPositiveButton("삭제하기",dialog_listener)
+        builder.setPositiveButton("삭제하기",dialogListener)
         builder.setNegativeButton("취소",null)
         builder.show()
     }
@@ -131,7 +125,7 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
     override fun onUpdateBoardListener(board: BoardEntity) {
 
         Log.d(TAG + "board", board.date)
-        var intent = Intent(context, DashAddActivity::class.java)
+        val intent = Intent(context, DashAddActivity::class.java)
         intent.apply {
             this.putExtra("update", board.date)
         }
