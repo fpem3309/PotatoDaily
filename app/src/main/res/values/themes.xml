@@ -15,6 +15,11 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.PotatoDaily.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#FFC69C</item>
+    </style>
+
+
     <!-- 달력 안의 숫자들에 적용되는 스타일 -->
     <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
         <item name="android:textColor">@android:color/black</item>

@@ -33,6 +33,7 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
     lateinit var recyclerViewAdapter: RecyclerViewAdapter
 
     lateinit var monthData: Array<String>
+    lateinit var yearData: Array<String>
 
     private val now: LocalDateTime = LocalDateTime.now()
 
@@ -51,6 +52,13 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
 
         val nowMonth = now.toString().substring(6,7) // 현재 month
         binding.month.setSelection(nowMonth.toInt()-1)  // 현재 3월이면 -1해서 index값이 2인 3월이 spinner set
+
+
+        yearData = resources.getStringArray(R.array.YearList)
+        val yearAdapter= ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, yearData)
+        binding.spinnerYear.adapter = yearAdapter
+
+
 
         // 뷰 모델 프로바이더를 통해 뷰모델 가져오기
         // 라이프사이클을 가지고 있는 녀석을 넣어줌(자기 자신)

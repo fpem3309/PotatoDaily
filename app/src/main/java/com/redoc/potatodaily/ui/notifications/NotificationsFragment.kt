@@ -17,7 +17,6 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import com.redoc.potatodaily.R
 import com.redoc.potatodaily.databinding.FragmentNotificationsBinding
 import com.redoc.potatodaily.ui.dashboard.DashboardViewModel
-import com.redoc.potatodaily.ui.dashboard.PagerRecyclerAdapter
 
 class NotificationsFragment : Fragment() {
 
@@ -94,6 +93,7 @@ class NotificationsFragment : Fragment() {
             animateY(1400, Easing.EaseInOutQuad)
             animate()
         }
+
 
         val pagerAdapter = PagerRecyclerAdapter(requireActivity())
 
