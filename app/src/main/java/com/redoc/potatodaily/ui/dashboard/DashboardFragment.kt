@@ -57,7 +57,8 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         yearData = resources.getStringArray(R.array.YearList)
         val yearAdapter= ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, yearData)
         binding.spinnerYear.adapter = yearAdapter
-
+        val nowYear = now.toString().substring(0,4)
+        binding.spinnerYear.setSelection(nowYear.toInt()-2021)
 
 
         // 뷰 모델 프로바이더를 통해 뷰모델 가져오기
@@ -79,6 +80,19 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         }
 
         adapterList()
+
+        // spinner year
+        binding.spinnerYear.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                val selYear = binding.spinnerYear.selectedItem.toString().substring(0,4)
+                Log.e("year select", selYear)
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                Log.e("year select", "선태안함?")
+            }
+
+        }
 
         // spinner month 눌렀을때
         binding.month.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
