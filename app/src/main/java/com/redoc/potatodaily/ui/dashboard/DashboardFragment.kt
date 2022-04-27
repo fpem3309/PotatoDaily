@@ -136,7 +136,7 @@ class DashboardFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
                 DialogInterface.BUTTON_POSITIVE -> viewModel.deleteBoard(board)
             }
         }
-        builder.setPositiveButton("삭제하기",dialogListener)
+        builder.setPositiveButton("삭제",dialogListener)
         builder.setNegativeButton("취소",null)
         builder.show()
     }
